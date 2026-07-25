@@ -11,8 +11,18 @@ lea, escriba o audite documentos en este repositorio, o que actúe sobre
   rama rectora, apertura de datasets, corridas de discovery/OOS,
   modificación de producción, ni ampliación de alcance de un mandato.
 - **Una aprobación del auditor no reemplaza la autorización de
-  Miguel.** Un veredicto "APTO" de Codex o Gemini es insumo para la
-  decisión, no la decisión.
+  Miguel.** Un veredicto APROBAR de Codex o Gemini es un insumo para la
+  decisión de Miguel, no la decisión.
+- **Los únicos veredictos válidos de auditoría son:**
+
+```text
+APROBAR
+RECHAZAR
+BLOQUEAR
+```
+
+  No se admiten estados intermedios como `APTO`, `NO APTO`, `APTO CON
+  CORRECCIONES`, `APROBAR CON OBSERVACIONES` ni `CONDICIONAL`.
 - **Una autorización no se hereda automáticamente a la siguiente
   fase.** Aprobar la fase N no autoriza la fase N+1; cada fase exige su
   propia autorización explícita.
