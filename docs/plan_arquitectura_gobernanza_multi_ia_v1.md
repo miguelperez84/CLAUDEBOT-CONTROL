@@ -1,20 +1,48 @@
 # Plan de arquitectura de gobernanza multi-IA v1
 
-**Estado:** borrador — pendiente de revisión final de cierre. No
-aprobado. No validado. No implementado. Arquitectura de cuatro capas y
-roles definitivos cerrados por decisión de Miguel (2026-07-28); revisión
-de ChatGPT ronda 1 (2026-07-28) devolvió **RECHAZAR PARA VERSIONADO —
-corregible** y fue corregida (§3, §4, §5.3, §6, §10, §14, §15, §16, §18,
-§19); revisión de ChatGPT ronda 2 (2026-07-28) aprobó la arquitectura
-conceptualmente pero identificó cuatro correcciones cerradas y
-localizadas, aplicadas en esta misma edición (§4.2, §6, §8, §9.1, §17,
-§17.1, §18). **El versionado todavía no está autorizado.** Pendiente:
-confirmación de estas correcciones, versionado del plan mediante
-autorización expresa de Miguel, el ciclo de auditoría/re-auditoría
-independiente de Codex (§17.1) hasta APROBAR vigente, y decisión expresa
-final de Miguel antes del inicio de la Fase 1.
+**Estado:** No aprobado. No validado. No implementado. Arquitectura de
+cuatro capas y roles definitivos cerrados por decisión de Miguel
+(2026-07-28); revisión de ChatGPT ronda 1 (2026-07-28) devolvió
+**RECHAZAR PARA VERSIONADO — corregible** y fue corregida (§3, §4, §5.3,
+§6, §10, §14, §15, §16, §18, §19); revisión de ChatGPT ronda 2
+(2026-07-28) aprobó la arquitectura conceptualmente e identificó cuatro
+correcciones cerradas y localizadas, aplicadas en la edición versionada
+(§4.2, §6, §8, §9.1, §17, §17.1, §18).
+
+**Historia fija (no se reescribe en ediciones posteriores):**
+- versión inicial versionada: commit `abeccd1ed4757b5abda5cbc7a0a3aae49a2f1838`,
+  rama `plan/ai-governance-v1`;
+- auditoría inicial independiente: Codex, commit
+  `c7db9a7616e75d502e556a43466762c8aa4623ca`, veredicto **RECHAZAR**
+  (informe `docs/auditoria_codex_plan_arquitectura_gobernanza_multi_ia_v1.md`);
+- registro durable de las decisiones arquitectónicas y de las
+  autorizaciones operacionales de la Fase 0: commit
+  `f00c42b626e49ed69816ca6847db164b28219b7d`
+  (`decisions/OWNER_DECISIONS.md`, entrada del 2026-07-28).
+
+**Esta edición** incorpora las correcciones H-01 a H-11 de la auditoría
+inicial de Codex, bajo la autorización operacional específica de Miguel
+registrada en el commit
+`2ac48a65d5c25962dca7c589a6e9fcdef38428cb`
+(`decisions/OWNER_DECISIONS.md`, entrada del 2026-07-29).
+
+**Estado operativo vigente:** no se declara de forma estática en esta
+cabecera; se determina en cada momento mediante el **commit objetivo**
+definido en §17.1 (el último commit, en la rama de entrega
+correspondiente, cuyo diff modifica este documento) y el veredicto de
+la auditoría independiente más reciente sobre ese commit objetivo. Esta
+edición, por sí sola, no constituye `APROBAR` vigente: exige una nueva
+auditoría independiente de Codex sobre el commit objetivo que la
+contenga.
+
+Pendiente antes del inicio de la Fase 1: nueva auditoría independiente
+de Codex sobre el commit objetivo de esta edición; ciclo de
+corrección/re-auditoría (§17.1) hasta obtener `APROBAR` vigente; y
+decisión expresa final de Miguel, registrada en
+`decisions/OWNER_DECISIONS.md`, que autorice específicamente el inicio
+de la Fase 1. **La Fase 1 no está autorizada por este documento.**
 **Repositorio:** `CLAUDEBOT-CONTROL`
-**Rama:** `plan/ai-governance-v1`
+**Rama de entrega de esta edición:** `control/sonnet-ai-governance-v1-r1`
 **No autoriza:** creación de carpetas, copia de archivos desde `CLAUDEBOT`,
 commits, merges, push, ni continuación de F-1A, F10, F11 o T2 en `CLAUDEBOT`.
 
@@ -141,14 +169,59 @@ En orden estricto (el superior gana ante conflicto):
    la vía legítima (mandato nuevo o decisión de Miguel); no ejecuta
    primero.
 
+### 4.2.1 Ubicación de documentos operativos y de evidencia
+
+Para evitar ambigüedad sobre dónde se ubican documentos que el flujo de
+trabajo usa constantemente, pero que no aparecían nombrados en la lista
+anterior:
+
+- **`AGENTS.md`** es la expresión operativa e índice de entrada de la
+  Capa A (núcleo institucional universal): ocupa el **nivel 3**, junto
+  con los documentos canónicos detallados de esa misma capa que la
+  Fase 1 nombre y ubique (§5.1).
+- **Perfiles de Capa B** (gobernanza específica de proyecto, §5.2):
+  ocupan el **nivel 4**.
+- **Mandatos** (`tasks/<ID>/MANDATE.md`): nivel 5, sin cambios.
+- **Adaptadores por modelo** (Capa D, §5.4, §14): nivel 6, sin cambios.
+- **`templates/`** (`TASK_TEMPLATE.md`, `REPORT_TEMPLATE.md`,
+  `AUDIT_TEMPLATE.md`): son instrumentos de formato que instrumentan los
+  niveles 3 a 5; no tienen precedencia normativa propia ni ocupan un
+  nivel independiente en esta lista.
+- **`README.md`**: es descriptivo del repositorio, no normativo; solo
+  adquiere fuerza de precedencia si un documento normativo de los
+  niveles 1-6 lo incorpora expresamente.
+- **`STATUS.md`, informes (`*_REPORT.md`) y auditorías (`*_AUDIT.md`)**:
+  son artefactos versionados de estado y de evidencia (§12); no ocupan
+  un nivel normativo autónomo — su función es demostrar si se cumplió o
+  no una condición de los niveles 1-6, nunca sustituirlos.
+
+Si un artefacto de estado o de evidencia (informe, auditoría,
+`STATUS.md`, historial de Git) demuestra que una condición exigida por
+un nivel superior de la lista de §4.2 no fue satisfecha (p. ej., que no
+existe la autorización que el nivel 1 requeriría, o que el mandato del
+nivel 5 no fue aprobado), ese hecho **bloquea la transición
+correspondiente**, con independencia de que ningún agente lo haya
+declarado explícitamente como conflicto.
+
 ### 4.3 Regla de superación explícita
 
-Una instrucción o autorización nueva de Miguel que contradiga una regla
-o decisión congelada (niveles 2-4) **solo la supersede cuando declare
-explícitamente**: la excepción que introduce, la regla concreta que
-reemplaza, y el alcance de ese reemplazo. Si no lo hace, el agente
+Una instrucción o autorización nueva de Miguel que contradiga una
+decisión institucional duradera, una regla del núcleo institucional, un
+perfil de proyecto, un mandato, un adaptador, o cualquier otra
+restricción vigente en los niveles 2 a 6 de §4.2, **solo la supersede
+cuando declare explícitamente**:
+
+- la **excepción** que introduce;
+- la **regla o documento concreto que reemplaza**;
+- el **alcance** de ese reemplazo;
+- la **duración**, cuando el reemplazo sea temporal (p. ej. limitado a
+  una tarea, una fase o un plazo determinado).
+
+Si la instrucción no declara estos cuatro elementos, el agente
 **detiene la acción y solicita aclaración** — no infiere la superación
-por implicación ni por presión conversacional.
+por implicación ni por presión conversacional, y no la aplica a un
+mandato o adaptador vigente solo porque la autorización operacional
+ocupe el nivel 1 de §4.2.
 
 El legado y dominio (Capa C, §5.3), incluido el corpus Fable Judgment
 v1, **no son documentos congelados con precedencia institucional
@@ -201,7 +274,7 @@ Contenido:
 - **permisos** — lectura/escritura por objeto (§10);
 - **control de alcance** — enumeración de archivos autorizados, diff
   debe coincidir con el mandato, hallazgo fuera de alcance se reporta
-  sin tocar (patrón guardián de alcance, ya vigente en `AGENTS.md` §7);
+  sin tocar (patrón guardián de alcance, ya vigente en `AGENTS.md` §4);
 - **veredictos** — taxonomía APROBAR/RECHAZAR/BLOQUEAR y estados de
   tarea (§9);
 - **resolución de conflictos** — entre documentos, entre capas, entre
@@ -298,7 +371,7 @@ reproducible que la sustenta, sin depender de ningún resumen previo:
 |---|---|
 | El corpus documental existe | `git -C CLAUDEBOT ls-tree -r fable-judgment-v1 --name-only -- ai_judgment/` lista `FABLE_CONSTITUTION.md`, `FABLE_DECISION_MODEL.md`, `FABLE_FAILURE_PATTERNS.md`, `FABLE_HANDOFF_PROMPT.md`, `MODEL_ADAPTER_CLAUDE.md`, `MODEL_ADAPTER_CODEX.md`, `MODEL_ADAPTER_GPT.md`, `TRANSFER_COVERAGE_REPORT.md` y `ai_judgment/decisions/ADR-001` a `ADR-010` |
 | Está versionado mediante el tag `fable-judgment-v1` | `git -C CLAUDEBOT tag -l fable-judgment-v1` (existe) y `git -C CLAUDEBOT cat-file -t fable-judgment-v1` (`tag`, es decir, objeto anotado) |
-| Su commit rector es `3a749d43d1ece2260ab5a1f1b89460a78d330c9c` | `git -C CLAUDEBOT rev-parse 'fable-judgment-v1^{commit}'` — confirmado en esta misma revisión |
+| Su commit rector es `3a749d43d1ece2260ab5a1f1b89460a78d330c9c` | `git -C CLAUDEBOT rev-parse 'fable-judgment-v1^{commit}'` — verificable mediante el comando indicado |
 | La transferencia documental está implementada | `git -C CLAUDEBOT show 3a749d43d1ece2260ab5a1f1b89460a78d330c9c --stat` (merge que integra `ai_judgment/`, `evals/` y `.claude/skills/`) |
 | La validación conductual aislada sigue pendiente | `git -C CLAUDEBOT show 3a749d43d1ece2260ab5a1f1b89460a78d330c9c:ai_judgment/TRANSFER_COVERAGE_REPORT.md`, §4: declara el benchmark aislado no ejecutado |
 
@@ -402,7 +475,14 @@ intake → planificación → autorización → implementación → auditoría �
    gobernanza de proyecto (B), legado (C), o varias a la vez.
 2. **Planificación** — se redacta un mandato (`tasks/<ID>/MANDATE.md`)
    con archivos autorizados, prohibiciones y criterios de aceptación.
-   Ningún agente ejecuta durante esta etapa.
+   Ningún agente ejecuta durante esta etapa. El primer borrador de
+   `MANDATE.md` de una tarea nueva es una acción **reversible** que no
+   ejecuta el mandato: puede redactarlo cualquier agente bajo
+   **autorización operacional actual y explícita de Miguel** (§4.1.A)
+   para esa tarea concreta, que delimite desde ese momento la tarea, la
+   rama y el archivo — igual que este propio plan se redactó antes de
+   estar versionado. El borrador no habilita ejecutar su contenido;
+   solo la autorización posterior de Miguel (paso 3) lo permite.
 3. **Autorización** — Miguel aprueba el mandato explícitamente. Sin esto,
    la etapa siguiente no puede comenzar (BLOQUEAR, no RECHAZAR).
 4. **Implementación** — el agente asignado trabaja en su propia rama o
@@ -444,6 +524,13 @@ Sin estados intermedios. Regla de asignación heredada del legado Fable
 (reformulada, no citada literalmente): la falta de autorización o
 evidencia produce siempre BLOQUEAR; un incumplimiento definitivo de una
 regla congelada produce siempre RECHAZAR.
+
+Cuando el mismo hallazgo sea a la vez un hallazgo **crítico** y un
+incumplimiento definitivo de una regla congelada, prevalece la regla de
+severidad: **todo hallazgo crítico obliga a `BLOQUEAR`** (mismo criterio
+de `AUDIT_TEMPLATE.md` §7), incluso si aisladamente ese incumplimiento
+produciría `RECHAZAR`. Un incumplimiento definitivo que no sea crítico
+continúa produciendo `RECHAZAR` sin cambio.
 
 **Estados de tarea** (nuevo, propuesto para esta arquitectura):
 
@@ -487,6 +574,41 @@ hallazgo bloqueante abierto, y autorización expresa de Miguel para el
 merge. Un veredicto `RECHAZAR` o `BLOQUEAR` bloquea esta transición
 aunque ningún hallazgo esté etiquetado como crítico.
 
+**Salida de los estados transversales.** Ni `BLOQUEADA` ni
+`DETENIDA POR INCIDENTE` se levantan por iniciativa de un agente:
+
+- El estado de retorno es el **último estado válido anterior** al
+  bloqueo o al incidente. Ese estado se determina mediante el
+  **historial de Git y los artefactos versionados** (mandatos,
+  informes, auditorías) — `STATUS.md` **no** es la fuente exclusiva
+  para determinarlo.
+- `STATUS.md` se actualiza **después**, para reflejar el estado ya
+  verificado en Git. Si `STATUS.md` contradice lo que Git y los
+  artefactos versionados indican, **prevalece Git**, conforme a §12.
+- La autoridad para reanudar, en ambos casos, es **exclusiva de
+  Miguel**.
+- Evidencia exigida para levantar `BLOQUEADA`: registro de la
+  autorización o evidencia que faltaba y que motivó el bloqueo (nueva
+  autorización expresa de Miguel, o un nuevo commit que la aporta). Si
+  el bloqueo se originó en un veredicto `BLOQUEAR` sobre una entrega,
+  el reingreso exige una **nueva auditoría independiente** sobre el
+  commit corrector, mismo ciclo B-E de §17.1.
+- Evidencia exigida para levantar `DETENIDA POR INCIDENTE`: registro de
+  la resolución de la anomalía (lock liberado, residuo eliminado,
+  contradicción resuelta conforme a §13), citando el commit o la acción
+  concreta que la resuelve.
+
+**`EN AUDITORÍA` → `CERRADA` sin integración.** Solo es legítimo cuando
+se cumplen, todas a la vez:
+
+- Miguel decide expresamente cerrar la tarea sin fusionar el cambio a
+  rama rectora;
+- esa decisión y su motivo quedan registrados en
+  `decisions/OWNER_DECISIONS.md`;
+- el artefacto correspondiente no se integra a la rama rectora;
+- esta vía no se interpreta, en ningún caso, como una excepción a la
+  puerta de integración de §8.6 — cerrar sin integrar no es integrar.
+
 La sustitución o migración formal de `STATUS.md`/`templates/TASK_TEMPLATE.md`
 para incorporar este vocabulario de estados **es una decisión posterior y
 auditada**, fuera del alcance de este plan y de su Fase 1.
@@ -498,20 +620,38 @@ auditada**, fuera del alcance de este plan y de su Fase 1.
 | Objeto | Lectura | Escritura |
 |---|---|---|
 | `CLAUDEBOT-CONTROL` núcleo institucional (Capa A) y perfiles de proyecto (Capa B) | Todos los agentes | Solo mediante mandato autorizado, en rama propia |
-| `CLAUDEBOT-CONTROL/tasks/`, `reports/` | Todos los agentes | El agente autor de la tarea/informe; auditores no editan el original |
-| `CLAUDEBOT-CONTROL/decisions/OWNER_DECISIONS.md` | Todos los agentes | Solo se agrega (append), nunca se edita entrada previa; solo tras decisión real de Miguel |
+| `CLAUDEBOT-CONTROL/tasks/`, `reports/` | Todos los agentes | Solo el agente expresamente autorizado por el mandato de esa tarea, únicamente en la ruta enumerada (`tasks/<ID>/...`, `reports/<ID>/...`), en su propia rama, y sin editar el artefacto del rol distinto (el auditor crea su propio informe; no modifica la implementación que audita) — ver nota 1 |
+| `CLAUDEBOT-CONTROL/decisions/OWNER_DECISIONS.md` | Todos los agentes | Solo se agrega (append), nunca se edita entrada previa. Miguel toma la decisión; Miguel puede redactar la entrada directamente o autorizar expresamente a un agente para transcribirla — el agente no crea ni interpreta una decisión nueva, solo la documenta, en la rama y el archivo expresamente autorizados, y solo tras revisar el diff antes del commit — ver nota 2 |
 | Legado `CLAUDEBOT` (`ai_judgment/`, ADR, skills) | Lectura libre por referencia | Ningún agente lo edita desde una tarea de `CLAUDEBOT-CONTROL` |
 | Datasets, resultados, producción de `CLAUDEBOT` | Ningún agente, desde ninguna tarea de `CLAUDEBOT-CONTROL` | Ninguno (fuera de alcance total, `AGENTS.md` §7 ya vigente) |
 | Adaptadores por modelo | Todos los agentes | Pertenecen al sistema de gobernanza, no a ningún modelo (§14): cualquier agente autorizado propone actualizaciones; el modelo descrito puede aportar evidencia pero no aprobar su propio adaptador; un agente independiente audita el cambio; Miguel aprueba la versión nueva |
+
+Nota 1: la autorización para escribir en `tasks/`/`reports/` proviene
+siempre de un mandato vigente (`tasks/<ID>/MANDATE.md`) o, para el
+primer borrador de ese mismo mandato, de una autorización operacional
+actual y explícita de Miguel (§4.1.A, §8).
+
+Nota 2: la autorización para materializar una entrada en
+`decisions/OWNER_DECISIONS.md` es siempre una autorización operacional
+actual y explícita de Miguel para esa entrada concreta (§4.1.A); no se
+infiere de un mandato general ni de una autorización de fase.
 
 ---
 
 ## 11. Política de ramas, commits, merges y acciones irreversibles
 
-- Convención de ramas ya vigente (`AGENTS.md` §6):
+- Convención de ramas de `AGENTS.md` §6 (ya vigente):
   `control/task-<id>`, `control/sonnet-<id>`, `control/codex-<id>`,
-  `control/gemini-<id>`. Ramas de planificación de arquitectura usan
-  `plan/<nombre>-v<N>` (precedente: esta misma rama).
+  `control/gemini-<id>`.
+- Excepciones operacionales de la Fase 0, registradas en
+  `decisions/OWNER_DECISIONS.md` (commit
+  `f00c42b626e49ed69816ca6847db164b28219b7d`): `plan/<nombre>-v<N>`
+  (rama de planificación de este documento; precedente:
+  `plan/ai-governance-v1`) y `audit/<agente>-<nombre>-v<N>` (rama de
+  auditoría independiente; precedente:
+  `audit/codex-ai-governance-v1`). Estas dos familias **no** forman
+  parte permanente de `AGENTS.md` §6; su posible incorporación
+  definitiva queda reservada para una decisión posterior.
 - Cada entrega termina en un commit identificable en la rama propia del
   agente. Ningún commit oportunista fuera del alcance del mandato.
 - Merge a rama rectora: solo con autorización explícita de Miguel, nunca
@@ -659,7 +799,9 @@ requiere mandato y autorización explícita propios cuando llegue su turno.
 
 1. **Fase 0 (esta).** Plan de arquitectura, sin implementación. Incluye
    el cierre de las decisiones arquitectónicas de §5, §7, §9, §14 y esta
-   sección, resueltas por Miguel el 2026-07-28.
+   sección, resueltas por Miguel el 2026-07-28 y registradas de forma
+   duradera en el commit `f00c42b626e49ed69816ca6847db164b28219b7d`
+   (`decisions/OWNER_DECISIONS.md`).
 2. **Fase 1.** Redactar y congelar los documentos canónicos de la Capa A
    (núcleo institucional) y el primer perfil de Capa B (gobernanza de
    proyecto, para `CLAUDEBOT`), con `AGENTS.md` como índice que los
@@ -707,9 +849,23 @@ E. Si el veredicto es `RECHAZAR` o `BLOQUEAR`:
       nuevo commit;
    4. el nuevo informe también queda versionado y cita el nuevo commit;
    5. el ciclo (B-E) se repite hasta obtener veredicto `APROBAR` sobre
-      el commit más reciente.
+      el **commit objetivo**.
 F. Miguel solo puede autorizar la Fase 1 cuando el veredicto vigente
-   sobre el commit más reciente sea `APROBAR`.
+   sobre el **commit objetivo** sea `APROBAR`.
+
+**Definición de "commit objetivo".** En toda esta sección y en §18,
+"commit objetivo" es el **último commit, dentro de la rama de entrega
+correspondiente, cuyo diff incluye una modificación de**
+`docs/plan_arquitectura_gobernanza_multi_ia_v1.md` — comprobable
+mediante el historial de ese archivo en esa rama (p. ej.
+`git log -1 -- docs/plan_arquitectura_gobernanza_multi_ia_v1.md`). Un
+commit posterior que no modifique este archivo —incluidos el commit que
+registra decisiones en `decisions/OWNER_DECISIONS.md`, el commit que
+versiona un informe de auditoría, o cualquier otro commit ajeno al
+plan— **no se convierte en commit objetivo** por el solo hecho de
+existir después. Toda mención anterior de "commit más reciente" en
+relación con el artefacto que Codex audita se interpreta conforme a
+esta definición.
 
 Ningún paso de esta secuencia se salta ni se da por completado sin su
 evidencia correspondiente en git (commit, informe de auditoría). Las
@@ -726,17 +882,33 @@ falta antes de alcanzar la quinta:
 
 | Etapa | Definición | Evidencia que la satisface |
 |---|---|---|
-| **Listo para versionar** | Revisión de Miguel y de ChatGPT sobre el borrador completada, sin correcciones pendientes de aplicar. | Ambas revisiones registradas en la conversación o en un informe citable. |
-| **Versionado** | Existe un commit de este documento en `plan/ai-governance-v1`, creado con autorización expresa de Miguel. | Hash de commit. |
-| **Auditado** | Existe un informe de auditoría independiente de Codex sobre el commit versionado, que cita ese commit exacto. | `*_AUDIT.md` con veredicto `APROBAR`/`RECHAZAR`/`BLOQUEAR` (§9), referenciando el hash auditado. |
-| **Hallazgos resueltos y re-auditados** *(solo si el veredicto de la auditoría más reciente no fue `APROBAR`)* | Si la primera auditoría fue `APROBAR`, esta etapa no aplica y se avanza directamente a la siguiente. Si fue `RECHAZAR`/`BLOQUEAR`, exige un commit correctivo más una nueva auditoría versionada sobre ese commit; se repite hasta obtener `APROBAR`. | Commit(s) correctivo(s) + informe(s) de re-auditoría versionados, cada uno citando el commit exacto que audita. |
-| **`APROBAR` vigente** | El veredicto de la auditoría más reciente, sobre el commit más reciente, es `APROBAR`. | El informe de auditoría vigente (el último de la cadena) con veredicto `APROBAR`, citando el commit más reciente. |
+| **Listo para versionar** | Revisión de Miguel y de ChatGPT sobre el borrador completada, sin correcciones pendientes de aplicar. | Registro durable que transcriba o resuma de forma sustantiva: la revisión de ChatGPT (recomienda, no autoriza); la decisión y autorización de Miguel (quien autoriza); la acción concreta autorizada; el alcance; la rama; los archivos autorizados; y las prohibiciones relevantes — en una entrada de `decisions/OWNER_DECISIONS.md` o en un `MANDATE.md`/adenda. La conversación de origen puede citarse como contexto adicional, nunca como evidencia durable única. |
+| **Versionado** | Existe un commit de este documento en la rama de entrega correspondiente, creado con autorización expresa de Miguel. | Hash del commit **y** el mismo registro durable sustantivo exigido en la etapa anterior. El hash por sí solo prueba existencia y contenido, no autorización. |
+| **Auditado** | Existe un informe de auditoría independiente de Codex sobre el commit objetivo (§17.1), que cita ese commit exacto. | `*_AUDIT.md` con veredicto `APROBAR`/`RECHAZAR`/`BLOQUEAR` (§9), referenciando el hash del commit objetivo auditado. |
+| **Hallazgos resueltos y re-auditados** *(solo si el veredicto de la auditoría más reciente no fue `APROBAR`)* | Si la primera auditoría fue `APROBAR`, esta etapa no aplica y se avanza directamente a la siguiente. Si fue `RECHAZAR`/`BLOQUEAR`, exige un commit correctivo más una nueva auditoría versionada sobre ese commit; se repite hasta obtener `APROBAR`. | Commit(s) correctivo(s) + informe(s) de re-auditoría versionados, cada uno citando el commit objetivo exacto que audita. |
+| **`APROBAR` vigente** | El veredicto de la auditoría más reciente, sobre el commit objetivo (§17.1), es `APROBAR`. | El informe de auditoría vigente (el último de la cadena) con veredicto `APROBAR`, citando el commit objetivo. |
 | **Autorizado para Fase 1 por Miguel** | Miguel emite decisión expresa final autorizando el inicio de la Fase 1 — solo posible con `APROBAR` vigente. | Entrada en `decisions/OWNER_DECISIONS.md` (§4.1.B). |
 
-Cada etapa requiere la anterior completa; ninguna se salta. Este
-documento, por sí solo, satisface como máximo la primera etapa una vez
-incorporadas las correcciones de esta revisión — no versiona, audita,
-corrige, re-audita ni aprueba nada por su propia existencia.
+Cada etapa requiere la anterior completa; ninguna se salta. Para este
+plan, el commit `f00c42b626e49ed69816ca6847db164b28219b7d`
+registra de forma duradera las decisiones arquitectónicas de la Fase 0,
+el primer versionado
+`abeccd1ed4757b5abda5cbc7a0a3aae49a2f1838`
+y la auditoría inicial
+`c7db9a7616e75d502e556a43466762c8aa4623ca`, con veredicto
+`RECHAZAR`.
+
+La autorización durable específica para corregir H-01 a H-11 y crear
+el versionado correctivo de esta edición está registrada en el commit
+`2ac48a65d5c25962dca7c589a6e9fcdef38428cb`
+(`decisions/OWNER_DECISIONS.md`, entrada del 2026-07-29).
+
+Esta edición no se auto-certifica: la etapa `Versionado` solo queda
+satisfecha cuando exista su nuevo commit objetivo, acompañado por la
+autorización durable anterior. Después requiere una nueva auditoría
+independiente de Codex sobre ese commit objetivo para avanzar a
+`Auditado`, `APROBAR vigente` y, eventualmente, a una decisión posterior
+de Miguel sobre la Fase 1.
 
 ---
 
@@ -781,9 +953,27 @@ equivocada, revertir es `git revert`/no mergear la rama correspondiente
 
 Las seis decisiones planteadas en el borrador anterior (separación en
 capas, roles, ubicación de `AGENTS.md`, relación con `STATUS.md`, plazo
-de revisión de adaptadores, y autorización de la Fase 1) quedaron
-resueltas por la decisión de Miguel del 2026-07-28 y están incorporadas
-en §5, §7, §9.1, §14 y §17.1 respectivamente.
+de revisión de adaptadores, y el **procedimiento** para una futura
+autorización de la Fase 1) quedaron resueltas por la decisión de Miguel
+del 2026-07-28, registrada de forma duradera en el commit
+`f00c42b626e49ed69816ca6847db164b28219b7d`
+(`decisions/OWNER_DECISIONS.md`), y están incorporadas en §5, §7, §9.1,
+§14 y §17.1 respectivamente. Esa misma entrada registra también las
+autorizaciones operacionales que produjeron el primer versionado
+(`abeccd1ed4757b5abda5cbc7a0a3aae49a2f1838`) y la auditoría inicial de
+Codex (`c7db9a7616e75d502e556a43466762c8aa4623ca`, veredicto
+`RECHAZAR`), y las excepciones de rama `plan/*`/`audit/*` de la Fase 0
+(§11).
+
+**Resolver el procedimiento de autorización de la Fase 1 (§17.1) no
+equivale a autorizar la Fase 1.** Esa autorización sigue pendiente y
+exige, todas a la vez: un commit objetivo versionado de este documento
+(§17.1); una auditoría independiente de Codex sobre ese commit
+objetivo; veredicto `APROBAR` vigente sobre ese mismo commit objetivo
+(§18); y una decisión expresa final y posterior de Miguel, registrada
+en `decisions/OWNER_DECISIONS.md`. La entrada del commit
+`f00c42b626e49ed69816ca6847db164b28219b7d` **no autoriza el inicio de
+la Fase 1**.
 
 Quedan abiertas, como detalles de implementación a resolver en el
 mandato de la Fase 1 (no bloquean el cierre de este plan):
@@ -800,5 +990,6 @@ mandato de la Fase 1 (no bloquean el cierre de este plan):
 
 ---
 
-*Este documento no autoriza ninguna implementación. Toda fase de §17
-requiere mandato y autorización explícita de Miguel cuando corresponda.*
+*Este documento no autoriza ninguna implementación ni el inicio de la
+Fase 1. Toda fase de §17 requiere mandato y autorización explícita de
+Miguel cuando corresponda.*
