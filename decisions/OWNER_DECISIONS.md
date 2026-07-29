@@ -146,3 +146,79 @@ revoca o reemplaza; no se borra la entrada original.
     `c7db9a7616e75d502e556a43466762c8aa4623ca`;
   - informe:
     `docs/auditoria_codex_plan_arquitectura_gobernanza_multi_ia_v1.md`.
+
+---
+
+## 2026-07-29 — Autorización de corrección y segundo versionado del plan de gobernanza multi-IA v1
+
+- Contexto:
+
+  El plan inicial fue versionado en el commit
+  `abeccd1ed4757b5abda5cbc7a0a3aae49a2f1838` y auditado
+  independientemente por Codex. El informe quedó versionado en
+  `c7db9a7616e75d502e556a43466762c8aa4623ca`, con veredicto
+  `RECHAZAR` y once hallazgos: H-01 a H-11.
+
+  Sonnet preparó en la rama
+  `control/sonnet-ai-governance-v1-r1` una corrección limitada a
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`.
+
+  ChatGPT revisó el documento corregido completo y su diff. Confirmó
+  que las correcciones H-01 a H-11 fueron incorporadas materialmente
+  y que el diff modifica únicamente el plan, pero detectó tres ajustes
+  residuales obligatorios antes de versionarlo:
+
+  1. esta edición no debe atribuir su autorización al commit
+     `f00c42b626e49ed69816ca6847db164b28219b7d`, porque ese commit
+     registra las decisiones arquitectónicas y las autorizaciones
+     operacionales anteriores, no la autorización del segundo
+     versionado correctivo;
+
+  2. la metadata de rama debe identificar la rama de entrega de esta
+     corrección, `control/sonnet-ai-governance-v1-r1`, y no presentar
+     `plan/ai-governance-v1` como su rama actual;
+
+  3. en §6, la frase “confirmado en esta misma revisión” debe
+     reemplazarse por una formulación reproducible basada en el comando
+     Git indicado.
+
+- Autorización operacional de Miguel:
+
+  Miguel ratifica la autorización para corregir H-01 a H-11 y autoriza
+  que Sonnet aplique exclusivamente los tres ajustes residuales
+  enumerados arriba al archivo:
+
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+
+  Después de una revisión final del diff, Miguel autoriza crear un único
+  commit correctivo de ese archivo en la rama:
+
+  `control/sonnet-ai-governance-v1-r1`
+
+- Alcance autorizado:
+
+  - un único archivo:
+    `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`;
+  - incorporación de H-01 a H-11;
+  - sustitución de la referencia de autorización de esta edición por el
+    commit que contenga esta entrada;
+  - corrección de la metadata de rama;
+  - reemplazo de la frase dependiente de “esta misma revisión” en §6;
+  - creación de un único commit documental posterior.
+
+- Prohibiciones:
+
+  Esta autorización no permite modificar nuevamente
+  `decisions/OWNER_DECISIONS.md` después de esta entrada, ni modificar
+  la auditoría Codex, `AGENTS.md`, `README.md`, plantillas u otros
+  archivos.
+
+  Tampoco permite push, merge, rebase, tag, eliminación de ramas,
+  implementación de la Fase 1 ni modificación de `CLAUDEBOT`.
+
+- No autorización:
+
+  Esta entrada no autoriza el inicio de la Fase 1. El inicio continúa
+  condicionado a una nueva auditoría independiente de Codex con
+  veredicto `APROBAR` vigente sobre el nuevo commit objetivo y a una
+  decisión posterior y expresa de Miguel.
