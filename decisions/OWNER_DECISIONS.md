@@ -484,3 +484,99 @@ revoca o reemplaza; no se borra la entrada original.
   - `CLAUDEBOT`.
 
   No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
+
+---
+
+## 2026-07-29 — Autorización de ajustes residuales finales para N-01
+
+- Contexto:
+
+  Sonnet aplicó la causal autónoma de `BLOQUEAR` autorizada en el commit
+  `8605c11f06bc925da695b40f274a11533485934b` y actualizó la
+  trazabilidad de la cabecera y §18 del plan.
+
+  ChatGPT revisó el diff completo y confirmó que la corrección
+  sustantiva de N-01 está correctamente formulada, pero detectó dos
+  expresiones residuales que deben corregirse antes del siguiente
+  versionado:
+
+  1. §9 todavía atribuye la clasificación vigente únicamente al commit
+     `fe748558013fe6c8d42c1ec3fe7ba2360a160be2`, aunque la causal
+     autónoma definitiva fue establecida por la decisión registrada en
+     `8605c11f06bc925da695b40f274a11533485934b`;
+
+  2. la cabecera afirma que esta edición “incorpora el cierre documental
+     definitivo de N-01” y después aclara que todavía no declara N-01
+     cerrado, generando una contradicción textual.
+
+- Autorización operacional:
+
+  Miguel autoriza a Sonnet, después de versionar esta entrada, a realizar
+  exclusivamente estos dos reemplazos en:
+
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+
+  Primer reemplazo, en §9:
+
+  Reemplazar:
+
+  Sin estados intermedios. La clasificación entre `BLOQUEAR` y
+  `RECHAZAR` se determina mediante las siguientes reglas, registradas por
+  decisión de Miguel en el commit
+  `fe748558013fe6c8d42c1ec3fe7ba2360a160be2` y alineadas con
+  `AUDIT_TEMPLATE.md` §7:
+
+  por:
+
+  Sin estados intermedios. La clasificación entre `BLOQUEAR` y
+  `RECHAZAR` se determina mediante las siguientes reglas, consolidadas
+  por la decisión interpretativa definitiva de Miguel registrada en el
+  commit `8605c11f06bc925da695b40f274a11533485934b` y alineadas con
+  `AUDIT_TEMPLATE.md` §7:
+
+  Segundo reemplazo, en la cabecera:
+
+  Reemplazar:
+
+  **Esta edición** conserva cerrados H-01 a H-11 e incorpora el cierre
+  documental definitivo de N-01 en §9, estableciendo como causal autónoma
+  de `BLOQUEAR` toda imposibilidad legítima de completar o continuar una
+  auditoría, con independencia de que se origine en ausencia de evidencia
+  o en otra causa que impida realizarla válidamente.
+
+  por:
+
+  **Esta edición** conserva cerrados H-01 a H-11 e incorpora la
+  corrección documental definitiva propuesta para cerrar N-01 en §9,
+  estableciendo como causal autónoma de `BLOQUEAR` toda imposibilidad
+  legítima de completar o continuar una auditoría, con independencia de
+  que se origine en ausencia de evidencia o en otra causa que impida
+  realizarla válidamente.
+
+  Después de la revisión final del diff, podrá crearse un único commit
+  objetivo del plan en la rama:
+
+  `control/sonnet-ai-governance-v1-r3`
+
+- Alcance y duración:
+
+  Esta autorización amplía exclusivamente la operación N-01 para los dos
+  reemplazos anteriores.
+
+  La ampliación termina cuando se cree el siguiente commit objetivo del
+  plan. No autoriza ningún otro cambio sustantivo o de trazabilidad.
+
+- Prohibiciones:
+
+  Esta operación actual no autoriza modificar todavía el plan.
+
+  No autoriza modificar:
+
+  - informes de auditoría o reauditoría;
+  - `AGENTS.md`;
+  - `README.md`;
+  - `templates/`;
+  - ningún otro archivo;
+  - `CLAUDEBOT`.
+
+  No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
