@@ -635,3 +635,79 @@ revoca o reemplaza; no se borra la entrada original.
 
   La integración del plan y la posible autorización de la Fase 1 serán
   decisiones expresas, separadas y posteriores de Miguel.
+
+---
+
+## 2026-07-29 — Autorización de integración fast-forward del plan multi-IA v1
+
+- Evidencia previa:
+
+  El commit objetivo
+  `e492f0efcf206786f935ffb1750236f5d3cfdd0c` fue auditado
+  independientemente por Codex en el commit
+  `8fda9bc95b60d02f5894dcb9e69bff63522e2d23`, con veredicto
+  `APROBAR`.
+
+  El `APROBAR` vigente quedó registrado durablemente en el commit
+  `53492a5e9cd7caca7cd13abb7138b83b570f9ed7`.
+
+  N-01 está cerrado; H-01 a H-11 permanecen cerrados; no existen
+  hallazgos abiertos, nuevos, regresiones ni hallazgos críticos.
+
+- Verificación de integración:
+
+  Al momento de esta decisión:
+
+  - `main` y `origin/main` resuelven ambos a
+    `3ae42cdebbb0a635a85d958684251a6a5769b595`;
+  - su divergencia es `0 0`;
+  - `main` es ancestro de
+    `control/sonnet-ai-governance-v1-approval`;
+  - la integración puede realizarse mediante avance lineal
+    `--ff-only`, sin commit de merge ni resolución de conflictos.
+
+- Decisión de Miguel:
+
+  Miguel autoriza integrar la rama:
+
+  `control/sonnet-ai-governance-v1-approval`
+
+  en:
+
+  `main`
+
+  exclusivamente mediante:
+
+  `git merge --ff-only control/sonnet-ai-governance-v1-approval`
+
+  La integración deberá realizarse desde el worktree principal:
+
+  `/home/miguel/proyectos/CLAUDEBOT-CONTROL`
+
+  y solo después de comprobar nuevamente que:
+
+  - `main` sigue apuntando a
+    `3ae42cdebbb0a635a85d958684251a6a5769b595`;
+  - `origin/main` sigue coincidiendo con `main`;
+  - el árbol está limpio;
+  - `main` continúa siendo ancestro de la rama aprobada.
+
+- Límites:
+
+  Esta autorización permite únicamente registrar esta decisión y,
+  posteriormente, realizar el merge local `--ff-only`.
+
+  No autoriza:
+
+  - push;
+  - merge que no sea fast-forward;
+  - rebase;
+  - creación de tags;
+  - borrado de ramas o worktrees;
+  - modificación posterior del plan;
+  - modificación de CLAUDEBOT;
+  - inicio de la Fase 1;
+  - creación de carpetas o documentos de la Fase 1.
+
+  El push y la autorización de Fase 1 requieren decisiones expresas y
+  separadas de Miguel.
