@@ -711,3 +711,77 @@ revoca o reemplaza; no se borra la entrada original.
 
   El push y la autorización de Fase 1 requieren decisiones expresas y
   separadas de Miguel.
+
+---
+
+## 2026-07-29 — Autorización de push del plan multi-IA v1
+
+- Evidencia previa:
+
+  El commit objetivo
+  `e492f0efcf206786f935ffb1750236f5d3cfdd0c` fue aprobado por la
+  tercera reauditoría independiente de Codex versionada en
+  `8fda9bc95b60d02f5894dcb9e69bff63522e2d23`.
+
+  El veredicto `APROBAR` quedó registrado durablemente en
+  `53492a5e9cd7caca7cd13abb7138b83b570f9ed7`.
+
+  La integración local fue autorizada en
+  `91a8fd5f762fed4215f91ba024dd185b20ea8f8c` y se realizó mediante
+  `git merge --ff-only`, dejando `main` y
+  `control/sonnet-ai-governance-v1-approval` alineadas en ese hash.
+
+- Estado previo al push:
+
+  Al momento de la integración:
+
+  - `main` local resolvía a
+    `91a8fd5f762fed4215f91ba024dd185b20ea8f8c`;
+  - `origin/main` resolvía a
+    `3ae42cdebbb0a635a85d958684251a6a5769b595`;
+  - la divergencia `origin/main...main` era `0 16`;
+  - el árbol estaba limpio;
+  - no se había ejecutado push, rebase ni tag.
+
+- Decisión de Miguel:
+
+  Miguel autoriza publicar la cadena aprobada en `origin/main`
+  exclusivamente mediante:
+
+  `git push origin main`
+
+  Antes del push deberá:
+
+  1. integrarse este registro a `main` mediante fast-forward only;
+  2. ejecutarse `git fetch origin main`;
+  3. comprobarse que `origin/main` no avanzó desde
+     `3ae42cdebbb0a635a85d958684251a6a5769b595`;
+  4. comprobarse que el árbol está limpio;
+  5. comprobarse que `origin/main` es ancestro de `main`.
+
+  Si `origin/main` cambió, el push queda detenido y deberá revisarse
+  nuevamente antes de continuar.
+
+- Límites:
+
+  Esta autorización permite exclusivamente:
+
+  - registrar esta decisión;
+  - integrar este registro a `main` mediante `--ff-only`;
+  - ejecutar `git push origin main` después de las verificaciones
+    anteriores.
+
+  No autoriza:
+
+  - force push;
+  - push de otras ramas;
+  - rebase;
+  - creación de tags;
+  - borrado de ramas o worktrees;
+  - modificación posterior del plan;
+  - modificación de `CLAUDEBOT`;
+  - inicio de la Fase 1;
+  - creación de carpetas, mandatos o documentos de la Fase 1.
+
+  La Fase 1 requiere una decisión expresa, separada y posterior de
+  Miguel.
