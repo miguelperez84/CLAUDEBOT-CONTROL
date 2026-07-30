@@ -30,19 +30,29 @@ correcciones cerradas y localizadas, aplicadas en la edición versionada
   `fe748558013fe6c8d42c1ec3fe7ba2360a160be2`;
 - autorización de los ajustes de trazabilidad y del siguiente
   versionado correctivo: commit
-  `04149b6b359d15b3ff79d95993205ddffac8752f`.
+  `04149b6b359d15b3ff79d95993205ddffac8752f`;
+- segundo versionado correctivo de N-01: commit
+  `4729f431207f903c7a0a8c344bd992c76c5ed3e6`, rama
+  `control/sonnet-ai-governance-v1-r2`;
+- segunda reauditoría correctiva independiente: Codex, commit
+  `b601dc5d5e0ac4808d68e1bc1d46bd1698f90b75`, veredicto
+  **RECHAZAR**; H-01 a H-11 continuaron cerrados y N-01 permaneció
+  abierto, con severidad MAYOR, porque §9 no incorporaba como causal
+  autónoma toda imposibilidad legítima de completar o continuar una
+  auditoría;
+- decisión interpretativa definitiva y autorización para cerrar N-01:
+  commit `8605c11f06bc925da695b40f274a11533485934b`.
 
-**Esta edición** conserva las correcciones H-01 a H-11, declaradas
-cerradas por la reauditoría independiente de Codex versionada en el
-commit `8f5734849600c2f02231448422e82bea83671de5`, e incorpora la
-corrección documental del hallazgo N-01 en §9.
+**Esta edición** conserva cerrados H-01 a H-11 e incorpora la
+corrección documental definitiva propuesta para cerrar N-01 en §9,
+estableciendo como causal autónoma de `BLOQUEAR` toda imposibilidad
+legítima de completar o continuar una auditoría, con independencia de
+que se origine en ausencia de evidencia o en otra causa que impida
+realizarla válidamente.
 
-La decisión sustantiva y autorización para corregir N-01 está
-registrada en el commit
-`fe748558013fe6c8d42c1ec3fe7ba2360a160be2`; la ampliación acotada para
-actualizar la trazabilidad de esta edición y crear el siguiente
-versionado correctivo está registrada en el commit
-`04149b6b359d15b3ff79d95993205ddffac8752f`.
+La decisión interpretativa definitiva y la autorización operacional
+para esta corrección y su trazabilidad están registradas en el commit
+`8605c11f06bc925da695b40f274a11533485934b`.
 
 La incorporación de esta corrección no declara N-01 cerrado ni
 constituye `APROBAR`: requiere una nueva auditoría independiente de
@@ -64,7 +74,7 @@ decisión expresa final de Miguel, registrada en
 `decisions/OWNER_DECISIONS.md`, que autorice específicamente el inicio
 de la Fase 1. **La Fase 1 no está autorizada por este documento.**
 **Repositorio:** `CLAUDEBOT-CONTROL`
-**Rama de entrega de esta edición:** `control/sonnet-ai-governance-v1-r2`
+**Rama de entrega de esta edición:** `control/sonnet-ai-governance-v1-r3`
 **No autoriza:** creación de carpetas, copia de archivos desde `CLAUDEBOT`,
 commits, merges, push, ni continuación de F-1A, F10, F11 o T2 en `CLAUDEBOT`.
 
@@ -543,9 +553,9 @@ BLOQUEAR
 ```
 
 Sin estados intermedios. La clasificación entre `BLOQUEAR` y
-`RECHAZAR` se determina mediante las siguientes reglas, registradas por
-decisión de Miguel en el commit
-`fe748558013fe6c8d42c1ec3fe7ba2360a160be2` y alineadas con
+`RECHAZAR` se determina mediante las siguientes reglas, consolidadas
+por la decisión interpretativa definitiva de Miguel registrada en el
+commit `8605c11f06bc925da695b40f274a11533485934b` y alineadas con
 `AUDIT_TEMPLATE.md` §7:
 
 1. Corresponde `BLOQUEAR` cuando se cumple al menos una de estas
@@ -555,8 +565,9 @@ decisión de Miguel en el commit
      continuar la acción evaluada;
    - falta evidencia indispensable para identificar legítimamente el
      objeto, el alcance o la continuidad de la auditoría;
-   - la ausencia de evidencia impide completar legítimamente la
-     auditoría;
+   - la auditoría no puede completarse o continuar legítimamente, sea por
+     ausencia de evidencia o por cualquier otra causa que impida
+     realizarla válidamente;
    - existe un hallazgo `CRÍTICO`.
 
 2. Corresponde `RECHAZAR` cuando el artefacto puede auditarse
@@ -975,12 +986,27 @@ versionado correctivo está registrada en el commit
 `04149b6b359d15b3ff79d95993205ddffac8752f`
 (`decisions/OWNER_DECISIONS.md`, entrada del 2026-07-29).
 
+El siguiente versionado correctivo fue el commit objetivo
+`4729f431207f903c7a0a8c344bd992c76c5ed3e6`. La segunda reauditoría
+correctiva independiente de Codex sobre ese commit quedó versionada en
+`b601dc5d5e0ac4808d68e1bc1d46bd1698f90b75`, con veredicto
+`RECHAZAR`: H-01 a H-11 continuaron cerrados, sin regresiones, y N-01
+permaneció abierto con severidad MAYOR porque la lista de §9 no
+incorporaba como causal autónoma toda imposibilidad legítima de
+completar o continuar una auditoría.
+
+La decisión interpretativa definitiva y la autorización durable para
+aplicar esa causal autónoma, actualizar la trazabilidad y preparar el
+siguiente commit objetivo están registradas en el commit
+`8605c11f06bc925da695b40f274a11533485934b`
+(`decisions/OWNER_DECISIONS.md`, entrada del 2026-07-29).
+
 Esta edición no se auto-certifica: la etapa `Versionado` se satisface
-únicamente mediante un commit objetivo que contenga la corrección N-01
-y los ajustes de trazabilidad anteriores, acompañado por las
-autorizaciones durables
-`fe748558013fe6c8d42c1ec3fe7ba2360a160be2` y
-`04149b6b359d15b3ff79d95993205ddffac8752f`.
+únicamente mediante un commit objetivo que contenga la causal autónoma
+de `BLOQUEAR` para toda imposibilidad legítima de completar o continuar
+una auditoría, junto con los ajustes de trazabilidad anteriores y la
+autorización durable
+`8605c11f06bc925da695b40f274a11533485934b`.
 
 El paso de esta edición a `Auditado` requiere una nueva auditoría
 independiente de Codex sobre ese commit objetivo. Solo un veredicto
