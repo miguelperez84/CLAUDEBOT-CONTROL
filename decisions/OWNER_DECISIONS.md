@@ -374,3 +374,113 @@ revoca o reemplaza; no se borra la entrada original.
   - `CLAUDEBOT`.
 
   Tampoco autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
+
+---
+
+## 2026-07-29 — Autorización para cierre definitivo de N-01
+
+- Contexto:
+
+  La segunda reauditoría correctiva de Codex sobre el commit objetivo
+  `4729f431207f903c7a0a8c344bd992c76c5ed3e6` quedó versionada en el
+  commit `b601dc5d5e0ac4808d68e1bc1d46bd1698f90b75`, con veredicto
+  `RECHAZAR`.
+
+  H-01 a H-11 continúan cerrados y no se detectaron regresiones ni
+  hallazgos nuevos independientes.
+
+  N-01 permanece abierto, con severidad MAYOR, porque la lista
+  exhaustiva de causales de `BLOQUEAR` en §9 restringe la imposibilidad
+  de completar la auditoría al caso de ausencia de evidencia, mientras
+  la decisión durable de Miguel y `templates/AUDIT_TEMPLATE.md` §7
+  establecen como causal autónoma toda imposibilidad legítima de
+  completar o continuar una auditoría.
+
+- Decisión interpretativa definitiva de Miguel:
+
+  Corresponde `BLOQUEAR` siempre que una auditoría no pueda completarse
+  o continuar legítimamente, con independencia de que la causa sea una
+  ausencia de evidencia u otra circunstancia que impida realizarla
+  válidamente.
+
+  Esta causal es autónoma y no depende de las otras causales de
+  `BLOQUEAR`.
+
+  Se mantiene sin modificación que:
+
+  - todo hallazgo CRÍTICO obliga a `BLOQUEAR`;
+  - una falta de autorización vigente indispensable para actuar obliga
+    a `BLOQUEAR`;
+  - la falta de evidencia indispensable para identificar legítimamente
+    objeto, alcance o continuidad obliga a `BLOQUEAR`;
+  - una deficiencia documental no crítica y corregible dentro de un
+    artefacto completamente auditable produce `RECHAZAR`;
+  - `RECHAZAR` impide aprobar, integrar o avanzar y no autoriza
+    retroactivamente ninguna acción.
+
+- Corrección textual autorizada:
+
+  En §9 de:
+
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+
+  reemplazar exclusivamente la causal:
+
+  “la ausencia de evidencia impide completar legítimamente la
+  auditoría;”
+
+  por:
+
+  “la auditoría no puede completarse o continuar legítimamente, sea por
+  ausencia de evidencia o por cualquier otra causa que impida
+  realizarla válidamente;”
+
+- Ajustes de trazabilidad autorizados:
+
+  Para que la siguiente edición permanezca coherente con Git, también se
+  autoriza actualizar exclusivamente:
+
+  1. la cabecera del plan, para registrar:
+
+     - `4729f431207f903c7a0a8c344bd992c76c5ed3e6` como commit objetivo
+       anterior;
+     - `b601dc5d5e0ac4808d68e1bc1d46bd1698f90b75` como segunda
+       reauditoría correctiva con veredicto `RECHAZAR`;
+     - H-01 a H-11 cerrados;
+     - N-01 todavía abierto por la causal autónoma pendiente;
+     - la rama de entrega
+       `control/sonnet-ai-governance-v1-r3`;
+
+  2. §18, únicamente para incorporar esa cadena y citar como
+     autorización durable el commit que contenga esta entrada.
+
+  La cabecera y §18 no pueden declarar que N-01 está cerrado ni que
+  existe `APROBAR` antes de la siguiente auditoría independiente.
+
+- Autorización operacional:
+
+  Después de versionar esta entrada y recibir revisión del diff,
+  Miguel autoriza a Sonnet a:
+
+  - aplicar la sustitución textual exacta en §9;
+  - actualizar únicamente la trazabilidad de la cabecera y §18;
+  - preparar un único nuevo commit objetivo en la rama
+    `control/sonnet-ai-governance-v1-r3`.
+
+  La creación del commit del plan requiere revisión previa del diff
+  final por ChatGPT.
+
+- Prohibiciones:
+
+  Esta operación actual no autoriza modificar todavía el plan.
+
+  No autoriza modificar:
+
+  - informes de auditoría o reauditoría;
+  - `AGENTS.md`;
+  - `README.md`;
+  - `templates/`;
+  - ningún otro archivo;
+  - `CLAUDEBOT`.
+
+  No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
