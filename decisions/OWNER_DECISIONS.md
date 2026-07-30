@@ -295,3 +295,82 @@ revoca o reemplaza; no se borra la entrada original.
   - `CLAUDEBOT`.
 
   No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
+
+---
+
+## 2026-07-29 — Autorización de ajustes de trazabilidad para la corrección N-01
+
+- Contexto:
+
+  Sonnet aplicó en §9 de
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md` la corrección del
+  hallazgo N-01, bajo la autorización registrada en el commit
+  `fe748558013fe6c8d42c1ec3fe7ba2360a160be2`.
+
+  ChatGPT revisó el diff completo y determinó que la clasificación entre
+  `BLOQUEAR` y `RECHAZAR` quedó correctamente cerrada y alineada con
+  `AUDIT_TEMPLATE.md` §7.
+
+  Antes de crear el nuevo commit objetivo, deben actualizarse tres datos
+  de trazabilidad para evitar que el plan quede documentalmente
+  desactualizado:
+
+  1. la rama de entrega de la nueva edición será
+     `control/sonnet-ai-governance-v1-r2`, no
+     `control/sonnet-ai-governance-v1-r1`;
+
+  2. la historia fija debe registrar la reauditoría versionada en
+     `8f5734849600c2f02231448422e82bea83671de5`, con veredicto
+     `RECHAZAR`, H-01 a H-11 cerrados y N-01 como único hallazgo MAYOR
+     abierto;
+
+  3. §18 debe registrar
+     `fe748558013fe6c8d42c1ec3fe7ba2360a160be2` como la autorización
+     durable específica para corregir N-01 y crear el siguiente
+     versionado correctivo.
+
+- Supersesión explícita y temporal:
+
+  Esta decisión amplía únicamente para esta corrección N-01 la
+  restricción anterior que autorizaba modificar exclusivamente §9.
+
+  La excepción permite editar además:
+
+  - la cabecera del plan, solo para actualizar la historia de auditoría,
+    la descripción de esta edición y la rama de entrega;
+  - §18, solo para incorporar la autorización durable
+    `fe748558013fe6c8d42c1ec3fe7ba2360a160be2`.
+
+  No autoriza cambios sustantivos adicionales ni modificaciones en otras
+  secciones.
+
+  La ampliación termina con la creación del siguiente commit objetivo del
+  plan en la rama `control/sonnet-ai-governance-v1-r2`.
+
+- Autorización operacional:
+
+  Miguel autoriza a Sonnet, después de versionar esta entrada, a mantener
+  la corrección ya aplicada en §9 y realizar exclusivamente los ajustes
+  de trazabilidad indicados en la cabecera y §18 de:
+
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+
+  Después de la revisión final del diff completo, podrá crearse un único
+  commit objetivo en la rama:
+
+  `control/sonnet-ai-governance-v1-r2`
+
+- Prohibiciones:
+
+  Esta operación actual no autoriza modificar todavía el plan.
+
+  No autoriza modificar:
+
+  - los informes de auditoría o reauditoría;
+  - `AGENTS.md`;
+  - `README.md`;
+  - `templates/`;
+  - ningún otro archivo;
+  - `CLAUDEBOT`.
+
+  Tampoco autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
