@@ -580,3 +580,58 @@ revoca o reemplaza; no se borra la entrada original.
   - `CLAUDEBOT`.
 
   No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
+
+---
+
+## 2026-07-29 — Registro del APROBAR vigente del plan de gobernanza multi-IA v1
+
+- Evidencia auditada:
+
+  El commit objetivo vigente del plan es:
+
+  `e492f0efcf206786f935ffb1750236f5d3cfdd0c`
+
+  La tercera reauditoría correctiva independiente de Codex quedó
+  versionada en:
+
+  `8fda9bc95b60d02f5894dcb9e69bff63522e2d23`
+
+  El informe cita y audita exactamente el commit objetivo anterior.
+
+- Resultado:
+
+  Codex emitió el veredicto:
+
+  `APROBAR`
+
+  La auditoría confirmó:
+
+  - N-01 `CERRADO`, sin severidad residual;
+  - H-01 a H-11 `CERRADOS`, sin regresiones;
+  - ningún hallazgo nuevo;
+  - ningún hallazgo abierto;
+  - ningún hallazgo `CRÍTICO`.
+
+- Decisión de Miguel:
+
+  Miguel acepta y registra como vigente el veredicto `APROBAR` de Codex
+  sobre el commit objetivo
+  `e492f0efcf206786f935ffb1750236f5d3cfdd0c`.
+
+  Con esta decisión queda satisfecha la etapa `APROBAR vigente`
+  definida en §18 del plan.
+
+- Límites de esta decisión:
+
+  Este registro no autoriza todavía:
+
+  - merge a `main`;
+  - push;
+  - creación de tags;
+  - borrado de ramas o worktrees;
+  - inicio de la Fase 1;
+  - creación de documentos o carpetas de la Fase 1;
+  - modificación de `CLAUDEBOT`.
+
+  La integración del plan y la posible autorización de la Fase 1 serán
+  decisiones expresas, separadas y posteriores de Miguel.
