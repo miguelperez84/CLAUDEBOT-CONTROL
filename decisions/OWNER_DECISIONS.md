@@ -222,3 +222,76 @@ revoca o reemplaza; no se borra la entrada original.
   condicionado a una nueva auditoría independiente de Codex con
   veredicto `APROBAR` vigente sobre el nuevo commit objetivo y a una
   decisión posterior y expresa de Miguel.
+
+---
+
+## 2026-07-29 — Autorización de corrección N-01 del plan de gobernanza multi-IA v1
+
+- Contexto:
+
+  La reauditoría independiente de Codex sobre el commit objetivo
+  `a4b646b780c121598194d56793e6a54d816f8260` quedó versionada en el
+  commit `8f5734849600c2f02231448422e82bea83671de5`, con veredicto
+  `RECHAZAR`.
+
+  La reauditoría declaró cerrados H-01 a H-11 y registró un único
+  hallazgo nuevo, N-01, de severidad MAYOR: §9 del plan no distingue
+  inequívocamente entre una falta de autorización o evidencia que
+  impide continuar legítimamente y una deficiencia documental no
+  crítica dentro de un artefacto completamente auditable.
+
+- Decisión interpretativa de Miguel:
+
+  1. Corresponde `BLOQUEAR` cuando se cumpla al menos una de estas
+     condiciones:
+
+     - falta la autorización vigente necesaria para ejecutar o
+       continuar la acción;
+     - falta evidencia indispensable para determinar legítimamente el
+       objeto, el alcance o la continuidad de la auditoría;
+     - la auditoría no puede completarse legítimamente;
+     - existe un hallazgo CRÍTICO.
+
+  2. Corresponde `RECHAZAR` cuando el artefacto puede auditarse
+     completamente y la ausencia o insuficiencia de autorización
+     documentada o evidencia constituye un defecto no crítico,
+     corregible y que no impide completar la auditoría.
+
+  3. Que un artefacto sea completamente auditable no autoriza
+     retroactivamente una acción ejecutada sin autorización. Un
+     veredicto `RECHAZAR` impide aprobar, integrar o avanzar hasta que
+     la deficiencia sea corregida y reauditorada.
+
+  4. Esta interpretación queda alineada con
+     `templates/AUDIT_TEMPLATE.md` §7 y mantiene coherente el precedente
+     histórico de la auditoría inicial, que emitió `RECHAZAR` ante
+     deficiencias documentales no críticas dentro de un artefacto
+     completamente auditable.
+
+- Autorización operacional:
+
+  Miguel autoriza a Sonnet a corregir exclusivamente N-01 en §9 de:
+
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+
+  y, tras revisión del diff, a crear posteriormente un único commit
+  correctivo del plan en la rama:
+
+  `control/sonnet-ai-governance-v1-r2`
+
+- Prohibiciones:
+
+  Esta entrada no autoriza modificar todavía el plan durante esta
+  operación.
+
+  Tampoco autoriza modificar:
+
+  - el informe de reauditoría;
+  - la auditoría inicial;
+  - `AGENTS.md`;
+  - `README.md`;
+  - `templates/`;
+  - ningún otro archivo;
+  - `CLAUDEBOT`.
+
+  No autoriza push, merge, rebase, tags ni el inicio de la Fase 1.
