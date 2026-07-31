@@ -785,3 +785,67 @@ revoca o reemplaza; no se borra la entrada original.
 
   La Fase 1 requiere una decisión expresa, separada y posterior de
   Miguel.
+
+---
+
+## 2026-07-31 — Apertura controlada de la Fase 1 de gobernanza multi-IA
+
+- Evidencia habilitante:
+
+  El plan de arquitectura de gobernanza multi-IA v1 está integrado y
+  publicado en `main`.
+
+  Su commit objetivo
+  `e492f0efcf206786f935ffb1750236f5d3cfdd0c` recibió veredicto
+  `APROBAR` en la tercera reauditoría independiente de Codex versionada
+  en `8fda9bc95b60d02f5894dcb9e69bff63522e2d23`.
+
+  N-01 y H-01 a H-11 están cerrados, sin hallazgos abiertos,
+  regresiones ni severidad residual.
+
+  `main` y `origin/main` están alineados en
+  `129a82cc99913d493290f5f56fd5b2ee18568fb2`.
+
+- Decisión de Miguel:
+
+  Miguel autoriza abrir la Fase 1 descrita en §17 del plan de
+  arquitectura multi-IA v1.
+
+  La Fase 1 tendrá por objeto:
+
+  1. redactar y preparar para congelamiento los documentos canónicos de
+     Capa A;
+  2. redactar y preparar para congelamiento el primer perfil de Capa B
+     para `CLAUDEBOT`;
+  3. actualizar `AGENTS.md` como puerta de entrada e índice, sin
+     duplicar íntegramente los documentos canónicos;
+  4. fijar la ubicación exacta de Capa A y Capa B;
+  5. definir el mecanismo de registro y revisión de adaptadores.
+
+- Apertura controlada:
+
+  En esta primera operación se autoriza exclusivamente redactar,
+  revisar, versionar y auditar:
+
+  - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`.
+
+  La implementación no queda autorizada hasta que:
+
+  - ChatGPT revise el mandato;
+  - Codex audite el commit exacto del mandato;
+  - el informe de auditoría quede versionado;
+  - Miguel emita una autorización operacional posterior.
+
+- Prohibiciones:
+
+  Esta decisión no autoriza todavía:
+
+  - modificar `AGENTS.md`;
+  - crear archivos bajo `governance/` o `reports/`;
+  - crear `judgment/`, `adapters/` o `tests/`;
+  - modificar o abrir archivos de `CLAUDEBOT`;
+  - abrir datasets, CSV, resultados, discovery, OOS o producción;
+  - ejecutar código científico;
+  - push, merge, rebase o tags;
+  - borrar ramas o worktrees.
