@@ -1943,3 +1943,196 @@ revoca o reemplaza; no se borra la entrada original.
   - el informe R4 haya quedado versionado;
   - el veredicto vigente sobre ese commit sea `APROBAR`;
   - Miguel emita una decisión posterior, expresa y durable.
+
+---
+
+## 2026-08-01 — Decisión durable de autorización de implementación documental de la Fase 1
+
+- Evidencia:
+
+  La reauditoría independiente R4 de Codex sobre el commit objetivo
+  `aa965803f103bfd3923ddd8fdbd04dd87253367a`
+  (`tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`) quedó versionada en el
+  commit `449d958fedef5a76e630ea9a8eb78061c26cb3ce`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R4.md`), con
+  veredicto `APROBAR`.
+
+- Decisión de Miguel:
+
+  1. Miguel acepta el veredicto `APROBAR` de la reauditoría Codex R4
+     versionada en `449d958fedef5a76e630ea9a8eb78061c26cb3ce` sobre el
+     commit `aa965803f103bfd3923ddd8fdbd04dd87253367a`.
+
+  2. Miguel reconoce:
+
+     - A-01 a A-21: `CONFORME`;
+     - H-01 a H-05: `RESUELTO`;
+     - N-01 a N-05: `RESUELTO`;
+     - hallazgos nuevos: ninguno;
+     - severidades abiertas: ninguna.
+
+  3. Miguel autoriza únicamente la implementación documental de la
+     Fase 1 definida por el mandato aprobado (`MANDATE.md` y
+     `ACCEPTANCE.md` en el commit
+     `aa965803f103bfd3923ddd8fdbd04dd87253367a`).
+
+     Esta autorización no permite iniciar todavía la implementación en
+     esta ejecución. Primero debe redactarse, revisarse y versionarse
+     esta decisión durable. Una instrucción operacional posterior de
+     Miguel fijará el commit base exacto, la rama, el worktree y el
+     inicio efectivo de la implementación.
+
+  4. Se define `<commit-base-implementación-f1>` como el futuro commit
+     exacto que versione esta misma decisión durable. Su hash literal
+     será fijado en una instrucción operacional posterior de Miguel
+     antes de iniciar cualquier implementación.
+
+  5. Miguel fija como único commit inmutable autorizado para lecturas
+     de `CLAUDEBOT`:
+
+     `3af01c5e96240bba9f7cf95904844efb15fca6a0`
+
+  6. Miguel registra como evidencia previa de estado de `CLAUDEBOT`:
+
+     - HEAD: `3af01c5e96240bba9f7cf95904844efb15fca6a0`;
+     - código de salida de `rev-parse`: `0`;
+     - digest de `git status --porcelain=v1 -z`:
+       `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+     - código de salida del comando de estado: `0`.
+
+  7. Miguel declara que esta evidencia prueba solamente el estado Git
+     observable en el instante de captura y no cubre archivos
+     ignorados ni cambios transitorios restaurados.
+
+  8. Miguel exige que, durante la implementación, se repitan
+     exactamente, al comienzo y al final:
+
+     ```text
+     git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
+
+     bash -o pipefail -c \
+       'git -C /home/miguel/proyectos/CLAUDEBOT status --porcelain=v1 -z | sha256sum'
+     ```
+
+  9. Miguel exige, para ambas capturas:
+
+     - código de salida `0` en los dos comandos;
+     - HEAD exactamente igual a
+       `3af01c5e96240bba9f7cf95904844efb15fca6a0`;
+     - digest exactamente igual a
+       `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+     Cualquier diferencia, fallo de comando o salida inesperada obliga
+     a `BLOQUEAR` y detener la implementación.
+
+  10. Miguel autoriza como únicas lecturas de `CLAUDEBOT`,
+      exclusivamente mediante `git show` contra el SHA completo
+      autorizado:
+
+      ```text
+      git -C /home/miguel/proyectos/CLAUDEBOT show \
+        3af01c5e96240bba9f7cf95904844efb15fca6a0:AGENTS.md
+
+      git -C /home/miguel/proyectos/CLAUDEBOT show \
+        3af01c5e96240bba9f7cf95904844efb15fca6a0:docs/estado_rector_post_f8.md
+
+      git -C /home/miguel/proyectos/CLAUDEBOT show \
+        3af01c5e96240bba9f7cf95904844efb15fca6a0:docs/campania_t1_btcusdt_1h.md
+
+      git -C /home/miguel/proyectos/CLAUDEBOT show \
+        3af01c5e96240bba9f7cf95904844efb15fca6a0:docs/borrador_arquitectura_documental_t2.md
+      ```
+
+  11. Miguel autoriza como únicas rutas futuras de escritura de Sonnet:
+
+      - `AGENTS.md`;
+      - `governance/core/INSTITUTIONAL_CORE.md`;
+      - `governance/core/ADAPTER_REVIEW_POLICY.md`;
+      - `governance/projects/CLAUDEBOT_PROFILE.md`;
+      - `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`.
+
+  12. Miguel mantiene prohibida la creación de:
+
+      - `judgment/`;
+      - `adapters/`;
+      - `tests/`.
+
+  13. Miguel mantiene prohibido:
+
+      - modificar `CLAUDEBOT`;
+      - abrir working tree móvil de `CLAUDEBOT` para obtener
+        contenido;
+      - leer rutas diferentes de las cuatro autorizadas;
+      - abrir datasets, CSV, resultados, código científico o
+        producción;
+      - ejecutar validación conductual;
+      - continuar F-1A, F10, F11 o T2;
+      - copiar Fable;
+      - ampliar el alcance;
+      - hacer push;
+      - hacer merge;
+      - hacer rebase;
+      - crear tags;
+      - congelar documentos;
+      - declarar integración o cierre;
+      - borrar ramas o worktrees.
+
+  14. Miguel establece que el único objetivo de la Fase 1 continúa
+      siendo:
+
+      - redactar los documentos canónicos de Capa A y mantenerlos
+        durante esta implementación como `BORRADOR, NO CONGELADO`;
+      - redactar el primer perfil de Capa B para `CLAUDEBOT`;
+      - mantener `AGENTS.md` como índice y puerta de entrada, sin
+        fusionar el contenido canónico;
+      - definir la política y el mecanismo documental de revisión de
+        adaptadores;
+      - no crear todavía adaptadores, `judgment` ni `tests`.
+
+      La congelación real o conceptual de los documentos canónicos de
+      Capa A no forma parte de esta implementación. Solo podrá
+      evaluarse después del commit de implementación, y exige:
+
+      - auditoría independiente de Codex;
+      - veredicto `APROBAR` vigente sobre el commit correspondiente;
+      - una decisión posterior, expresa y durable de Miguel.
+
+  15. Miguel establece que, después de la implementación:
+
+      - Sonnet podrá crear únicamente el commit de implementación
+        autorizado por una instrucción operacional posterior;
+      - Codex deberá realizar una auditoría independiente del commit
+        de implementación;
+      - ninguna integración, push, congelación o cierre podrá
+        realizarse sin nuevas decisiones expresas y durables de
+        Miguel.
+
+- Alcance de esta entrada:
+
+  Esta entrada autoriza exclusivamente registrar esta decisión durable
+  en `decisions/OWNER_DECISIONS.md`. No autoriza todavía iniciar la
+  implementación documental de la Fase 1. El commit base exacto, la
+  rama, el worktree y el inicio efectivo de la implementación serán
+  fijados por una instrucción operacional posterior de Miguel.
+
+- Prohibiciones:
+
+  Esta entrada no autoriza:
+
+  - modificar ningún archivo distinto de
+    `decisions/OWNER_DECISIONS.md`;
+  - ejecutar `git add`;
+  - crear ningún commit;
+  - iniciar la implementación de la Fase 1;
+  - push, merge, rebase o tags;
+  - borrar ramas o worktrees;
+  - modificar `CLAUDEBOT`.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin iniciarse.
+
+  Solo podrá iniciarse cuando Miguel emita una instrucción operacional
+  posterior que fije literalmente `<commit-base-implementación-f1>`,
+  la rama, el worktree y el inicio efectivo de la implementación.
