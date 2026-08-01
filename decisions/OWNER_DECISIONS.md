@@ -1357,3 +1357,215 @@ revoca o reemplaza; no se borra la entrada original.
   - el informe de esa auditoría versionado, citando el commit exacto;
   - veredicto `APROBAR` vigente sobre ese commit;
   - una decisión posterior, expresa y durable de Miguel.
+
+---
+
+## 2026-08-01 — Adenda para reauditoría independiente R3 del mandato de Fase 1
+
+- Evidencia:
+
+  El commit correctivo que aplica N-01 a N-04 quedó versionado en
+  `0b985c530d071ebf817f9cef7540ad37b133c9d4`, hijo directo de
+  `794cf308b8537a01c43246937be56b2aaa35266e` (la decisión durable que
+  autorizó esas correcciones), y modifica exclusivamente
+  `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`.
+
+  La primera auditoría independiente de Codex quedó versionada en
+  `749ab3c73383984a2f893236835387d20709c71c`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`, rama
+  `audit/codex-ai-gov-f1-mandate`), con veredicto `RECHAZAR` y
+  hallazgos H-01 a H-05.
+
+  La reauditoría R2 quedó versionada en
+  `c30a7cb8f5cd26eccd8365cd50c53aff9fd7fa03`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R2.md`, rama
+  `audit/codex-ai-gov-f1-mandate-r2`), con veredicto `RECHAZAR`,
+  H-01 a H-05 confirmados `RESUELTO`, y hallazgos nuevos N-01 a N-04.
+
+- Decisión de Miguel:
+
+  Miguel autoriza a Codex, como auditor independiente, a reauditar
+  exclusivamente el commit `0b985c530d071ebf817f9cef7540ad37b133c9d4`.
+
+- Alcance autorizado para Codex:
+
+  1. auditar como artefactos objetivo exclusivamente:
+
+     - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+     - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+
+     ambos exactamente como existen en el commit:
+
+     `0b985c530d071ebf817f9cef7540ad37b133c9d4`;
+
+  2. verificar el diff exacto entre:
+
+     - padre: `794cf308b8537a01c43246937be56b2aaa35266e`;
+     - commit objetivo: `0b985c530d071ebf817f9cef7540ad37b133c9d4`;
+
+  3. leer, como evidencia institucional de apoyo exclusivamente:
+
+     - `AGENTS.md`;
+     - `templates/AUDIT_TEMPLATE.md`;
+     - `decisions/OWNER_DECISIONS.md`;
+     - `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`;
+     - `docs/reauditoria_codex_plan_arquitectura_gobernanza_multi_ia_v1_r3.md`;
+
+     Se define `<commit-base-operacional-r3>` como el commit exacto
+     que versione esta misma adenda, cuyo valor literal se fijará en
+     la instrucción operacional posterior de Miguel. Las cinco fuentes
+     anteriores se leerán exclusivamente mediante:
+
+     ```text
+     git show <commit-base-operacional-r3>:AGENTS.md
+
+     git show \
+       <commit-base-operacional-r3>:templates/AUDIT_TEMPLATE.md
+
+     git show \
+       <commit-base-operacional-r3>:decisions/OWNER_DECISIONS.md
+
+     git show \
+       <commit-base-operacional-r3>:docs/plan_arquitectura_gobernanza_multi_ia_v1.md
+
+     git show \
+       <commit-base-operacional-r3>:docs/reauditoria_codex_plan_arquitectura_gobernanza_multi_ia_v1_r3.md
+     ```
+
+     No se autoriza leer esas cinco fuentes desde el working tree
+     móvil, `main`, `origin/main`, ninguna rama, ningún tag ni un hash
+     abreviado;
+
+  4. leer, exclusivamente por su commit fijo e inmutable, cada uno de
+     los dos informes de auditoría anteriores:
+
+     - `749ab3c73383984a2f893236835387d20709c71c:reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`;
+     - `c30a7cb8f5cd26eccd8365cd50c53aff9fd7fa03:reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R2.md`;
+
+     únicamente para verificar si H-01 a H-05 y N-01 a N-04 quedaron
+     corregidos; no se autoriza leer ningún otro archivo de esas ramas
+     ni de esos commits.
+
+     Ambos informes constituyen exclusivamente evidencia comparativa
+     auxiliar. Su lectura no sustituye, reduce ni limita la obligación
+     de Codex de realizar una reauditoría completa, independiente y
+     desde cero de los dos artefactos objetivo tal como existen en el
+     commit `0b985c530d071ebf817f9cef7540ad37b133c9d4`. Codex deberá
+     revisar expresamente:
+
+     - `MANDATE.md` completo;
+     - `ACCEPTANCE.md` completo;
+     - A-01 a A-21 individualmente;
+     - H-01 a H-05 individualmente;
+     - N-01 a N-04 individualmente;
+     - contradicciones internas;
+     - permisos;
+     - rutas;
+     - comandos;
+     - ejecutabilidad;
+     - reproducibilidad;
+     - posibles falsos positivos;
+     - posibles falsos negativos;
+     - conformidad institucional;
+     - defectos nuevos, aunque no hayan formado parte de auditorías
+       anteriores.
+
+     Para cada uno de H-01 a H-05 y N-01 a N-04, el informe debe
+     emitir individualmente `RESUELTO` o `NO RESUELTO`, con evidencia,
+     consecuencia y, si corresponde, corrección exigida. La lectura de
+     los informes anteriores sigue siendo únicamente evidencia
+     comparativa auxiliar y no limita la auditoría desde cero;
+
+  5. consultar metadatos Git de solo lectura necesarios para
+     comprobar: rama; HEAD; padre del commit objetivo; diff; archivos
+     incluidos; estado del árbol.
+
+     No se autoriza a Codex a abrir ninguna otra ruta del repositorio
+     ni a abrir o consultar `CLAUDEBOT`.
+
+  6. crear exclusivamente el archivo:
+
+     `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R3.md`;
+
+     Codex queda autorizado a agregar al índice exclusivamente ese
+     archivo y crear un único commit en su propia rama de auditoría.
+
+     Ese commit deberá contener exclusivamente:
+
+     `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R3.md`
+
+     El mensaje autorizado será:
+
+     `docs: reaudita mandato de Fase 1 (R3)`
+
+     La rama, el worktree y el commit base exactos de la auditoría se
+     fijarán en la instrucción operacional posterior de Miguel, una
+     vez versionada esta adenda.
+
+     Esta autorización de commit no autoriza push, merge, rebase ni
+     tags.
+
+  7. emitir exactamente uno de estos veredictos:
+
+     `APROBAR`, `RECHAZAR` o `BLOQUEAR`.
+
+- Prohibiciones:
+
+  Esta autorización no permite a Codex:
+
+  - modificar `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - modificar `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - modificar `AGENTS.md`;
+  - crear o modificar documentos de implementación bajo `governance/`;
+  - iniciar la implementación de la Fase 1;
+  - abrir o modificar `CLAUDEBOT`;
+  - modificar ningún archivo distinto de
+    `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R3.md`;
+  - modificar ni incluir en el commit de auditoría
+    `decisions/OWNER_DECISIONS.md`;
+  - agregar al índice ningún archivo distinto de
+    `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R3.md`;
+  - auditar una revisión distinta del commit objetivo
+    `0b985c530d071ebf817f9cef7540ad37b133c9d4`;
+  - abrir, consultar o usar las ramas anteriores:
+
+    - `audit/codex-ai-gov-f1-mandate`;
+    - `audit/codex-ai-gov-f1-mandate-r2`;
+
+  - abrir, consultar o usar los worktrees anteriores:
+
+    - `/home/miguel/proyectos/CLAUDEBOT-CONTROL-CODEX-AI-GOV-F1-MANDATE`;
+    - `/home/miguel/proyectos/CLAUDEBOT-CONTROL-CODEX-AI-GOV-F1-MANDATE-R2`;
+
+    la única evidencia autorizada de las auditorías anteriores son los
+    dos blobs literales de sus informes, obtenidos mediante `git show`
+    contra sus commits exactos indicados en esta adenda;
+  - hacer push, merge, rebase o tags.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin autorizarse.
+
+  La presente condición no impide la instrucción operacional posterior
+  de la reauditoría R3 prevista en el punto 6. Esa instrucción podrá
+  emitirse una vez versionada esta adenda y tendrá como único objeto
+  fijar literalmente:
+
+  - la nueva rama independiente de Codex;
+  - el nuevo worktree independiente;
+  - el commit base operacional R3;
+  - el commit objetivo ya autorizado;
+  - la ruta y mensaje del informe R3.
+
+  Esa instrucción operacional no autoriza implementación, integración,
+  push, congelación ni cierre.
+
+  Solo podrá evaluarse una autorización posterior para implementar la
+  Fase 1 cuando:
+
+  - Codex haya reauditado el commit exacto
+    `0b985c530d071ebf817f9cef7540ad37b133c9d4`;
+  - el informe R3 haya quedado versionado;
+  - el veredicto vigente sobre ese commit sea `APROBAR`;
+  - Miguel emita una decisión posterior, expresa y durable.
