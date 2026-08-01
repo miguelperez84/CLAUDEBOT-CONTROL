@@ -1218,3 +1218,142 @@ revoca o reemplaza; no se borra la entrada original.
   - el informe haya quedado versionado;
   - el veredicto vigente sea `APROBAR`;
   - Miguel emita una decisión posterior, expresa y durable.
+
+---
+
+## 2026-08-01 — Autorización de corrección N-01 a N-04 del mandato de Fase 1
+
+- Evidencia:
+
+  La reauditoría independiente de Codex sobre el commit objetivo
+  `3fd6eec12abc33666a6286a337a38899839039cd`
+  (`tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`) quedó versionada en el
+  commit `c30a7cb8f5cd26eccd8365cd50c53aff9fd7fa03`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R2.md`, rama
+  `audit/codex-ai-gov-f1-mandate-r2`), con veredicto `RECHAZAR`.
+
+  El informe confirmó H-01 a H-05 como `RESUELTO`, sin reabrirlos, y
+  registró cuatro hallazgos nuevos, todos de severidad MAYOR, sin
+  hallazgos críticos ni menores:
+
+  - N-01: la regla de A-07 alcanza "toda referencia normativa" a
+    `CLAUDEBOT`, pero su evidencia solo inspeccionaba
+    `governance/projects/CLAUDEBOT_PROFILE.md`, sin cubrir los otros
+    cuatro artefactos de implementación;
+  - N-02: el anclaje general de la matriz al commit objetivo de
+    implementación contradecía un `grep` sobre un archivo sin anclar
+    en A-15, y resultaba imposible de cumplir en A-18 y A-19, porque
+    `reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md` no pertenece al
+    commit objetivo de implementación (A-01 lo excluye expresamente);
+  - N-03: la definición de la huella de estado de `CLAUDEBOT`
+    presentaba la igualdad de dos capturas como demostración absoluta
+    de que la tarea no alteró `CLAUDEBOT`, sin exigir verificación de
+    éxito de los comandos y sin reconocer que no cubre archivos
+    ignorados ni cambios transitorios restaurados;
+  - N-04: A-21 reunía congelación y cierre en una sola decisión,
+    exigía solo autorización de integración/push (no su ejecución), y
+    ordenaba leer "la entrada final", una referencia móvil que no fija
+    ningún commit.
+
+- Decisión de Miguel:
+
+  Miguel autoriza a Sonnet a corregir exclusivamente N-01 a N-04 en:
+
+  - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`.
+
+  Esta autorización conserva sin reabrir H-01 a H-05, correcciones
+  materialmente resueltas según la reauditoría R2, cuya sustancia no
+  se modifica ni se reabre mediante esta autorización.
+
+  El veredicto vigente sobre el mandato completo continúa siendo
+  `RECHAZAR` hasta que exista una nueva auditoría independiente de
+  Codex con veredicto `APROBAR` sobre el nuevo commit objetivo.
+
+- Alcance autorizado para Sonnet:
+
+  1. en `ACCEPTANCE.md`, definir "referencia normativa documental" a
+     `CLAUDEBOT` (puntero usado como fundamento de una regla del
+     perfil, con repositorio, SHA completo, ruta literal y función
+     normativa), centralizar esas referencias en
+     `governance/projects/CLAUDEBOT_PROFILE.md`, y aclarar
+     expresamente que SHA operacionales o evidenciales, comandos
+     `git show`, huellas, identificadores de commits, y menciones
+     institucionales de alcance en `AGENTS.md` no son referencias
+     normativas documentales; inspeccionar los cinco artefactos de
+     implementación mediante `git grep` anclado al commit objetivo,
+     sin exigir cero coincidencias de hash en
+     `IMPLEMENTATION_REPORT.md` (N-01);
+  2. en `ACCEPTANCE.md`, declarar expresamente el modelo de tres
+     etapas (Etapa 1: A-01 a A-17 y A-20; Etapa 2: A-18 y A-19; Etapa
+     3: A-21), anclar A-15 y A-18 al commit correspondiente mediante
+     `git show`/`git grep` sin tuberías dentro de la tabla, eliminar
+     toda frase que sugiera que A-18 o A-19 condicionan el veredicto
+     que el propio informe de auditoría ya emitió sobre la Etapa 1,
+     parametrizar la ruta de ese informe como
+     `<ruta-informe-auditoría-codex-autorizada>`, definir `APROBAR`
+     vigente como el veredicto `APROBAR` sumado a A-18 y A-19 en
+     `CONFORME`, y declarar que un `NO CONFORME` en cualquiera de los
+     dos bloquea integración, push, congelación y cierre (N-02);
+  3. en `MANDATE.md` y `ACCEPTANCE.md`, definir la huella de estado de
+     `CLAUDEBOT` mediante el comando literal con `bash -o pipefail`
+     que aísla el código de salida de `status` del de `sha256sum`,
+     exigir código de salida `0` en ambos comandos como condición de
+     validez (si falla, `BLOQUEAR`), y reformular su fuerza probatoria
+     como evidencia del estado Git observable en ambos extremos —no
+     como demostración absoluta de ausencia de modificación—,
+     aclarando que cualquier cobertura adicional exige autorización
+     expresa y separada de Miguel (N-03);
+  4. en `ACCEPTANCE.md`, reescribir A-21 como dos vías mutuamente
+     excluyentes: una vía normal de siete pasos —seis commits exactos
+     (implementación, auditoría con `APROBAR` vigente, congelación y
+     autorización de integración, integración verificada con
+     `git merge-base --is-ancestor`, checkpoint durable de igualdad
+     exacta entre el SHA local de `main` y el SHA remoto de
+     `refs/heads/main` observado vía `git ls-remote`, y decisión de
+     cierre) y una acción de push efectivo a `origin/main` que no crea
+     por sí misma un commit nuevo—, y una vía excepcional de cierre
+     sin integración siguiendo literalmente §9.1 del plan, con
+     evidencia negativa reproducible mediante
+     `git merge-base --is-ancestor` (código de salida `1` esperado)
+     local y, cuando se autorice expresamente, contra `FETCH_HEAD` de
+     `origin/main`; eliminar toda referencia móvil como "la entrada
+     final" o "el último commit", y toda ruta `git show` incompleta
+     (N-04).
+
+- Prohibiciones:
+
+  Esta autorización no permite:
+
+  - modificar ningún archivo distinto de
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - modificar `decisions/OWNER_DECISIONS.md` fuera de esta misma
+    entrada;
+  - reabrir o modificar la sustancia de las correcciones de H-01 a
+    H-05;
+  - modificar `AGENTS.md`, `README.md` ni `templates/`;
+  - crear archivos bajo `governance/` o `reports/`;
+  - iniciar la implementación de la Fase 1;
+  - abrir o modificar `CLAUDEBOT`;
+  - declarar cerrados N-01 a N-04 antes de una nueva auditoría
+    independiente de Codex con veredicto `APROBAR` sobre el nuevo
+    commit objetivo;
+  - push, merge, rebase o tags;
+  - borrar ramas o worktrees.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin autorizarse.
+
+  Antes de continuar, se requiere:
+
+  - un único commit correctivo que contenga exclusivamente
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - una nueva auditoría independiente de Codex sobre ese commit
+    objetivo;
+  - el informe de esa auditoría versionado, citando el commit exacto;
+  - veredicto `APROBAR` vigente sobre ese commit;
+  - una decisión posterior, expresa y durable de Miguel.
