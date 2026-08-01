@@ -963,3 +963,122 @@ revoca o reemplaza; no se borra la entrada original.
   - el informe haya quedado versionado;
   - el veredicto vigente sea `APROBAR`;
   - Miguel emita una decisión posterior, expresa y durable.
+
+---
+
+## 2026-07-31 — Autorización de corrección H-01 a H-05 del mandato de Fase 1
+
+- Evidencia:
+
+  La auditoría independiente de Codex sobre el commit objetivo
+  `bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`
+  (`tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`) quedó versionada en el
+  commit `749ab3c73383984a2f893236835387d20709c71c`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`, rama
+  `audit/codex-ai-gov-f1-mandate`), con veredicto `RECHAZAR`.
+
+  El informe registró cinco hallazgos, todos de severidad MAYOR, sin
+  hallazgos críticos ni menores:
+
+  - H-01: la descripción de la operación de apertura como limitada a
+    redactar `MANDATE.md` y `ACCEPTANCE.md` no coincidía con el diff
+    real del commit objetivo, que también modifica
+    `decisions/OWNER_DECISIONS.md`;
+  - H-02: la matriz de `ACCEPTANCE.md` verificaba A-02 a A-12
+    principalmente contra el working tree, sin anclar la lectura al
+    commit objetivo mediante `git show`;
+  - H-03: `MANDATE.md` restringe la lectura de `CLAUDEBOT` a cuatro
+    rutas mediante `git show <SHA>:<ruta>`, mientras A-15 y A-17 de
+    `ACCEPTANCE.md` exigían `rev-parse HEAD` y `status --short` sobre
+    un working tree móvil, sin autorización expresa para ello;
+  - H-04: A-21 exigía una entrada que cite un commit de auditoría con
+    `APROBAR`, creando una circularidad con la propia auditoría de
+    implementación que debe emitir ese `APROBAR`;
+  - H-05: A-20 usaba `governance/` completo como alcance de lectura,
+    en vez de la lista literal cerrada de rutas autorizadas en
+    `MANDATE.md`.
+
+- Decisión de Miguel:
+
+  Miguel autoriza a Sonnet a corregir exclusivamente H-01 a H-05 en:
+
+  - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`.
+
+  Para H-03, Miguel autoriza específicamente sustituir la exposición
+  de los dos comandos de metadatos Git de `CLAUDEBOT` por un único
+  concepto cerrado, la **huella de estado de `CLAUDEBOT`**: el par de
+  resultados producido por
+
+  ```text
+  git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
+
+  git -C /home/miguel/proyectos/CLAUDEBOT \
+    status --porcelain=v1 -z | sha256sum
+  ```
+
+  es decir, el SHA completo de `HEAD` y el SHA-256 de la salida de
+  `status --porcelain=v1 -z`, comparados entre el momento anterior y
+  el posterior a la lectura autorizada de las cuatro rutas: ambos
+  resultados deben ser exactamente iguales. No se registra ni se
+  expone la salida textual de `status`, ni nombres de archivos o
+  rutas provenientes de ella; un estado previo ajeno a la tarea, si
+  existiera, queda representado únicamente por su SHA-256. Esta
+  huella no autoriza ejecutar ningún comando Git distinto de los dos
+  anteriores ni abrir ningún archivo adicional de `CLAUDEBOT`.
+
+- Alcance autorizado para Sonnet:
+
+  1. en `MANDATE.md` §3, aclarar que la operación de apertura redactó
+     exclusivamente `MANDATE.md` y `ACCEPTANCE.md`, y que la
+     modificación de `decisions/OWNER_DECISIONS.md` en el commit
+     objetivo es una acción separada, bajo la facultad exclusiva de
+     `append` de Miguel sobre ese libro (H-01);
+  2. en `ACCEPTANCE.md`, anclar al commit objetivo de implementación,
+     mediante `git show <commit-objetivo-implementación>:<ruta>`, la
+     verificación de A-02 a A-12 (H-02);
+  3. en `MANDATE.md` §3, sustituir la restricción de lectura de
+     `CLAUDEBOT` por la huella de estado definida arriba, y reflejar
+     ese mismo nombre en A-15 y A-17 de `ACCEPTANCE.md` (H-03);
+  4. en `ACCEPTANCE.md`, separar A-21 como criterio de cierre de la
+     Fase 1, evaluado en una operación posterior y distinta de la
+     auditoría de implementación de A-01 a A-20, sin que A-21
+     condicione el veredicto de esa auditoría (H-04);
+  5. en `ACCEPTANCE.md`, reemplazar en A-20 el alcance `governance/`
+     completo por la lista literal cerrada de los tres documentos
+     autorizados en `MANDATE.md` §3 (H-05).
+
+- Prohibiciones:
+
+  Esta autorización no permite:
+
+  - modificar ningún archivo distinto de
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - modificar `decisions/OWNER_DECISIONS.md` fuera de esta misma
+    entrada;
+  - modificar `AGENTS.md`, `README.md` ni `templates/`;
+  - crear archivos bajo `governance/` o `reports/`;
+  - iniciar la implementación de la Fase 1;
+  - abrir o modificar `CLAUDEBOT`;
+  - declarar cerrados H-01 a H-05 antes de una nueva auditoría
+    independiente de Codex con veredicto `APROBAR` sobre el nuevo
+    commit objetivo;
+  - push, merge, rebase o tags;
+  - borrar ramas o worktrees.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin autorizarse.
+
+  Antes de continuar, se requiere:
+
+  - un único commit correctivo que contenga exclusivamente
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - una nueva auditoría independiente de Codex sobre ese commit
+    objetivo;
+  - el informe de esa auditoría versionado, citando el commit exacto;
+  - veredicto `APROBAR` vigente sobre ese commit;
+  - una decisión posterior, expresa y durable de Miguel.
