@@ -101,8 +101,15 @@ No crear adaptadores en esta fase.
 ## 3. Archivos autorizados
 
 Lista cerrada de rutas literales, aplicable a la implementación futura
-de esta tarea (no a esta operación de apertura, que solo redacta
-`MANDATE.md` y `ACCEPTANCE.md`).
+de esta tarea. La operación de apertura de esta tarea redactó
+exclusivamente `MANDATE.md` y `ACCEPTANCE.md`. El commit que los
+versiona (`bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`) incorpora,
+además, la entrada de `decisions/OWNER_DECISIONS.md` que registra la
+apertura controlada de la Fase 1: esa entrada es una acción separada,
+autorizada expresamente por Miguel bajo su facultad exclusiva de
+`append` sobre ese libro (§10 del plan de arquitectura de gobernanza
+multi-IA v1) — no es una redacción adicional de esta tarea ni una
+ampliación del alcance de escritura descrito en esta sección.
 
 ### Escritura de Sonnet
 
@@ -158,6 +165,42 @@ Estas cuatro rutas (16-19):
   producción;
 - toda referencia normativa debe contener repositorio, SHA completo y
   ruta literal.
+
+Como excepción expresa, separada y literal a la restricción de lectura
+anterior, se autoriza obtener exclusivamente la **huella de estado de
+`CLAUDEBOT`**, antes y después de la lectura autorizada de las cuatro
+rutas, únicamente para verificar que el repositorio no fue modificado
+durante la tarea.
+
+La huella de estado de `CLAUDEBOT` es, de forma cerrada y sin
+variantes, el par de resultados producido por estos dos comandos:
+
+```text
+git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
+
+git -C /home/miguel/proyectos/CLAUDEBOT \
+  status --porcelain=v1 -z | sha256sum
+```
+
+es decir: el SHA completo de `HEAD`, y el SHA-256 de la salida de
+`status --porcelain=v1 -z`. La verificación exige que, entre el
+momento anterior y el posterior a la lectura autorizada, ambos
+resultados sean exactamente iguales: mismo SHA completo de `HEAD` y
+mismo SHA-256 del estado.
+
+Sobre esta huella:
+
+- no se registra ni se expone la salida textual de `status`;
+- no se registran nombres de archivos ni rutas provenientes de
+  `status`;
+- un estado previo ajeno a la tarea, si existiera, queda representado
+  únicamente por su SHA-256, nunca por un listado de rutas;
+- la igualdad de la huella antes y después demuestra que la tarea no
+  alteró `CLAUDEBOT`;
+- esta excepción no autoriza ejecutar ningún comando Git distinto de
+  los dos anteriores, ni abrir, listar o leer ningún archivo adicional
+  de `CLAUDEBOT`, ni ningún archivo distinto de las cuatro rutas
+  literales anteriores.
 
 ## 4. Prohibiciones
 
@@ -215,7 +258,12 @@ Ver `ACCEPTANCE.md` de esta misma carpeta para el detalle verificable
 7. El informe de implementación y la auditoría independiente de Codex
    cumplen su estructura obligatoria y su veredicto (A-17 a A-19).
 8. Nada se declara congelado antes de `APROBAR` y decisión final de
-   Miguel, y la Fase 1 solo cierra con todos los requisitos de A-21.
+   Miguel. A-01 a A-20 son los criterios que la auditoría de
+   implementación evalúa para emitir su veredicto sobre el commit de
+   implementación; A-21 es un criterio de cierre de la Fase 1,
+   evaluado en una operación posterior y separada, con mandato o
+   autorización y evidencia propios, y no condiciona ni retrasa el
+   veredicto de esa auditoría de implementación.
 
 ## 6. Autorización
 
