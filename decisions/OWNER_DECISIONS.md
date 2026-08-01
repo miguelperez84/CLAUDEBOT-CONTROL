@@ -1569,3 +1569,109 @@ revoca o reemplaza; no se borra la entrada original.
   - el informe R3 haya quedado versionado;
   - el veredicto vigente sobre ese commit sea `APROBAR`;
   - Miguel emita una decisión posterior, expresa y durable.
+
+---
+
+## 2026-08-01 — Autorización de corrección N-05 del mandato de Fase 1
+
+- Evidencia:
+
+  La reauditoría independiente de Codex sobre el commit objetivo
+  `0b985c530d071ebf817f9cef7540ad37b133c9d4`
+  (`tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`) quedó versionada en el
+  commit `71e61f8f66ceb3f5b457dc8c1c0927d83a9679ac`
+  (`reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX_R3.md`, rama
+  `audit/codex-ai-gov-f1-mandate-r3`), con veredicto `APROBAR`: A-01 a
+  A-21 en `CONFORME`, H-01 a H-05 y N-01 a N-04 en `RESUELTO`, sin
+  hallazgos nuevos ni severidad residual.
+
+  Con posterioridad a esa reauditoría, una revisión metodológica
+  externa de ChatGPT identificó el hallazgo N-05, todavía no
+  versionado por Codex, de severidad MAYOR:
+
+  - N-05: la vía normal de A-21 comprobaba que
+    `<commit-de-integración>` fuera ancestro de `main` y que `main`
+    local y `origin/main` coincidieran con ese commit, pero no
+    comprobaba que `<commit-de-implementación>` estuviera contenido en
+    `<commit-de-integración>`. Un commit cualquiera ya presente en
+    `main` podía presentarse como commit de integración aunque el
+    commit de implementación nunca hubiese sido integrado.
+
+- Decisión de Miguel:
+
+  Miguel autoriza a Sonnet a corregir exclusivamente N-05 en:
+
+  - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`.
+
+  Esta autorización conserva sin reabrir H-01 a H-05 y N-01 a N-04,
+  confirmados `RESUELTO` por la reauditoría R3; ninguna corrección de
+  N-05 puede modificar la sustancia de esas nueve correcciones ya
+  resueltas. La implementación de la Fase 1 continúa sin autorizarse.
+
+- Alcance autorizado para Sonnet:
+
+  En `ACCEPTANCE.md`, agregar al paso 4 de la vía normal de A-21 la
+  comprobación literal:
+
+  ```text
+  git merge-base --is-ancestor \
+    <commit-de-implementación> \
+    <commit-de-integración>
+  ```
+
+  con resultado esperado de código de salida `0`, manteniendo además
+  la comprobación ya existente:
+
+  ```text
+  git merge-base --is-ancestor \
+    <commit-de-integración> \
+    main
+  ```
+
+  también con resultado esperado de código de salida `0`, de modo que
+  quede probada la cadena completa:
+
+  `<commit-de-implementación>` → `<commit-de-integración>` →
+  `main` local → `origin/main`.
+
+  Aclarar expresamente que, en una integración fast-forward, el commit
+  de implementación y el commit de integración pueden ser el mismo, y
+  la primera comprobación se satisface trivialmente.
+
+- Prohibiciones:
+
+  Esta autorización no permite:
+
+  - modificar ningún archivo distinto de
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - modificar `decisions/OWNER_DECISIONS.md` fuera de esta misma
+    entrada;
+  - reabrir o modificar la sustancia de las correcciones de H-01 a
+    H-05 y N-01 a N-04;
+  - modificar `AGENTS.md`, `README.md` ni `templates/`;
+  - crear archivos bajo `governance/` o `reports/`;
+  - iniciar la implementación de la Fase 1;
+  - abrir o modificar `CLAUDEBOT`;
+  - declarar cerrado N-05 antes de una nueva auditoría independiente
+    de Codex con veredicto `APROBAR` sobre el nuevo commit objetivo;
+  - push, merge, rebase o tags;
+  - borrar ramas o worktrees.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin autorizarse.
+
+  Antes de continuar, se requiere:
+
+  - un único commit correctivo que contenga exclusivamente
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md` (o exclusivamente
+    `ACCEPTANCE.md`, si `MANDATE.md` no requiere cambio material);
+  - una nueva auditoría independiente de Codex sobre ese commit
+    objetivo;
+  - el informe de esa auditoría versionado, citando el commit exacto;
+  - veredicto `APROBAR` vigente sobre ese commit;
+  - una decisión posterior, expresa y durable de Miguel.
