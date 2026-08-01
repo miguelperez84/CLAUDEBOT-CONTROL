@@ -849,3 +849,117 @@ revoca o reemplaza; no se borra la entrada original.
   - ejecutar código científico;
   - push, merge, rebase o tags;
   - borrar ramas o worktrees.
+
+---
+
+## 2026-07-31 — Adenda para auditoría independiente del mandato de Fase 1
+
+- Evidencia:
+
+  El mandato y los criterios de aceptación de la Fase 1 quedaron
+  versionados en el commit exacto
+  `bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`.
+
+- Decisión de Miguel:
+
+  Miguel autoriza a Codex, como auditor independiente, a auditar
+  exclusivamente ese commit exacto.
+
+- Alcance autorizado para Codex:
+
+  1. auditar como artefactos objetivo exclusivamente:
+
+     - `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+     - `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+
+     ambos exactamente como existen en el commit:
+
+     `bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`;
+
+  2. verificar el diff exacto entre:
+
+     - padre:
+       `129a82cc99913d493290f5f56fd5b2ee18568fb2`;
+     - commit objetivo:
+       `bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`;
+
+  3. leer como evidencia institucional de apoyo exclusivamente:
+
+     - `AGENTS.md`;
+     - `templates/AUDIT_TEMPLATE.md`;
+     - `decisions/OWNER_DECISIONS.md`;
+     - `docs/plan_arquitectura_gobernanza_multi_ia_v1.md`;
+     - `docs/reauditoria_codex_plan_arquitectura_gobernanza_multi_ia_v1_r3.md`;
+
+  4. consultar metadatos Git de solo lectura necesarios para
+     comprobar:
+
+     - rama;
+     - HEAD;
+     - padre del commit objetivo;
+     - diff;
+     - archivos incluidos;
+     - estado del árbol.
+
+     No se autoriza a Codex a abrir ninguna otra ruta del repositorio
+     ni a abrir o consultar `CLAUDEBOT`.
+
+  5. crear exclusivamente el archivo:
+
+     `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`;
+
+     Codex queda autorizado a agregar al índice exclusivamente ese
+     archivo y crear un único commit en su propia rama de auditoría.
+
+     Ese commit deberá contener exclusivamente:
+
+     `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`
+
+     El mensaje autorizado será:
+
+     `docs: audita mandato de Fase 1`
+
+     La rama, el worktree y el commit base exactos de la auditoría se
+     fijarán en la instrucción operacional posterior de Miguel, una
+     vez versionada esta adenda.
+
+     Esta autorización de commit no autoriza push, merge, rebase ni
+     tags.
+
+  6. emitir exactamente uno de estos veredictos:
+
+     `APROBAR`, `RECHAZAR` o `BLOQUEAR`.
+
+- Prohibiciones:
+
+  Esta autorización no permite a Codex:
+
+  - modificar
+    `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`;
+  - modificar
+    `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`;
+  - modificar `AGENTS.md`;
+  - crear o modificar documentos de implementación bajo
+    `governance/`;
+  - iniciar la implementación de la Fase 1;
+  - abrir o modificar `CLAUDEBOT`;
+  - modificar ningún archivo distinto de
+    `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`;
+  - hacer push, merge, rebase o tags;
+  - modificar ni incluir en el commit de auditoría
+    `decisions/OWNER_DECISIONS.md`;
+  - agregar al índice ningún archivo distinto de
+    `reports/AI-GOV-F1-CANONICAL/MANDATE_AUDIT_CODEX.md`;
+  - auditar una revisión distinta del commit objetivo
+    `bdeff1eb9b0afcd94be220dd14439c21bd8a7dd8`.
+
+- Condición de avance:
+
+  La implementación de la Fase 1 continúa sin autorizarse.
+
+  Solo podrá evaluarse una autorización operacional posterior cuando:
+
+  - Codex haya auditado el commit exacto indicado;
+  - el informe haya quedado versionado;
+  - el veredicto vigente sea `APROBAR`;
+  - Miguel emita una decisión posterior, expresa y durable.
