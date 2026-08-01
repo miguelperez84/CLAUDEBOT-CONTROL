@@ -173,20 +173,40 @@ rutas, únicamente para verificar que el repositorio no fue modificado
 durante la tarea.
 
 La huella de estado de `CLAUDEBOT` es, de forma cerrada y sin
-variantes, el par de resultados producido por estos dos comandos:
+variantes, el par de resultados producido por exactamente estos dos
+comandos:
 
 ```text
 git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
 
-git -C /home/miguel/proyectos/CLAUDEBOT \
-  status --porcelain=v1 -z | sha256sum
+bash -o pipefail -c \
+  'git -C /home/miguel/proyectos/CLAUDEBOT status --porcelain=v1 -z | sha256sum'
 ```
 
 es decir: el SHA completo de `HEAD`, y el SHA-256 de la salida de
-`status --porcelain=v1 -z`. La verificación exige que, entre el
-momento anterior y el posterior a la lectura autorizada, ambos
-resultados sean exactamente iguales: mismo SHA completo de `HEAD` y
-mismo SHA-256 del estado.
+`status --porcelain=v1 -z`. `bash -o pipefail` hace que el código de
+salida del segundo comando refleje un fallo de `status` aunque
+`sha256sum` complete con éxito; sin `pipefail`, una tubería
+`status | sha256sum` puede enmascarar ese fallo. Ambos comandos deben
+terminar con código de salida `0` para que la captura sea válida.
+
+El informe registra exclusivamente:
+
+- el SHA completo de `HEAD`;
+- el SHA-256 de la salida de `status --porcelain=v1 -z`;
+- el código de salida `0` del primer comando;
+- el código de salida `0` del segundo comando.
+
+Si cualquiera de los dos comandos no termina con código de salida `0`:
+
+- la captura es inválida;
+- no se compara como huella;
+- el hecho se registra como incidente, no como huella verificada;
+- corresponde `BLOQUEAR` la operación.
+
+La verificación exige que, entre el momento anterior y el posterior a
+la lectura autorizada, ambos resultados sean exactamente iguales:
+mismo SHA completo de `HEAD` y mismo SHA-256 del estado.
 
 Sobre esta huella:
 
@@ -195,8 +215,15 @@ Sobre esta huella:
   `status`;
 - un estado previo ajeno a la tarea, si existiera, queda representado
   únicamente por su SHA-256, nunca por un listado de rutas;
-- la igualdad de la huella antes y después demuestra que la tarea no
-  alteró `CLAUDEBOT`;
+- la igualdad de la huella antes y después solo demuestra la igualdad
+  del estado Git observable en `HEAD` y en
+  `status --porcelain=v1 -z` en ambos límites; **no cubre archivos
+  ignorados por Git (`.gitignore`) ni un cambio transitorio restaurado
+  antes de la segunda captura**;
+- si se requiere cobertura adicional (archivos ignorados, cambios
+  transitorios u otra evidencia), esa cobertura exige una autorización
+  expresa y separada de Miguel; esta excepción no la incorpora por sí
+  sola y ningún agente puede inventarla dentro de este mandato;
 - esta excepción no autoriza ejecutar ningún comando Git distinto de
   los dos anteriores, ni abrir, listar o leer ningún archivo adicional
   de `CLAUDEBOT`, ni ningún archivo distinto de las cuatro rutas
@@ -245,7 +272,11 @@ Ver `ACCEPTANCE.md` de esta misma carpeta para el detalle verificable
    y conflictos (A-03 a A-05).
 4. El perfil de Capa B para `CLAUDEBOT` añade restricciones sin
    relajar Capa A, usa referencias con SHA completo y no reabre fases
-   científicas (A-06 a A-09).
+   científicas; toda referencia normativa documental a `CLAUDEBOT` se
+   centraliza en `governance/projects/CLAUDEBOT_PROFILE.md`, sin que
+   ello prohíba SHA operacionales o evidenciales, comandos `git show`,
+   huellas, o identificadores de commits en los otros artefactos
+   (A-06 a A-09).
 5. La política de revisión de adaptadores define campos, los cinco
    eventos de revisión obligatoria (incluido el plazo de 90 días), la
    ubicación exacta del registro, el procedimiento de creación y
@@ -255,15 +286,21 @@ Ver `ACCEPTANCE.md` de esta misma carpeta para el detalle verificable
    distinguiendo evidencia de hipótesis no validada (A-10 a A-12).
 6. No se crean `judgment/`, `adapters/`, `tests/`, ni se copia Fable
    Judgment v1, ni se modifica `CLAUDEBOT` (A-13 a A-16).
-7. El informe de implementación y la auditoría independiente de Codex
-   cumplen su estructura obligatoria y su veredicto (A-17 a A-19).
+7. Los criterios se agrupan en tres etapas: Etapa 1 — A-01 a A-17 y
+   A-20, que Codex evalúa sobre el commit de implementación para
+   emitir su veredicto; Etapa 2 — A-18 y A-19, que comprueban después,
+   sin efecto retroactivo, la integridad del propio informe de
+   auditoría una vez versionado, anclado a su commit exacto (no al
+   commit objetivo de implementación, del que ese informe está
+   excluido por A-01); Etapa 3 — A-21.
 8. Nada se declara congelado antes de `APROBAR` y decisión final de
-   Miguel. A-01 a A-20 son los criterios que la auditoría de
-   implementación evalúa para emitir su veredicto sobre el commit de
-   implementación; A-21 es un criterio de cierre de la Fase 1,
-   evaluado en una operación posterior y separada, con mandato o
-   autorización y evidencia propios, y no condiciona ni retrasa el
-   veredicto de esa auditoría de implementación.
+   Miguel. A-21 (Etapa 3) es el criterio de cierre de la Fase 1,
+   evaluado en una operación posterior y separada, por la vía normal
+   de integración (§8.6 del plan, con evidencia de implementación,
+   auditoría, congelación, integración, push y cierre citada por
+   commit exacto) o por la vía excepcional de cierre sin integración
+   (§9.1 del plan), y no condiciona ni retrasa el veredicto de las
+   etapas anteriores.
 
 ## 6. Autorización
 
