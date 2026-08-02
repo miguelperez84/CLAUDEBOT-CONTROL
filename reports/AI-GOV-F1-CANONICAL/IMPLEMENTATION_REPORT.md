@@ -127,9 +127,20 @@ las rutas literales bajo `governance/` enumeradas a continuación —
 corrigiendo la formulación anterior, que presentaba
 `tasks/AI-GOV-F1-CANONICAL/` como la ubicación de los documentos
 canónicos—; enlaza las tres rutas canónicas por ruta literal; explica
-brevemente la función de cada una; fija el orden de lectura y
-precedencia (Capa A > Capa A > Capa B); declara el estado `BORRADOR —
-NO CONGELADO` de los tres; y reitera, sin duplicarlas, las ocho reglas
+brevemente la función de cada una; fija un **orden de lectura
+recomendado, no de precedencia** —corregido en esta corrección (Revisión
+15, hallazgo N-01): declara expresamente que
+`governance/core/INSTITUTIONAL_CORE.md` y
+`governance/core/ADAPTER_REVIEW_POLICY.md` pertenecen ambos a Capa A y
+tienen el mismo nivel de precedencia normativa, que el orden de lectura
+no concede precedencia de un documento de Capa A sobre el otro, que
+ante conflicto aparente entre ambos el agente se detiene y solicita
+resolución expresa de Miguel conforme a
+`governance/core/INSTITUTIONAL_CORE.md` §4, y que
+`governance/projects/CLAUDEBOT_PROFILE.md` sigue siendo Capa B, sin
+relajar nunca los dos documentos de Capa A—; declara el estado
+`BORRADOR — NO CONGELADO` de los tres; y reitera, sin duplicarlas, las
+ocho reglas
 críticas ya existentes en §1-§7 (autoridad exclusiva de Miguel,
 taxonomía `APROBAR`/`RECHAZAR`/`BLOQUEAR`, aislamiento entre agentes
 —incluida la separación Sonnet implementador/Codex auditor—, bloqueo
@@ -396,7 +407,7 @@ rol de propietario y autoridad final** (remitiendo a
 `governance/core/INSTITUTIONAL_CORE.md` §2 y §2.1), y la exigencia de
 auditoría independiente para cualquier ampliación futura de sus
 referencias. **La §6 ("Rutas y artefactos propios del proyecto"), cuyo
-texto se corrigió íntegramente en esta corrección (Revisión 13)**,
+texto se corrigió íntegramente y quedó versionado en la Revisión 14**,
 declara las convenciones genéricas de ubicación institucional dentro de
 `CLAUDEBOT-CONTROL` para cualquier tarea que coordine a `CLAUDEBOT`:
 `tasks/<ID>/MANDATE.md` para el mandato, `tasks/<ID>/ACCEPTANCE.md`
@@ -573,9 +584,9 @@ durante esta operación.
 | Criterio | Evidencia |
 |---|---|
 | A-01 | El árbol de trabajo, comparado contra el commit base `00649d65760255f1e186f82a997de915afa41b73`, contiene exclusivamente los cinco archivos de §6 como cambios (uno modificado, cuatro creados). Ningún otro archivo cambia. |
-| A-02 | `AGENTS.md` conserva íntegras §1-§7 (autoridad, veredictos, aislamiento, bloqueo crítico, estructura de mandatos, estructura de informes, ramas/merges, alcance sobre `CLAUDEBOT`) y añade §8 como índice hacia los tres documentos canónicos, sin duplicar su contenido normativo detallado. |
+| A-02 | `AGENTS.md` conserva íntegras §1-§7 (autoridad, veredictos, aislamiento, bloqueo crítico, estructura de mandatos, estructura de informes, ramas/merges, alcance sobre `CLAUDEBOT`) y añade §8 como índice hacia los tres documentos canónicos, sin duplicar su contenido normativo detallado. `AGENTS.md` es únicamente puerta de entrada e índice: no fija precedencia entre documentos de una misma capa. §8, corregida en esta corrección (Revisión 15, hallazgo N-01), declara expresamente que `governance/core/INSTITUTIONAL_CORE.md` y `governance/core/ADAPTER_REVIEW_POLICY.md` pertenecen ambos a Capa A y tienen el mismo nivel de precedencia normativa, y que el orden en que se enumeran es exclusivamente un orden de lectura recomendado, sin conceder precedencia de un documento de Capa A sobre el otro. La conformidad de este criterio corresponde evaluarla a la próxima auditoría independiente. |
 | A-03 | `grep -in -e dataset -e discovery -e OOS -e trading -e quintil -e BTCUSDT governance/core/INSTITUTIONAL_CORE.md` no produjo coincidencias (código de salida 1). |
-| A-04 | `governance/core/INSTITUTIONAL_CORE.md` contiene secciones explícitas de autoridad (§2), precedencia (§4, con la jerarquía completa de siete niveles, la regla de superación explícita, la aclaración de Capa C y, agregada en esta corrección, la aclaración de que informes, estados documentales y evidencia Git no constituyen un nivel normativo autónomo), permisos (§5), alcance (§6), veredictos/estados (§12-§13, con la §12.1 de estados de tarea que ahora contiene tanto la taxonomía de siete etapas y dos estados transversales como sus once transiciones normativas exactas y las condiciones completas de integración, cierre y reapertura, agregadas en esta corrección) y conflictos (§14). |
+| A-04 | `governance/core/INSTITUTIONAL_CORE.md` contiene secciones explícitas de autoridad (§2), precedencia (§4, con la jerarquía completa de siete niveles, la regla de superación explícita, la aclaración de Capa C y la aclaración de que informes, estados documentales y evidencia Git no constituyen un nivel normativo autónomo), permisos (§5), alcance (§6), veredictos/estados (§12-§13) y conflictos (§14). La §12.1 de estados de tarea contiene la taxonomía de siete etapas y dos estados transversales, sus once transiciones normativas exactas, y —corregida en esta corrección (Revisión 15, hallazgo H-03)— la transición 8 de cierre sin integración exige ahora, conjuntamente: estado de origen `EN AUDITORÍA`; decisión durable y expresa del propietario; motivo explícito y durable registrado junto con esa decisión; identificación del artefacto y del commit exacto que se cierra; y constancia de que el artefacto no fue fusionado; y declara expresamente que este cierre no constituye una excepción, sustitución ni evasión de la puerta de integración, no autoriza `INTEGRADA` ni merge, y no permite tratar el artefacto como integrado. La conformidad de este criterio corresponde evaluarla a la próxima auditoría independiente. |
 | A-05 | Lectura manual completa de `governance/core/INSTITUTIONAL_CORE.md`: ningún vocabulario de dominio científico se presenta como regla universal. |
 | A-06 | Comparación manual de `governance/projects/CLAUDEBOT_PROFILE.md` §3 y §6 (esta última, con su texto corregido en esta corrección para declarar únicamente convenciones genéricas `tasks/<ID>/...` y `reports/<ID>/...`, sin presumir congelados los documentos de §2 ni introducir una quinta referencia normativa) contra `governance/core/INSTITUTIONAL_CORE.md`: el perfil solo añade restricciones y declara convenciones de ubicación; ninguna cláusula relaja una regla de Capa A. |
 | A-07 | Control real sobre los cinco artefactos, incluido este propio informe, ejecutado y clasificado en §12.1 después de finalizar textualmente los cinco archivos. Es el autocontrol provisional del working tree de Sonnet, no anclado a commit; Codex deberá repetirlo anclado al futuro commit exacto de implementación. |
@@ -588,7 +599,7 @@ durante esta operación.
 | A-14 | Ningún artefacto de esta implementación transcribe contenido del corpus de juicio de `CLAUDEBOT` (identificado literalmente como Fable Judgment v1, sistema documental de juicio independiente del proveedor); las menciones son terminológicas y por referencia (§3 de `governance/projects/CLAUDEBOT_PROFILE.md`); no se afirma validación conductual ni se ejecuta benchmark alguno; cualquier benchmark conductual queda declarado pendiente y fuera de alcance. |
 | A-15 | §4, §9 y §10 de este informe: huellas inicial y final idénticas, ambos comandos con código de salida `0` en ambas capturas, sin exponer salida textual de `status`; solo se leyeron las cuatro rutas de `CLAUDEBOT` listadas en §5; no se crearon cambios en `CLAUDEBOT`. |
 | A-16 | §8 de este informe: ningún comando ejecutado abrió datasets, CSV, discovery, OOS, producción ni scripts de validación conductual. |
-| A-17 | Este informe declara archivos abiertos (§3, §5), archivos modificados (§6), comandos ejecutados (§8) y estado Git final (§11), conforme a `AGENTS.md` §5; registra los dos SHA fijados por Miguel (§1); registra la huella inicial y final de `CLAUDEBOT` sin exponer la salida textual de `status` (§4, §9); registra las cuatro rutas exactas leídas (§5); e incluye declaración negativa de que no se abrieron rutas adicionales (§5, §11, §13). |
+| A-17 | Este informe declara, para la **operación inicial**, archivos abiertos (§3, §5), archivos modificados (§6), comandos ejecutados (§8) y estado Git final (§11), conforme a `AGENTS.md` §5; registra los dos SHA fijados por Miguel (§1); registra la huella inicial y final de `CLAUDEBOT` sin exponer la salida textual de `status` (§4, §9); registra las cuatro rutas exactas leídas (§5); e incluye declaración negativa de que no se abrieron rutas adicionales (§5, §11, §13). Para la **operación correctora** que produjo `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`, la sección "Operación correctora posterior al primer RECHAZAR" —corregida en su contenido probatorio en las revisiones 16 y 17, y en la presente corrección (Revisión 18), que precisa que el control de `AGENTS.md` comparó ese commit contra el working tree, no dos commits— registra separadamente: (A) los comandos acreditados literalmente, con invocación y resultado concretos, sin los dos comandos de huella de blobs eliminados por no tener digest ni ejecución distinguible acreditados; (B) las operaciones acreditadas solo por el resultado que Sonnet declaró, sin una invocación literal individualmente recuperable dentro de agrupaciones de la interfaz de sesión; (C) los comandos eliminados de la lista por no tener evidencia recuperable, incluidos ambos comandos de huella; en "Fuentes abiertas", la separación entre las rutas efectivamente abiertas en el working tree para lectura o edición y `AGENTS.md`, verificado únicamente mediante `git diff` contra un commit exacto y nunca abierto para edición en esa operación; las limitaciones probatorias expresas correspondientes (incluida la de `tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`); y el estado Git final real del commit `ceac841…`. Este informe **no afirma poseer una transcripción literal exhaustiva** de la operación correctora ni afirma resultados no recuperables donde estos no existen. La conformidad de este criterio, incluido si este tratamiento la satisface, corresponde evaluarla a la próxima auditoría independiente. |
 | A-20 | Evidencia provisional del working tree, antes de que exista ningún commit objetivo de implementación: los tres documentos canónicos declaran `BORRADOR — NO CONGELADO` en cabecera y cierre (§7.2, §7.3, §7.4); `decisions/OWNER_DECISIONS.md` no está modificado (ausente de `git status --short --untracked-files=all`, §11); el estado completo del working tree (§11) muestra exactamente tres rutas bajo `governance/` (las tres canónicas) y ninguna cuarta ruta bajo ese directorio. Esto no es un diff base-objetivo: no existe todavía ningún commit objetivo de implementación. Codex deberá verificar, después de que ese commit exista, `git diff --name-status 00649d65760255f1e186f82a997de915afa41b73 <commit-objetivo-implementación>`; solo ese control futuro, sobre dos commits reales, puede acreditar el intervalo Git completo entre el commit base y el commit objetivo. |
 
 ### 12.1 Control final de A-07 sobre los cinco artefactos
@@ -803,38 +814,381 @@ corrección son:
   comprobaciones técnicas" (`governance/core/ADAPTER_REVIEW_POLICY.md`
   §4.3 y §6, y este mismo informe).
 
-Esta corrección localizada (Revisión 13) aplica exclusivamente las
-cinco correcciones anteriores, sin rediseñar la arquitectura de ninguno
-de los cuatro artefactos que autoriza modificar la instrucción
-operacional correspondiente, y sin tocar `AGENTS.md`. **No se afirma
-que Codex haya emitido `APROBAR` sobre esta corrección ni sobre ningún
-commit derivado de ella; los cinco hallazgos anteriores no quedan
-declarados institucionalmente cerrados por este informe: su resolución
-efectiva solo puede acreditarla una nueva auditoría independiente sobre
-el commit corrector que contenga esta Revisión 13, una vez que Miguel
-lo autorice y se versione.**
+Esta corrección localizada aplicó exclusivamente las cinco correcciones
+anteriores, sin rediseñar la arquitectura de ninguno de los cuatro
+artefactos que autorizaba modificar la instrucción operacional
+correspondiente, y sin tocar `AGENTS.md`. Su contenido pasó por una
+revisión intermedia (**Revisión 13**, todavía incompleta) antes de
+quedar textualmente cerrado en la **Revisión 14**, que es el contenido
+definitivo efectivamente versionado en el commit
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7` ("docs: corrige hallazgos
+auditoria gobernanza fase 1"), padre
+`309c6b23317da8b1906d4ebcdb6a8507079e2151` (detalle completo de esa
+operación en "Operación correctora posterior al primer RECHAZAR", más
+abajo). **No se afirma que Codex haya emitido `APROBAR` sobre ese
+commit; los cinco hallazgos H-01 a H-05 no quedaron declarados
+institucionalmente cerrados por este informe en su momento: su
+resolución fue evaluada después por una nueva auditoría independiente,
+registrada a continuación.**
+
+**Reauditoría independiente de Codex (R2) sobre el commit corrector
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`: veredicto `RECHAZAR`.**
+Codex reauditó de forma completa e independiente ese commit —el
+commit auditado— y versionó su informe en el commit de reauditoría
+`bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`
+(`reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md`). Resultado por hallazgo
+de la ronda anterior: **H-01: RESUELTO**; **H-02: RESUELTO**; **H-03:
+NO RESUELTO** (la transición 8 de §12.1 omitía el motivo explícito y
+durable y la declaración de que el cierre sin integración no es
+excepción a la puerta de integración); **H-04: RESUELTO**; **H-05:
+RESUELTO**. Hallazgos nuevos: **N-01 (mayor)** — `AGENTS.md` §8
+introducía una precedencia intranivel no aprobada entre los dos
+documentos de Capa A ("Capa A > Capa A > Capa B"); **N-02 (mayor)** —
+este informe no registraba de forma literal y completa la operación
+correctora que produjo `ceac841…` (fuentes, comandos, estado Git
+final); **N-03 (menor)** — el informe identificaba de forma
+inconsistente la corrección vigente, llamándola "Revisión 13" en varias
+secciones mientras otra sección ya reconocía que el contenido final era
+"Revisión 14". Matriz de aceptación de esa reauditoría: `A-02`, `A-04`
+y `A-17` **NO CONFORME**; los quince criterios restantes de A-01 a
+A-17 y A-20, **CONFORME**; `A-18` **CONFORME**; `A-19` **CONFORME**;
+`A-21` **no evaluado**. Ningún hallazgo de severidad crítica.
+
+**La Revisión 15 aplicó las correcciones exigidas para H-03, N-01, N-02
+y N-03, pero fue rechazada para commit** por inconsistencias históricas y
+probatorias en este propio informe: la historia R12-R14 de §16.1 y la
+subsección "Comandos ejecutados" de "Operación correctora posterior al
+primer RECHAZAR" no distinguían correctamente lo acreditado
+literalmente de lo acreditado solo por resultado, y atribuían de forma
+imprecisa a la Revisión 14 correcciones ya presentes desde la Revisión
+13. **La Revisión 16 corrigió esas inconsistencias, pero fue rechazada
+para commit** únicamente por dos afirmaciones probatorias no
+sustentadas dentro de ese mismo informe: dos comandos de huella de
+blobs sin digest concreto registrado ni ejecución distinguible
+acreditada en R13 y R14, y una clasificación de `AGENTS.md` en "Fuentes
+abiertas" que lo presentaba como abierto para edición sin haberlo sido.
+**La Revisión 17 corrigió esas dos afirmaciones, pero fue rechazada para
+commit** exclusivamente por una frase técnicamente incorrecta en la
+categoría "VERIFICADA MEDIANTE DIFF, NO ABIERTA PARA EDICIÓN": describía
+el control de `AGENTS.md` como una comparación "entre dos commits",
+cuando en realidad `git diff <commit> -- AGENTS.md` compara ese commit
+contra el estado del archivo en el working tree, no contra otro commit.
+**La presente corrección (Revisión 18) corrige exclusivamente esa
+frase, precisando además que la ausencia de modificación de `AGENTS.md`
+en `ceac841…` queda acreditada conjuntamente por ese control y por
+`git diff-tree --no-commit-id --name-status -r HEAD`, sin reabrir el
+contenido normativo de H-03 ni de N-01 ya corregido en `AGENTS.md` y
+`governance/core/INSTITUTIONAL_CORE.md`, y sin modificar nuevamente la
+historia sustantiva de las revisiones 12 a 16.** No se afirma que la
+presente corrección resuelva institucionalmente esos hallazgos: su
+cierre exige una nueva auditoría independiente sobre el futuro commit
+corrector que la contenga, una vez
+que Miguel lo
+autorice y se versione.
 
 ## 15. Estado y próximos pasos
 
 Los tres documentos canónicos permanecen `BORRADOR — NO CONGELADO`.
-Este informe no declara, ni puede declarar, `APROBAR` sobre esta
-corrección, ni sobre el commit de implementación previamente auditado
-y rechazado (`309c6b23317da8b1906d4ebcdb6a8507079e2151`), ni sobre el
-futuro commit corrector que la contenga. La auditoría de Codex sobre
-ese commit previo ya existe, con veredicto `RECHAZAR`
-(`786db86cf04b855de6c8f46bba151873e212c9f5`); esta corrección (Revisión
-13) intenta resolver únicamente los hallazgos H-01 a H-05 de esa
-auditoría, y **su resolución efectiva no queda declarada ni cerrada
-institucionalmente por este informe: solo una nueva auditoría
-independiente sobre el futuro commit corrector, con veredicto vigente,
-puede acreditarla.** Esa nueva auditoría independiente sigue
-pendiente. Los criterios A-18, A-19 y A-21 no forman parte de esta
-operación: A-18 y A-19 se evalúan sobre el commit propio del futuro
-informe de auditoría una vez que Codex lo versione, y A-21 es el
+Este informe no declara, ni puede declarar, `APROBAR` sobre ninguno de
+los dos commits correctores existentes
+(`309c6b23317da8b1906d4ebcdb6a8507079e2151`,
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`) ni sobre el futuro commit
+corrector que contenga la presente Revisión 18. El primer commit
+(`309c6b2…`) fue auditado con veredicto `RECHAZAR`
+(`786db86cf04b855de6c8f46bba151873e212c9f5`, hallazgos H-01 a H-05); el
+commit corrector que los abordó (`ceac841…`, Revisión 14) fue
+reauditado de forma independiente con veredicto `RECHAZAR`
+(`bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`), con H-01, H-02, H-04 y
+H-05 resueltos, H-03 no resuelto, y los hallazgos nuevos N-01 (mayor),
+N-02 (mayor) y N-03 (menor). La Revisión 15 aplicó las correcciones
+para H-03, N-01, N-02 y N-03, pero fue rechazada para commit por
+inconsistencias históricas y probatorias de este informe (§14); la
+Revisión 16 corrigió esas inconsistencias, pero fue a su vez rechazada
+para commit por dos afirmaciones probatorias no sustentadas (comandos
+de huella sin evidencia acreditada, y una clasificación incorrecta de
+`AGENTS.md` en "Fuentes abiertas"; §14); la Revisión 17 corrigió esas
+dos afirmaciones, pero fue a su vez rechazada para commit por una frase
+técnicamente incorrecta que describía el control de `AGENTS.md` como
+una comparación entre dos commits, cuando en realidad compara ese
+commit contra el working tree (§14); la presente corrección (Revisión
+18) corrige exclusivamente esa frase, y **su resolución efectiva no
+queda declarada ni
+cerrada institucionalmente por este informe: solo una nueva auditoría
+independiente sobre el futuro commit
+corrector, con veredicto vigente, puede acreditarla.** Esa nueva
+auditoría independiente sigue pendiente. Los criterios A-18 y A-19 ya
+fueron evaluados como `CONFORME` sobre el commit propio de la
+reauditoría R2 (`bcfb9af…`); `A-21` sigue sin evaluar, por ser el
 criterio de cierre de la Fase 1, evaluado en una operación posterior y
 separada. Ninguna integración, push, congelación o cierre puede
 realizarse sin una nueva decisión expresa y durable de Miguel,
 posterior a esa nueva auditoría.
+
+## Operación correctora posterior al primer RECHAZAR
+
+Esta sección documenta, de forma separada y sin reemplazar la
+evidencia de la operación inicial (§1-§13), la operación que corrigió
+H-01 a H-05 y produjo el commit corrector
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`. Añadida en la Revisión 15
+(hallazgo N-02); corregida en su contenido probatorio en la Revisión
+16, tras el rechazo para commit de la Revisión 15 por las
+inconsistencias históricas y probatorias descritas en §14; corregida de
+nuevo en la Revisión 17, tras el rechazo para commit de la Revisión 16
+por las dos afirmaciones probatorias no sustentadas descritas en §14; y
+corregida una vez más en la presente corrección (Revisión 18), tras el
+rechazo para commit de la Revisión 17 por la frase técnicamente
+incorrecta descrita en §14.
+
+### Identificación
+
+- **HEAD inicial:** `309c6b23317da8b1906d4ebcdb6a8507079e2151`.
+- **HEAD final:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Padre:** `309c6b23317da8b1906d4ebcdb6a8507079e2151`.
+- **Mensaje:** `docs: corrige hallazgos auditoria gobernanza fase 1`.
+- **Rama:** `control/sonnet-ai-gov-f1-implementation`.
+- **Worktree:**
+  `/home/miguel/proyectos/CLAUDEBOT-CONTROL-SONNET-AI-GOV-F1-IMPLEMENTATION`.
+
+### Fuentes abiertas
+
+Cada fuente se etiqueta según su mecanismo real de apertura. Una
+lectura directa del working tree y una lectura mediante `git show` son
+mecanismos distintos: no se declara una equivalente a la otra.
+
+**VERIFICADA MEDIANTE GIT SHOW:**
+
+1. `786db86cf04b855de6c8f46bba151873e212c9f5:reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md`
+   (auditoría con los hallazgos H-01 a H-05).
+2. `aa965803f103bfd3923ddd8fdbd04dd87253367a:tasks/AI-GOV-F1-CANONICAL/MANDATE.md`
+   (tramo inicial).
+3. `00649d65760255f1e186f82a997de915afa41b73:docs/plan_arquitectura_gobernanza_multi_ia_v1.md`
+   (varios tramos: precedencia §4, estados de tarea §9, eventos de
+   revisión de adaptadores §7 del mecanismo, y la ubicación de rutas y
+   artefactos propios de Capa B §5.2).
+
+**ABIERTA DIRECTAMENTE EN EL WORKTREE PARA LECTURA O EDICIÓN** (lectura
+del working tree previa a modificarlo con el editor de archivos de
+Sonnet, en un momento en que el árbol estaba limpio y `HEAD` coincidía
+exactamente con `309c6b23317da8b1906d4ebcdb6a8507079e2151`):
+`governance/core/ADAPTER_REVIEW_POLICY.md`,
+`governance/core/INSTITUTIONAL_CORE.md`,
+`governance/projects/CLAUDEBOT_PROFILE.md` y este propio informe.
+
+**VERIFICADA MEDIANTE DIFF, NO ABIERTA PARA EDICIÓN:** `AGENTS.md` fue
+comprobado mediante `git diff 309c6b23317da8b1906d4ebcdb6a8507079e2151
+-- AGENTS.md`. El control quedó sin salida y acreditó que `AGENTS.md`
+no fue modificado en el commit `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+El comando comparó el blob de `AGENTS.md` del commit
+`309c6b23317da8b1906d4ebcdb6a8507079e2151` contra el estado de ese
+archivo en el working tree y quedó sin salida. No comparó dos commits
+ni abrió el contenido del archivo para lectura o edición. La ausencia
+de modificación de `AGENTS.md` en el commit
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7` queda acreditada
+conjuntamente por ese control previo y por la verificación postcommit
+`git diff-tree --no-commit-id --name-status -r HEAD`, que registró
+exclusivamente las cuatro rutas autorizadas y no incluyó `AGENTS.md`.
+
+**NO VERIFICABLE COMO INVOCACIÓN SEPARADA:**
+`tasks/AI-GOV-F1-CANONICAL/ACCEPTANCE.md`. No queda registrada, como
+invocación distinguible en el registro de herramientas de esta sesión,
+una lectura propia y separada de esa ruta dentro de esta operación; si
+ocurrió, no puede acreditarse, y esta limitación se declara aquí en vez
+de afirmarla como hecho verificado.
+
+No se abrió ninguna otra ruta para obtener requisitos nuevos.
+
+### Archivos modificados
+
+Exactamente estas cuatro rutas, en el commit `ceac841…`:
+
+1. `governance/core/ADAPTER_REVIEW_POLICY.md`
+2. `governance/core/INSTITUTIONAL_CORE.md`
+3. `governance/projects/CLAUDEBOT_PROFILE.md`
+4. `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`
+
+`AGENTS.md` **no fue modificado** en ese commit (`git diff
+309c6b23317da8b1906d4ebcdb6a8507079e2151 -- AGENTS.md` sin salida,
+verificado antes del staging).
+
+### Comandos ejecutados
+
+Reescrita íntegramente en la Revisión 16 (hallazgo N-02), separando lo
+acreditado literalmente de lo acreditado solo por resultado, y
+eliminando lo no acreditable; corregida de nuevo en la Revisión 17 para
+eliminar los dos comandos de huella de blobs que la Revisión 16
+conservaba sin digest concreto registrado ni ejecución distinguible
+acreditada. No modificada en la presente corrección (Revisión 18), que
+corrige exclusivamente la sección "Fuentes abiertas" (véase más abajo).
+
+#### A. Comandos acreditados literalmente
+
+Esta subsección conserva invocaciones literales respaldadas por las
+instrucciones y la entrega de Sonnet. Los resultados finales concretos
+del commit, del estado Git y de `CLAUDEBOT` se registran en "Estado
+Git final real". Cuando la interfaz agrupó varias invocaciones bajo
+una sola ejecución de herramienta, no se reconstruyen resultados
+intermedios no visibles. No se afirma que todos los comandos aquí
+listados tengan su salida completa reproducida dentro de este informe.
+
+**Commit corrector `ceac841…`:**
+
+```text
+git diff --name-status 309c6b23317da8b1906d4ebcdb6a8507079e2151
+git diff --stat 309c6b23317da8b1906d4ebcdb6a8507079e2151
+git diff 309c6b23317da8b1906d4ebcdb6a8507079e2151 -- AGENTS.md
+
+git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
+bash -o pipefail -c 'git -C /home/miguel/proyectos/CLAUDEBOT status --porcelain=v1 -z | sha256sum'
+
+git add -- \
+  governance/core/ADAPTER_REVIEW_POLICY.md \
+  governance/core/INSTITUTIONAL_CORE.md \
+  governance/projects/CLAUDEBOT_PROFILE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md
+
+git diff --cached --name-status
+git diff --cached --check
+git status --short --untracked-files=all
+
+git commit -m "docs: corrige hallazgos auditoria gobernanza fase 1"
+
+git rev-parse HEAD
+git rev-parse HEAD^
+git log -1 --format='%H%n%P%n%s'
+git diff-tree --no-commit-id --name-status -r HEAD
+git show --check --stat --oneline HEAD
+git status --short --untracked-files=all
+
+git -C /home/miguel/proyectos/CLAUDEBOT rev-parse HEAD
+bash -o pipefail -c 'git -C /home/miguel/proyectos/CLAUDEBOT status --porcelain=v1 -z | sha256sum'
+```
+
+La entrega de Sonnet acredita los resultados de estos grupos, aunque la
+interfaz de la sesión los haya mostrado como una sola ejecución de
+herramienta por grupo ("Ran 1 shell command").
+
+**Generación de R12, R13 y R14** (cada revisión, una invocación
+separada; no se agrupan varias asignaciones de `out` antes de un único
+`git diff`):
+
+Para R12:
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision12.txt"
+
+git diff --exit-code --binary \
+  309c6b23317da8b1906d4ebcdb6a8507079e2151 \
+  -- \
+  governance/core/INSTITUTIONAL_CORE.md \
+  governance/core/ADAPTER_REVIEW_POLICY.md \
+  governance/projects/CLAUDEBOT_PROFILE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+
+codigo_diff=$?
+```
+
+Para R13:
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision13.txt"
+
+git diff --exit-code --binary \
+  309c6b23317da8b1906d4ebcdb6a8507079e2151 \
+  -- \
+  governance/core/INSTITUTIONAL_CORE.md \
+  governance/core/ADAPTER_REVIEW_POLICY.md \
+  governance/projects/CLAUDEBOT_PROFILE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+
+codigo_diff=$?
+```
+
+Para R14:
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision14.txt"
+
+git diff --exit-code --binary \
+  309c6b23317da8b1906d4ebcdb6a8507079e2151 \
+  -- \
+  governance/core/INSTITUTIONAL_CORE.md \
+  governance/core/ADAPTER_REVIEW_POLICY.md \
+  governance/projects/CLAUDEBOT_PROFILE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+
+codigo_diff=$?
+```
+
+#### B. OPERACIONES ACREDITADAS POR RESULTADO, sin invocación literal recuperable
+
+Sonnet informó haber realizado, en cada una de las revisiones 12, 13 y
+14: preflight; controles de contenido; control de índice vacío;
+`git diff --check`; verificación de que únicamente estaban modificadas
+las rutas autorizadas; y controles de conservación de los archivos no
+editables en esa ronda.
+
+La interfaz de la sesión agrupó determinadas invocaciones como "Ran 1
+shell command"; no se conserva en este informe una transcripción
+literal individual de cada subcomando contenido en esos grupos. Por
+ello, se registra su resultado declarado, pero no se inventa una
+invocación literal. En particular, no se afirma que el preflight
+completo (`pwd`, `git branch --show-current`, `git rev-parse HEAD`,
+`git status --short --untracked-files=all`, `git diff --cached
+--name-status`) haya sido necesariamente repetido de forma idéntica en
+las tres rondas, más allá de que cada ronda declaró haberlo ejecutado
+al inicio.
+
+#### C. Comandos eliminados por falta de evidencia recuperable
+
+Se eliminó de la lista de comandos acreditados literalmente
+`git diff --exit-code --binary -- AGENTS.md` (sin referencia a un
+commit exacto): aunque `AGENTS.md` sí se verificó sin cambios en varias
+rondas, esa verificación específica quedó agrupada junto con otras
+comprobaciones bajo una sola ejecución de herramienta, y esta sección
+no reconstruye subcomandos individuales dentro de un grupo cuando no
+quedan distinguidos por separado. La única verificación de `AGENTS.md`
+que se mantiene como acreditada literalmente es la referida a un commit
+exacto, `git diff 309c6b23317da8b1906d4ebcdb6a8507079e2151 -- AGENTS.md`,
+incluida en el grupo "Commit corrector `ceac841…`" de la parte A.
+
+Se eliminaron también, de la parte A, los dos comandos de huella de
+blobs (`git diff --binary 309c6b23317da8b1906d4ebcdb6a8507079e2151 --
+governance/core/ADAPTER_REVIEW_POLICY.md | sha256sum` y el equivalente
+para `governance/projects/CLAUDEBOT_PROFILE.md`), porque: no existen
+los valores de digest concretos registrados literalmente en este
+informe; no puede acreditarse que ambos comandos hayan sido ejecutados,
+de forma distinguible, en la Revisión 13 y en la Revisión 14; y este
+informe no inventa resultados ni repeticiones que no estén respaldadas
+por una salida concreta.
+
+Las ediciones de contenido de los cuatro artefactos (H-01 a H-05, y las
+correcciones posteriores de las revisiones 13 y 14) se realizaron
+mediante el editor de archivos de Sonnet, no mediante un comando de
+shell; no constituyen un "comando ejecutado" en el sentido de esta
+sección, igual que en §8 de la operación inicial. Ninguna de las
+invocaciones aquí registradas abrió una ruta no autorizada ni ejecutó
+ciencia, datos o validación conductual.
+
+### Estado Git final real
+
+- **Commit:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Padre:** `309c6b23317da8b1906d4ebcdb6a8507079e2151`.
+- **Rutas modificadas:** exactamente las cuatro de "Archivos
+  modificados", arriba.
+- **`git status --short --untracked-files=all` tras el commit:** sin
+  salida.
+- **`git show --check --stat --oneline` del commit:** sin errores de
+  espacio en blanco ni marcas de conflicto.
+- **CLAUDEBOT, verificación final:**
+  - HEAD: `3af01c5e96240bba9f7cf95904844efb15fca6a0`.
+  - Digest: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+  - Códigos: `0` y `0`.
+- **Ausencia confirmada de:** push, merge, rebase, cherry-pick, tags,
+  integración, congelación, cierre e inicio de Codex durante esa
+  operación.
 
 ## 16. Procedimiento reproducible de generación del diff sin staging
 
@@ -895,28 +1249,86 @@ posterior a esa nueva auditoría.
   H-01 a H-05 sobre el commit rechazado
   `309c6b23317da8b1906d4ebcdb6a8507079e2151`, y produjo
   `diff_implementacion_documental_f1_revision12.txt`. **Fue rechazada
-  antes del commit**, únicamente por tres correcciones documentales
-  localizadas y una corrección del informe: H-01 y H-03 quedaron
-  incompletos, H-02 quedó parcialmente implementado, y el informe
-  contenía un conteo incorrecto de criterios conformes en la matriz de
-  aceptación de la auditoría de Codex (§14). Se menciona aquí
-  únicamente como historial.
-- **Revisión 13** es la corrección localizada actual, que completa los
-  pendientes de la Revisión 12 —rutas y artefactos propios del proyecto
-  (H-01), precedencia completa (H-02) y estados y transiciones de tarea
-  (H-03)— y conserva sin cambios, byte a byte, la corrección de H-04 y
-  H-05 ya aplicada en `governance/core/ADAPTER_REVIEW_POLICY.md` desde
-  la Revisión 12, además de corregir el conteo de criterios conformes
-  en este informe (§14). Al igual que la Revisión 12, no se genera
-  contra un árbol de trabajo sin commit previo del mismo contenido: se
-  genera mediante `git diff` contra el commit exacto ya versionado y
-  rechazado, conforme a §16.2.
+  antes del commit** porque H-01 y H-03 quedaron incompletos, H-02
+  quedó parcialmente implementado, y el informe contenía el conteo
+  incorrecto de "veinte restantes" en la matriz de aceptación de la
+  auditoría de Codex (§14). Se menciona aquí únicamente como historial.
+- **Revisión 13** fue una **revisión intermedia**: corrigió las rutas
+  genéricas de H-01; completó la jerarquía de siete niveles de H-02;
+  incorporó los siete estados, los dos estados transversales y las once
+  transiciones de H-03 en `governance/core/INSTITUTIONAL_CORE.md`
+  §12.1; mantuvo sin cambios, byte a byte, la corrección de H-04 y H-05
+  ya aplicada en `governance/core/ADAPTER_REVIEW_POLICY.md` desde la
+  Revisión 12; y corrigió el conteo de este informe a "dieciséis
+  restantes". Produjo `diff_implementacion_documental_f1_revision13.txt`.
+  **Permaneció incompleta** porque todavía faltaba exigir evidencia
+  durable, versionada y citable para salir de `BLOQUEADA` o
+  `DETENIDA POR INCIDENTE`, y este informe todavía identificaba
+  incorrectamente las revisiones actuales. Se menciona aquí únicamente
+  como historial: no es la revisión final del contenido de `ceac841…`.
+- **Revisión 14** es el **contenido definitivo**, textualmente cerrado,
+  efectivamente versionado en el commit corrector
+  `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7` ("docs: corrige hallazgos
+  auditoria gobernanza fase 1"). Añadió, sobre lo ya incorporado por la
+  Revisión 13: la exigencia de evidencia durable, versionada y citable
+  para reanudar desde los estados transversales
+  (`governance/core/INSTITUTIONAL_CORE.md` §12.1); y la corrección
+  final de las referencias históricas y de la ruta del diff en este
+  informe. **No** incorporó por primera vez las once transiciones de
+  H-03 ni corrigió por primera vez el conteo a "dieciséis restantes":
+  ambas correcciones ya existían desde la Revisión 13. Produjo
+  `diff_implementacion_documental_f1_revision14.txt`. Ese commit
+  recibió una reauditoría independiente en el commit
+  `bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`, con veredicto `RECHAZAR`
+  (§14). Al igual que las revisiones 12 y 13, no se generó contra un
+  árbol de trabajo sin commit previo del mismo contenido: se generó
+  mediante `git diff` contra el commit exacto entonces vigente
+  (`309c6b23317da8b1906d4ebcdb6a8507079e2151`), conforme a §16.2.
+- **Revisión 15** fue una **revisión intermedia**: corrección de H-03,
+  N-01, N-02 y N-03 de la reauditoría `bcfb9af…` sobre el commit
+  auditado `ceac841…`, produjo
+  `diff_implementacion_documental_f1_revision15.txt`, y **fue rechazada
+  para commit** únicamente por inconsistencias históricas y probatorias
+  en este propio informe (§14, la presente corrección). Los cambios de
+  esa revisión en `AGENTS.md` y `governance/core/INSTITUTIONAL_CORE.md`
+  se conservan, byte a byte, en la presente corrección.
+- **Revisión 16** fue una **revisión intermedia**: corrigió, exclusiva
+  sobre `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`, las
+  inconsistencias históricas y probatorias que rechazaron la Revisión
+  15, produjo `diff_implementacion_documental_f1_revision16.txt`, y
+  **fue rechazada para commit** únicamente por dos afirmaciones
+  probatorias no sustentadas dentro de ese mismo informe: comandos de
+  huella de blobs sin digest concreto registrado ni ejecución
+  distinguible acreditada en R13 y R14, y una clasificación de
+  `AGENTS.md` en "Fuentes abiertas" que lo presentaba como abierto para
+  edición sin haberlo sido. Los cambios de la Revisión 16 en `AGENTS.md`
+  y `governance/core/INSTITUTIONAL_CORE.md` (heredados sin alteración
+  desde la Revisión 15) se conservan, byte a byte, en las revisiones
+  posteriores.
+- **Revisión 17** fue una **revisión intermedia**: corrigió, exclusiva
+  sobre `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`, los dos
+  comandos de huella no acreditados y la clasificación de `AGENTS.md`
+  que rechazaron la Revisión 16, produjo
+  `diff_implementacion_documental_f1_revision17.txt`, y **fue rechazada
+  para commit** exclusivamente por una frase técnicamente incorrecta en
+  la categoría "VERIFICADA MEDIANTE DIFF, NO ABIERTA PARA EDICIÓN" de
+  "Fuentes abiertas": describía el control de `AGENTS.md` como una
+  comparación "entre dos commits", cuando `git diff <commit> --
+  AGENTS.md` compara ese commit contra el working tree, no contra otro
+  commit. Los cambios de la Revisión 17 en `AGENTS.md` y
+  `governance/core/INSTITUTIONAL_CORE.md` (heredados sin alteración
+  desde la Revisión 15) se conservan, byte a byte, en la presente
+  corrección.
+- **Revisión 18** es la revisión definitiva que incorpora esta
+  corrección final del informe, exclusiva sobre
+  `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`, y produce
+  `diff_implementacion_documental_f1_revision18.txt`.
 
-Ninguno de esos once archivos anteriores (revisiones 2 a 12) es el
-producido por esta corrección actual (Revisión 13). Se mencionan aquí
+Ninguno de esos dieciséis archivos anteriores (revisiones 2 a 17) es el
+producido por esta corrección actual (Revisión 18). Se mencionan aquí
 únicamente como historial.
 
-### 16.2 Procedimiento actual (Revisión 13)
+### 16.2 Procedimiento histórico de las Revisiones 12 a 14 (contenido definitivo: Revisión 14)
 
 A diferencia de las revisiones 2 a 11, los cuatro artefactos de esta
 corrección (`governance/core/INSTITUTIONAL_CORE.md`,
@@ -931,7 +1343,7 @@ genera comparando el árbol de trabajo actual directamente contra ese
 commit exacto, ya versionado:
 
 ```text
-out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision13.txt"
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision14.txt"
 git diff --exit-code --binary \
   309c6b23317da8b1906d4ebcdb6a8507079e2151 \
   -- \
@@ -943,6 +1355,11 @@ git diff --exit-code --binary \
 codigo_diff=$?
 ```
 
+Este mismo procedimiento, con el `out` correspondiente, se usó también
+para las Revisiones 12 y 13, ambas intermedias; la Revisión 14 es la
+única de las tres cuyo contenido quedó efectivamente versionado en
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+
 `git diff --exit-code <commit> -- <rutas>` compara el árbol de trabajo
 actual contra el commit exacto indicado, sin tocar el índice y sin
 ejecutar `git add`; con `--exit-code`, termina en `1` porque existen
@@ -952,37 +1369,229 @@ Este comando no requiere el patrón `/dev/null` de las revisiones
 anteriores porque ninguno de los cuatro archivos es nuevo respecto del
 commit citado.
 
-### 16.3 Limitación temporal y archivo actual
+### 16.3 Limitación temporal histórica (Revisiones 12 a 14)
 
-Existe la misma limitación temporal que en las revisiones anteriores:
-el diff definitivo solo puede generarse contra el contenido
-textualmente final de los cuatro artefactos autorizados, y este informe
-es uno de ellos. Por eso este informe registra, en §16.2, el
+Durante la operación que produjo `ceac841…` existió la misma
+limitación temporal que en las revisiones anteriores: el diff
+definitivo solo podía generarse contra el contenido textualmente final
+de los cuatro artefactos autorizados en esa operación, y este informe
+era uno de ellos. Por eso esa operación registró, en §16.2, el
 procedimiento exacto, la ruta de salida y el código de salida esperado
-(`1`) —no puede registrar, dentro de sí mismo, el código real que
-resulte de ejecutar ese procedimiento sobre su propio contenido ya
-cerrado, porque generarlo exige que el informe deje de editarse
-primero. El código real de la generación definitiva se informa en la
-entrega de Sonnet al final de esta corrección, fuera del texto de este
-informe.
+(`1`). El diff de la Revisión 13 (`diff_implementacion_documental_f1_revision13.txt`)
+quedó superado antes del commit por dos ajustes adicionales
+estrictamente localizados —la regla de evidencia durable para reanudar
+`BLOQUEADA` o `DETENIDA POR INCIDENTE`, y la corrección de las
+referencias de este informe que identificaban incorrectamente como
+"Revisión 12" contenido que en realidad correspondía a la Revisión
+13—, por lo que el diff que finalmente acreditó el contenido
+textualmente final y completo de esa operación fue el de la
+**Revisión 14** (`diff_implementacion_documental_f1_revision14.txt`),
+efectivamente versionado en `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+Después de generar ese diff, no volvió a editarse ningún artefacto de
+esa operación antes del commit.
 
-Ruta registrada para el diff de la Revisión 13:
-`diff_implementacion_documental_f1_revision13.txt`, en
-`$(xdg-user-dir DOWNLOAD)`.
+### 16.4 Revisión 15 (histórica: rechazada para commit)
 
-**Nota sobre la entrega definitiva de esta operación.** Esta misma
-corrección localizada, después de generado ese diff de la Revisión 13,
-recibió dos ajustes adicionales estrictamente localizados: una regla
-de evidencia durable para reanudar `BLOQUEADA` o `DETENIDA POR
-INCIDENTE` en `governance/core/INSTITUTIONAL_CORE.md` §12.1, y la
-corrección de las referencias de este propio informe que identificaban
-incorrectamente como "Revisión 12" contenido que en realidad
-corresponde a la Revisión 13 (§16.1). Por ello, el diff que acredita el
-contenido textualmente final y completo de esta operación no es el de
-la Revisión 13, sino el de la **Revisión 14**, generado con el mismo
-procedimiento de §16.2 contra el mismo commit exacto
-(`309c6b23317da8b1906d4ebcdb6a8507079e2151`), en
-`diff_implementacion_documental_f1_revision14.txt`, dentro de
-`$(xdg-user-dir DOWNLOAD)`. Después de generar ese diff definitivo de
-la Revisión 14, no se vuelve a editar ningún artefacto de esta
-operación.
+- **Motivo:** resolver exclusivamente H-03, N-01, N-02 y N-03 de la
+  reauditoría independiente `bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`
+  sobre el commit auditado `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **HEAD inicial:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Archivos autorizados para edición:** `AGENTS.md`,
+  `governance/core/INSTITUTIONAL_CORE.md` y este propio informe
+  (`reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`).
+- **Archivos no modificados:**
+  `governance/core/ADAPTER_REVIEW_POLICY.md` y
+  `governance/projects/CLAUDEBOT_PROFILE.md`, cuyos blobs se conservan
+  byte a byte idénticos a los de `ceac841…`.
+- **Prohibiciones:** `git add`, `git commit`, `git commit --amend`,
+  push, merge, rebase, cherry-pick, tags, integración, congelación,
+  cierre, nueva auditoría, modificaciones de `CLAUDEBOT`, F-1A, F10,
+  F11, T2, ciencia, datos, discovery, OOS y validación conductual.
+- **Diff definitivo:**
+  `diff_implementacion_documental_f1_revision15.txt`.
+- **Ausencia de staging y de commit en esta etapa:** no se ejecutó
+  `git add` ni `git commit` durante esta corrección; el índice
+  permanece vacío.
+
+El diff se genera con el mismo patrón que las revisiones anteriores,
+pero contra el nuevo commit base y limitado a las tres rutas
+autorizadas:
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision15.txt"
+git diff --exit-code --binary \
+  ceac841a9ca55c3adcdb1e4b9437f1977942e6f7 \
+  -- \
+  AGENTS.md \
+  governance/core/INSTITUTIONAL_CORE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
+```
+
+El código esperado es `1`. **Esta Revisión 15 fue rechazada para
+commit** únicamente por inconsistencias históricas y probatorias de
+este propio informe (§14): la historia R12-R15 de §16.1, la subsección
+"Comandos ejecutados" de "Operación correctora posterior al primer
+RECHAZAR", y las fuentes abiertas allí registradas. Se conserva aquí
+únicamente como historial: el diff que acredita esta revisión es
+`diff_implementacion_documental_f1_revision15.txt`, y no es la revisión
+final.
+
+### 16.5 Revisión 16 (histórica: rechazada para commit)
+
+- **Motivo:** corregir exclusivamente las inconsistencias históricas y
+  probatorias de `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`
+  que motivaron el rechazo de la Revisión 15, sin reabrir H-03, N-01 o
+  N-02 en cuanto a su contenido normativo ya corregido en
+  `AGENTS.md` y `governance/core/INSTITUTIONAL_CORE.md`.
+- **HEAD inicial:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Archivo autorizado para edición:** exclusivamente este propio
+  informe (`reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`).
+- **Archivos no modificados:** `AGENTS.md` y
+  `governance/core/INSTITUTIONAL_CORE.md`, cuyos blobs conservan, byte
+  a byte, exactamente los cambios ya introducidos en la Revisión 15;
+  tampoco se modifican `governance/core/ADAPTER_REVIEW_POLICY.md` ni
+  `governance/projects/CLAUDEBOT_PROFILE.md`.
+- **Prohibiciones:** `git add`, `git commit`, `git commit --amend`,
+  push, merge, rebase, cherry-pick, tags, integración, congelación,
+  cierre, nueva auditoría, modificaciones de `CLAUDEBOT`, F-1A, F10,
+  F11, T2, ciencia, datos, discovery, OOS y validación conductual.
+- **Diff definitivo:**
+  `diff_implementacion_documental_f1_revision16.txt`.
+- **Ausencia de staging y de commit en esta etapa:** no se ejecutó
+  `git add` ni `git commit` durante esta corrección; el índice
+  permanece vacío.
+
+El diff se genera con el mismo patrón que la Revisión 15, contra el
+mismo commit base, pero incluyendo las tres rutas cuyo estado se
+acredita en esta corrección (dos de ellas sin cambio respecto de la
+Revisión 15, para que el control de conservación pueda verificarlas
+byte a byte):
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision16.txt"
+git diff --exit-code --binary \
+  ceac841a9ca55c3adcdb1e4b9437f1977942e6f7 \
+  -- \
+  AGENTS.md \
+  governance/core/INSTITUTIONAL_CORE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
+```
+
+El código esperado es `1`. **Esta Revisión 16 fue rechazada para
+commit** únicamente por dos afirmaciones probatorias no sustentadas
+dentro de este propio informe (§14): comandos de huella de blobs sin
+digest concreto registrado ni ejecución distinguible acreditada en R13
+y R14, y una clasificación de `AGENTS.md` en "Fuentes abiertas" que lo
+presentaba como abierto para edición sin haberlo sido. Se conserva aquí
+únicamente como historial: el diff que acredita esta revisión es
+`diff_implementacion_documental_f1_revision16.txt`, y no es la revisión
+final.
+
+### 16.6 Revisión 17 (histórica: rechazada para commit)
+
+- **Motivo:** corregir exclusivamente las dos afirmaciones probatorias
+  no sustentadas de
+  `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md` que motivaron
+  el rechazo de la Revisión 16, sin modificar nuevamente la historia
+  sustantiva de las revisiones 12 a 15 ni el contenido normativo ya
+  corregido en `AGENTS.md` y `governance/core/INSTITUTIONAL_CORE.md`.
+- **HEAD inicial:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Archivo autorizado para edición:** exclusivamente este propio
+  informe (`reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`).
+- **Archivos no modificados:** `AGENTS.md` y
+  `governance/core/INSTITUTIONAL_CORE.md`, cuyos blobs conservan, byte
+  a byte, exactamente los cambios ya introducidos en la Revisión 16
+  (heredados sin alteración desde la Revisión 15); tampoco se modifican
+  `governance/core/ADAPTER_REVIEW_POLICY.md` ni
+  `governance/projects/CLAUDEBOT_PROFILE.md`.
+- **Prohibiciones:** `git add`, `git commit`, `git commit --amend`,
+  push, merge, rebase, cherry-pick, tags, integración, congelación,
+  cierre, nueva auditoría, modificaciones de `CLAUDEBOT`, F-1A, F10,
+  F11, T2, ciencia, datos, discovery, OOS y validación conductual.
+- **Diff definitivo:**
+  `diff_implementacion_documental_f1_revision17.txt`.
+- **Ausencia de staging y de commit en esta etapa:** no se ejecutó
+  `git add` ni `git commit` durante esta corrección; el índice
+  permanece vacío.
+
+El diff se genera con el mismo patrón que la Revisión 16, contra el
+mismo commit base, incluyendo las tres mismas rutas (dos de ellas sin
+cambio respecto de la Revisión 16, para que el control de conservación
+pueda verificarlas byte a byte):
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision17.txt"
+git diff --exit-code --binary \
+  ceac841a9ca55c3adcdb1e4b9437f1977942e6f7 \
+  -- \
+  AGENTS.md \
+  governance/core/INSTITUTIONAL_CORE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
+```
+
+El código esperado es `1`. **Esta Revisión 17 fue rechazada para
+commit** exclusivamente por una frase técnicamente incorrecta de este
+propio informe (§14): en "Fuentes abiertas", la categoría "VERIFICADA
+MEDIANTE DIFF, NO ABIERTA PARA EDICIÓN" describía el control de
+`AGENTS.md` como una comparación "entre dos commits", cuando
+`git diff <commit> -- AGENTS.md` compara ese commit contra el working
+tree, no contra otro commit. Se conserva aquí únicamente como
+historial: el diff que acredita esta revisión es
+`diff_implementacion_documental_f1_revision17.txt`, y no es la revisión
+final.
+
+### 16.7 Revisión 18 (corrección actual y definitiva)
+
+- **Motivo:** corregir exclusivamente la frase técnicamente incorrecta
+  de `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md` que motivó
+  el rechazo de la Revisión 17, sin modificar nuevamente la historia
+  sustantiva de las revisiones 12 a 16 ni el contenido normativo ya
+  corregido en `AGENTS.md` y `governance/core/INSTITUTIONAL_CORE.md`.
+- **HEAD inicial:** `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`.
+- **Archivo autorizado para edición:** exclusivamente este propio
+  informe (`reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`).
+- **Archivos no modificados:** `AGENTS.md` y
+  `governance/core/INSTITUTIONAL_CORE.md`, cuyos blobs conservan, byte
+  a byte, exactamente los cambios ya introducidos en la Revisión 17
+  (heredados sin alteración desde la Revisión 15); tampoco se modifican
+  `governance/core/ADAPTER_REVIEW_POLICY.md` ni
+  `governance/projects/CLAUDEBOT_PROFILE.md`.
+- **Prohibiciones:** `git add`, `git commit`, `git commit --amend`,
+  push, merge, rebase, cherry-pick, tags, integración, congelación,
+  cierre, nueva auditoría, modificaciones de `CLAUDEBOT`, F-1A, F10,
+  F11, T2, ciencia, datos, discovery, OOS y validación conductual.
+- **Diff definitivo:**
+  `diff_implementacion_documental_f1_revision18.txt`.
+- **Ausencia de staging y de commit en esta etapa:** no se ejecutó
+  `git add` ni `git commit` durante esta corrección; el índice
+  permanece vacío.
+
+El diff se genera con el mismo patrón que la Revisión 17, contra el
+mismo commit base, incluyendo las tres mismas rutas (dos de ellas sin
+cambio respecto de la Revisión 17, para que el control de conservación
+pueda verificarlas byte a byte):
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision18.txt"
+git diff --exit-code --binary \
+  ceac841a9ca55c3adcdb1e4b9437f1977942e6f7 \
+  -- \
+  AGENTS.md \
+  governance/core/INSTITUTIONAL_CORE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
+```
+
+El código esperado es `1`. Al igual que en las revisiones anteriores,
+este informe no puede registrar dentro de sí mismo el código real que
+resulte de ejecutar este procedimiento sobre su propio contenido ya
+cerrado; ese código real se informa en la entrega de Sonnet al final de
+esta corrección, fuera del texto de este informe. Después de generar
+ese diff, no se vuelve a editar este artefacto.

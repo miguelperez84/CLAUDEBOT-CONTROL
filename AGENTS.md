@@ -108,18 +108,32 @@ continúa siendo únicamente la puerta de entrada y el índice: no
 reproduce el contenido normativo detallado de esos documentos, solo
 remite a ellos.
 
-Orden de lectura y precedencia, de mayor a menor:
+Orden de lectura recomendado:
 
 1. `governance/core/INSTITUTIONAL_CORE.md` — Capa A: núcleo
    institucional universal (autoridad, precedencia, permisos, alcance,
    veredictos y conflictos), independiente de proveedor, modelo,
-   proyecto o dominio. Prevalece sobre cualquier documento de Capa B.
+   proyecto o dominio.
 2. `governance/core/ADAPTER_REVIEW_POLICY.md` — Capa A: mecanismo
    documental de propuesta, registro, auditoría y decisión sobre
    adaptadores por modelo. No crea adaptadores por sí mismo.
 3. `governance/projects/CLAUDEBOT_PROFILE.md` — primer perfil de
    Capa B, específico de `CLAUDEBOT`: añade restricciones sobre los
    dos documentos anteriores; nunca los relaja.
+
+`governance/core/INSTITUTIONAL_CORE.md` y
+`governance/core/ADAPTER_REVIEW_POLICY.md` pertenecen ambos a **Capa
+A** y tienen el mismo nivel de precedencia normativa. Se recomienda
+leer primero `INSTITUTIONAL_CORE.md` y después
+`ADAPTER_REVIEW_POLICY.md` únicamente por organización y comprensión
+progresiva; ese orden de lectura no concede precedencia normativa de un
+documento de Capa A sobre el otro. Ante conflicto aparente entre ambos
+documentos de Capa A, el agente no elige uno por orden de lectura: se
+detiene y solicita resolución expresa de Miguel, conforme a
+`governance/core/INSTITUTIONAL_CORE.md` §4.
+`governance/projects/CLAUDEBOT_PROFILE.md` continúa siendo Capa B:
+puede añadir restricciones, pero nunca relajar los documentos de
+Capa A.
 
 **Estado de los tres documentos anteriores: `BORRADOR — NO
 CONGELADO`.** Ninguno de los tres está congelado, integrado como

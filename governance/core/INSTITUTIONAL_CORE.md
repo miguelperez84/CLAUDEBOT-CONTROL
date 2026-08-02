@@ -230,8 +230,15 @@ Las transiciones normativas exactas entre estas etapas son:
 7. Cierre normal: `INTEGRADA → CERRADA`, exclusivamente por decisión
    durable del propietario.
 8. Cierre sin integración: `EN AUDITORÍA → CERRADA`, únicamente cuando
-   el propietario decida durablemente cerrar sin integrar y el
-   artefacto no sea fusionado.
+   concurran, todos a la vez: estado de origen `EN AUDITORÍA`; decisión
+   durable y expresa del propietario de cerrar sin integrar; motivo
+   explícito y durable para cerrar sin integración, registrado junto
+   con esa decisión; identificación del artefacto y del commit exacto
+   que se cierra; y constancia de que el artefacto no fue fusionado a
+   la rama rectora. Solo entonces ocurre la transición a `CERRADA`. El
+   cierre sin integración no constituye una excepción, sustitución ni
+   evasión de la puerta de integración: no autoriza `INTEGRADA`, no
+   autoriza merge y no permite tratar el artefacto como integrado.
 9. Ante `RECHAZAR`: `EN AUDITORÍA → EN IMPLEMENTACIÓN`, únicamente si el
    propietario autoriza expresamente la corrección o reapertura.
 10. Ante `BLOQUEAR`, falta de autorización o falta de evidencia
