@@ -97,3 +97,40 @@ control/gemini-<id>
   ese repositorio objetivo, y sigue sujeto a las reglas de alcance
   vigentes de `CLAUDEBOT` (`AGENTS.md` y la Constitución de ese
   repositorio), no solo a las de este documento.
+
+## 8. Documentos canónicos de la Fase 1 de gobernanza multi-IA
+
+El mandato de la Fase 1 y sus criterios de aceptación se encuentran
+bajo `tasks/AI-GOV-F1-CANONICAL/`. Los tres documentos canónicos
+producidos por su implementación son las rutas literales bajo
+`governance/` que se enumeran inmediatamente después. `AGENTS.md`
+continúa siendo únicamente la puerta de entrada y el índice: no
+reproduce el contenido normativo detallado de esos documentos, solo
+remite a ellos.
+
+Orden de lectura y precedencia, de mayor a menor:
+
+1. `governance/core/INSTITUTIONAL_CORE.md` — Capa A: núcleo
+   institucional universal (autoridad, precedencia, permisos, alcance,
+   veredictos y conflictos), independiente de proveedor, modelo,
+   proyecto o dominio. Prevalece sobre cualquier documento de Capa B.
+2. `governance/core/ADAPTER_REVIEW_POLICY.md` — Capa A: mecanismo
+   documental de propuesta, registro, auditoría y decisión sobre
+   adaptadores por modelo. No crea adaptadores por sí mismo.
+3. `governance/projects/CLAUDEBOT_PROFILE.md` — primer perfil de
+   Capa B, específico de `CLAUDEBOT`: añade restricciones sobre los
+   dos documentos anteriores; nunca los relaja.
+
+**Estado de los tres documentos anteriores: `BORRADOR — NO
+CONGELADO`.** Ninguno de los tres está congelado, integrado como
+rector ni cerrado. Su eventual congelación exige auditoría
+independiente con veredicto `APROBAR` vigente y una decisión final y
+expresa de Miguel, posterior y separada de su redacción.
+
+Se mantienen sin cambio: la autoridad exclusiva de Miguel (§1), la
+taxonomía `APROBAR`/`RECHAZAR`/`BLOQUEAR` (§1), el aislamiento entre
+agentes (§2) —incluida la separación entre el agente implementador
+(Sonnet) y el agente auditor independiente (Codex) para esta Fase 1—,
+el bloqueo ante hallazgos críticos (§3), la estructura obligatoria de
+mandatos e informes (§4, §5), el control de ramas y merges (§6) y las
+prohibiciones de alcance sobre `CLAUDEBOT` (§7).
