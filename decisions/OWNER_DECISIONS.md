@@ -2136,3 +2136,101 @@ revoca o reemplaza; no se borra la entrada original.
   Solo podrá iniciarse cuando Miguel emita una instrucción operacional
   posterior que fije literalmente `<commit-base-implementación-f1>`,
   la rama, el worktree y el inicio efectivo de la implementación.
+
+---
+
+## 2026-08-02 — Decisión durable de integración de AI-GOV-F1-CANONICAL a main
+
+- Evidencia previa:
+
+  La cadena documental completa de la Fase 1 quedó versionada, en
+  orden, en los siguientes commits de
+  `control/sonnet-ai-gov-f1-implementation`:
+
+  - `309c6b23317da8b1906d4ebcdb6a8507079e2151` — commit inicial de
+    implementación ("docs: implementa gobernanza multi-IA fase 1"),
+    auditado por Codex con veredicto `RECHAZAR`
+    (`786db86cf04b855de6c8f46bba151873e212c9f5`, hallazgos H-01 a
+    H-05);
+  - `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7` — primer commit
+    corrector ("docs: corrige hallazgos auditoria gobernanza fase 1"),
+    reauditado (R2) con veredicto `RECHAZAR`
+    (`bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`, H-03 no resuelto y
+    hallazgos nuevos N-01 a N-03);
+  - `d5b7101feaa46f92d33284f745376dbd7cecde0d` — segundo commit
+    corrector ("docs: corrige hallazgos reauditoria gobernanza fase
+    1"), reauditado (R3) con veredicto `RECHAZAR`
+    (`c144b6e434a35fb3744bf3f6122458cd6d3efc2b`, H-03/N-01/N-02/N-03
+    resueltos y un único hallazgo nuevo menor N-04);
+  - `1b710ba91a6c5aa913e462686c429b5cac2fada1` — corrección
+    terminológica final ("docs: corrige terminologia reauditoria
+    gobernanza fase 1"), que resuelve N-04.
+
+  La auditoría independiente final quedó versionada en la rama
+  `audit/codex-ai-gov-f1-reaudit-r4-final`, commit
+  `b23c0ae73b7a93dcf9635f4c44ad03e72068be38` (padre exacto
+  `1b710ba91a6c5aa913e462686c429b5cac2fada1`), con veredicto:
+
+  `APROBAR`
+
+  Sin hallazgos abiertos, críticos, mayores ni menores.
+
+- Verificación de integración:
+
+  Antes de esta decisión, en el worktree principal
+  `/home/miguel/proyectos/CLAUDEBOT-CONTROL`:
+
+  - `main` y `origin/main` resolvían ambos a
+    `129a82cc99913d493290f5f56fd5b2ee18568fb2`, con divergencia `0 0`;
+  - `main` era ancestro de `b23c0ae73b7a93dcf9635f4c44ad03e72068be38`;
+  - `b23c0ae73b7a93dcf9635f4c44ad03e72068be38` no era ancestro de
+    `main`;
+  - el árbol de trabajo estaba limpio;
+  - la integración podía realizarse mediante avance lineal
+    `--ff-only`, sin commit de merge ni resolución de conflictos.
+
+- Decisión de Miguel:
+
+  Miguel autoriza integrar la cadena completa de `AI-GOV-F1-CANONICAL`
+  en `main`, exclusivamente mediante:
+
+  `git merge --ff-only b23c0ae73b7a93dcf9635f4c44ad03e72068be38`
+
+  ejecutada desde el worktree principal
+  `/home/miguel/proyectos/CLAUDEBOT-CONTROL`.
+
+  Esa integración fast-forward ya se realizó, verificándose después de
+  ejecutarla que:
+
+  - `main` local resuelve exactamente a
+    `b23c0ae73b7a93dcf9635f4c44ad03e72068be38`;
+  - `origin/main` permanece sin cambio en
+    `129a82cc99913d493290f5f56fd5b2ee18568fb2`;
+  - el árbol de trabajo quedó limpio;
+  - no se ejecutó ningún commit de merge ni ninguna resolución de
+    conflictos.
+
+  Esta entrada registra de forma durable esa decisión y su ejecución.
+
+- Límites:
+
+  Esta autorización permitió exclusivamente:
+
+  - registrar esta decisión durable;
+  - integrar `main` mediante `git merge --ff-only` hasta el commit de
+    auditoría final aprobado.
+
+  No autoriza:
+
+  - push;
+  - merge que no sea fast-forward;
+  - rebase, cherry-pick ni tags;
+  - congelación de ningún documento;
+  - declaración de cierre de la Fase 1;
+  - borrado de ramas o worktrees;
+  - inicio de F-1A, F10, F11, T2 ni de ninguna fase posterior;
+  - modificación de `CLAUDEBOT`.
+
+  El push, la congelación, el cierre de la Fase 1 y cualquier fase
+  posterior exigen decisiones expresas, separadas y posteriores de
+  Miguel.
