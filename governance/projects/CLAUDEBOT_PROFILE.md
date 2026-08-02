@@ -123,6 +123,47 @@ por los documentos propios de `CLAUDEBOT`.
   redacte, con veredicto `APROBAR`, `RECHAZAR` o `BLOQUEAR`, antes de
   cualquier decisión de Miguel sobre esa modificación.
 
+## 6. Rutas y artefactos propios del proyecto
+
+1. Los mandatos de tareas de `CLAUDEBOT` coordinadas desde
+   `CLAUDEBOT-CONTROL` viven bajo:
+
+   ```text
+   tasks/<ID>/MANDATE.md
+   ```
+
+2. Sus criterios verificables, cuando correspondan, viven bajo:
+
+   ```text
+   tasks/<ID>/ACCEPTANCE.md
+   ```
+
+3. Los informes de implementación y auditoría viven bajo:
+
+   ```text
+   reports/<ID>/
+   ```
+
+   Cada mandato debe identificar las rutas literales concretas que
+   pueden crearse o modificarse.
+
+4. Los documentos congelados o rectores propios de `CLAUDEBOT`
+   permanecen en su repositorio de origen y en sus rutas nativas. Este
+   perfil no los mueve, copia ni presume congelados o rectores.
+
+5. Un documento de `CLAUDEBOT` solo cumple una función normativa para
+   una tarea de este marco cuando aparece en la tabla de §2 con:
+
+   - repositorio;
+   - SHA completo;
+   - ruta literal;
+   - función normativa.
+
+6. Las convenciones genéricas `tasks/<ID>/...` y `reports/<ID>/...` son
+   declaraciones de ubicación institucional dentro de
+   `CLAUDEBOT-CONTROL`. No constituyen referencias normativas
+   documentales adicionales a `CLAUDEBOT`.
+
 ---
 
 *Este perfil es un borrador de la primera Capa B del marco de

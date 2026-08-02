@@ -151,12 +151,30 @@ agente, persona, herramienta o responsable de proyecto pueda asumir
 ese rol por inferencia, delegación implícita, costumbre o
 disponibilidad técnica, y sin que ningún cambio de titular pueda
 ocurrir sin una decisión previa, expresa y durable de Miguel; separación
-de funciones; precedencia normativa; listas cerradas de permisos;
-control de alcance; principio de mínima autoridad; trazabilidad e
-historia inmutable; evidencia fijada por commit y ruta literal;
-prohibición de referencias móviles; auditoría independiente; veredictos
-válidos (`APROBAR`/`RECHAZAR`/`BLOQUEAR`); regla del hallazgo crítico;
-manejo de conflictos entre instrucciones; prohibición de
+de funciones; **precedencia normativa (§4, corregida en esta revisión:
+jerarquía completa de siete niveles — autorización operacional actual
+del propietario, decisiones institucionales duraderas, esta Capa A,
+Capa B, mandato vigente, adaptador de Capa D e instrucción
+conversacional —, la regla de que un nivel inferior nunca relaja uno
+superior, la regla de superación explícita de cuatro elementos
+[excepción, regla reemplazada, alcance, duración], y la aclaración de
+que la Capa C no ocupa ningún nivel de esta lista)**; listas cerradas de
+permisos; control de alcance; principio de mínima autoridad;
+trazabilidad e historia inmutable; evidencia fijada por commit y ruta
+literal; prohibición de referencias móviles; auditoría independiente;
+veredictos válidos (`APROBAR`/`RECHAZAR`/`BLOQUEAR`), **con una §12.1
+que define los estados de tarea: las siete etapas ordinarias `INTAKE →
+PLANIFICADA → AUTORIZADA → EN IMPLEMENTACIÓN → EN AUDITORÍA → INTEGRADA
+→ CERRADA`, sus once transiciones normativas exactas (incluidas las
+condiciones completas para `EN AUDITORÍA → INTEGRADA` —informe
+versionado, commit exacto auditado, veredicto vigente `APROBAR`,
+ausencia de hallazgos bloqueantes, autorización expresa del propietario
+para el merge—, para `EN AUDITORÍA → CERRADA` y para `EN AUDITORÍA → EN
+IMPLEMENTACIÓN` ante `RECHAZAR`) y los dos estados transversales
+`BLOQUEADA` y `DETENIDA POR INCIDENTE` con sus reglas de salida,
+distinguidos expresamente de los estados institucionales de un
+adaptador definidos en `governance/core/ADAPTER_REVIEW_POLICY.md`**;
+regla del hallazgo crítico; manejo de conflictos entre instrucciones; prohibición de
 autoautorización (§15, actualizada para remitir a §2.1); prohibición de
 acciones irreversibles sin decisión del propietario (§16, actualizada
 para remitir a §2.1); tratamiento de la incertidumbre; diferencia entre
@@ -307,7 +325,7 @@ veredicto exacto `APROBAR`; ausencia de hallazgos críticos; ausencia
 de propuesta posterior pendiente; decisión previa, expresa y durable
 de Miguel que autoriza exactamente `ACTIVAR`/`REACTIVAR` esa misma
 propuesta; y entrada de `DECISIÓN` agregada después por el registrador
-que transcribe esa decisión sin discordancia. Las cinco comprobaciones
+que transcribe esa decisión sin discordancia. Las seis comprobaciones
 técnicas de §4.3 **no sustituyen** la decisión durable de Miguel:
 ambas son necesarias conjuntamente. El campo 13 de `DECISIÓN` debe
 citar el mismo artefacto exacto que la propuesta exacta, el informe,
@@ -323,12 +341,18 @@ commits 5 y 6, elevando una corrección a diez commits; cada corrección
 adicional agrega otros cuatro. Ningún hito puede omitirse, agruparse
 ni colapsarse.
 
-Los cinco eventos de revisión obligatoria (§7); la incompatibilidad de
-un adaptador con la Capa A (§11); y los veredictos y la autoridad
-final (§12), reforzando que ninguna discordancia de punteros ni
-ninguna bifurcación de cabeza global permite `VIGENTE`. Declarado
-`BORRADOR — NO CONGELADO`. No contiene vocabulario específico de
-`CLAUDEBOT`.
+Los cinco eventos de revisión obligatoria (§7) —el primero de ellos
+corregido en esta revisión a su formulación exacta, **"cambio mayor o
+relevante del modelo, incluida su versión o revisión identificada"**,
+en reemplazo de la formulación anterior ("cualquier cambio de modelo...
+sin evaluación previa de materialidad")—; la incompatibilidad de un
+adaptador con la Capa A (§11); y los veredictos y la autoridad final
+(§12), reforzando que ninguna discordancia de punteros ni ninguna
+bifurcación de cabeza global permite `VIGENTE`. La referencia de §6 a
+las comprobaciones técnicas de §4.3 se corrigió en esta revisión de
+"cinco" a **"seis"**, para que coincida con las seis condiciones
+numeradas que §4.3 exige efectivamente. Declarado `BORRADOR — NO
+CONGELADO`. No contiene vocabulario específico de `CLAUDEBOT`.
 
 ### 7.4 `governance/projects/CLAUDEBOT_PROFILE.md`
 
@@ -371,12 +395,28 @@ como proyecto) y mantiene, en §5, la autoridad final de **Miguel, en su
 rol de propietario y autoridad final** (remitiendo a
 `governance/core/INSTITUTIONAL_CORE.md` §2 y §2.1), y la exigencia de
 auditoría independiente para cualquier ampliación futura de sus
-referencias. Declarado `BORRADOR — NO CONGELADO`. No transcribe
-contenido científico de `CLAUDEBOT`: usa exclusivamente punteros y
-funciones normativas breves. Esta corrección no abrió ninguna ruta
-adicional de `CLAUDEBOT`: la identificación literal de Fable Judgment
-v1 es terminológica, no requiere consultar ningún blob nuevo de
-`CLAUDEBOT`.
+referencias. **La §6 ("Rutas y artefactos propios del proyecto"), cuyo
+texto se corrigió íntegramente en esta corrección (Revisión 13)**,
+declara las convenciones genéricas de ubicación institucional dentro de
+`CLAUDEBOT-CONTROL` para cualquier tarea que coordine a `CLAUDEBOT`:
+`tasks/<ID>/MANDATE.md` para el mandato, `tasks/<ID>/ACCEPTANCE.md`
+para sus criterios verificables cuando correspondan, y `reports/<ID>/`
+para los informes de implementación y auditoría, exigiendo que cada
+mandato identifique las rutas literales concretas que puede crear o
+modificar. Declara expresamente que los documentos congelados o
+rectores propios de `CLAUDEBOT` **permanecen en su repositorio de
+origen y en sus rutas nativas** —este perfil no los mueve, copia ni
+presume congelados o rectores— y que un documento de `CLAUDEBOT` solo
+cumple función normativa para una tarea de este marco cuando aparece en
+la tabla de §2 con repositorio, SHA completo, ruta literal y función
+normativa. Aclara que las convenciones genéricas `tasks/<ID>/...` y
+`reports/<ID>/...` son declaraciones de ubicación institucional, no
+referencias normativas documentales adicionales a `CLAUDEBOT`. Declarado
+`BORRADOR — NO CONGELADO`. No transcribe contenido científico de
+`CLAUDEBOT`: usa exclusivamente punteros y funciones normativas breves.
+Esta corrección no abrió ninguna ruta adicional de `CLAUDEBOT`: la §6
+corregida solo declara convenciones genéricas de `CLAUDEBOT-CONTROL`,
+sin consultar ningún blob nuevo de `CLAUDEBOT`.
 
 ### 7.5 `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`
 
@@ -535,13 +575,13 @@ durante esta operación.
 | A-01 | El árbol de trabajo, comparado contra el commit base `00649d65760255f1e186f82a997de915afa41b73`, contiene exclusivamente los cinco archivos de §6 como cambios (uno modificado, cuatro creados). Ningún otro archivo cambia. |
 | A-02 | `AGENTS.md` conserva íntegras §1-§7 (autoridad, veredictos, aislamiento, bloqueo crítico, estructura de mandatos, estructura de informes, ramas/merges, alcance sobre `CLAUDEBOT`) y añade §8 como índice hacia los tres documentos canónicos, sin duplicar su contenido normativo detallado. |
 | A-03 | `grep -in -e dataset -e discovery -e OOS -e trading -e quintil -e BTCUSDT governance/core/INSTITUTIONAL_CORE.md` no produjo coincidencias (código de salida 1). |
-| A-04 | `governance/core/INSTITUTIONAL_CORE.md` contiene secciones explícitas de autoridad (§2), precedencia (§4), permisos (§5), alcance (§6), veredictos/estados (§12-§13) y conflictos (§14). |
+| A-04 | `governance/core/INSTITUTIONAL_CORE.md` contiene secciones explícitas de autoridad (§2), precedencia (§4, con la jerarquía completa de siete niveles, la regla de superación explícita, la aclaración de Capa C y, agregada en esta corrección, la aclaración de que informes, estados documentales y evidencia Git no constituyen un nivel normativo autónomo), permisos (§5), alcance (§6), veredictos/estados (§12-§13, con la §12.1 de estados de tarea que ahora contiene tanto la taxonomía de siete etapas y dos estados transversales como sus once transiciones normativas exactas y las condiciones completas de integración, cierre y reapertura, agregadas en esta corrección) y conflictos (§14). |
 | A-05 | Lectura manual completa de `governance/core/INSTITUTIONAL_CORE.md`: ningún vocabulario de dominio científico se presenta como regla universal. |
-| A-06 | Comparación manual de `governance/projects/CLAUDEBOT_PROFILE.md` §3 contra `governance/core/INSTITUTIONAL_CORE.md`: el perfil solo añade restricciones; ninguna cláusula relaja una regla de Capa A. |
+| A-06 | Comparación manual de `governance/projects/CLAUDEBOT_PROFILE.md` §3 y §6 (esta última, con su texto corregido en esta corrección para declarar únicamente convenciones genéricas `tasks/<ID>/...` y `reports/<ID>/...`, sin presumir congelados los documentos de §2 ni introducir una quinta referencia normativa) contra `governance/core/INSTITUTIONAL_CORE.md`: el perfil solo añade restricciones y declara convenciones de ubicación; ninguna cláusula relaja una regla de Capa A. |
 | A-07 | Control real sobre los cinco artefactos, incluido este propio informe, ejecutado y clasificado en §12.1 después de finalizar textualmente los cinco archivos. Es el autocontrol provisional del working tree de Sonnet, no anclado a commit; Codex deberá repetirlo anclado al futuro commit exacto de implementación. |
 | A-08 | `governance/projects/CLAUDEBOT_PROFILE.md` §2 reduce las cuatro funciones normativas a una frase breve por documento, sin trasladar resultados científicos, valores ni parámetros, presupuesto ni conteo de hipótesis, reglas de muerte, resultados de discovery/OOS, descripción de campañas sucesoras ni conclusiones científicas (ver texto exacto en §7.4 de este informe); usa exclusivamente punteros (SHA, ruta) y funciones normativas descriptivas. |
 | A-09 | `grep -in -e 'F-1A' -e F10 -e F11 -e T2 governance/projects/CLAUDEBOT_PROFILE.md` coincide con el nombre de archivo `docs/borrador_arquitectura_documental_t2.md` (referencia documental existente) y con la prohibición literal añadida en §3.2 del perfil ("Durante esta Fase 1 queda prohibido abrir, continuar, ejecutar, acelerar o autorizar F-1A, F10, F11 o T2"); ambas coincidencias son descriptivas del estado existente o prohibitivas, y ninguna abre, continúa ni autoriza una fase. |
-| A-10 | `governance/core/ADAPTER_REVIEW_POLICY.md` define el esquema de **dieciocho campos comunes** (§3.1), con dos estructuras de referencia distintas —puntero durable completo entre entradas (campos 8, 9, 10, 19, 20) y referencia durable de autorización de escritura (campo 18, sin exigir identificador de adaptador ni de entrada)—; la diferenciación entre campo 8 (causal, dentro del ciclo) y campo 9 (cabeza global real, puede diferir por `SUPERSESIÓN`); la **definición de entrada válida** (§3.2, ocho requisitos, sin el requisito eliminado de "no contradecir una entrada posterior"); la **cabeza global única determinista** (§3.3: exactamente una cabeza, cero cabezas o más de una cabeza, sin resolver por orden visual ni fechas); el registrador que nunca emite el veredicto formal `BLOQUEAR`, sino que reporta una condición operacional de bloqueo (§3.2, §4.2, §4.3, §5); la separación auditor/informe/registro y Miguel/decisión/registro, sin que Miguel escriba nunca directamente en el registro, ni siquiera para un rechazo (§4.3, §5, §6.2); `SUPERSESIÓN` completa con ciclo administrativo propio (§4.5, §9-C); el vencimiento automático de 90 días (§6, §7, §9-A, §9-B); la secuencia de commits con inserciones por corrección (§10); y la definición completa de `VIGENTE` (§6). |
+| A-10 | `governance/core/ADAPTER_REVIEW_POLICY.md` define el esquema de **dieciocho campos comunes** (§3.1), con dos estructuras de referencia distintas —puntero durable completo entre entradas (campos 8, 9, 10, 19, 20) y referencia durable de autorización de escritura (campo 18, sin exigir identificador de adaptador ni de entrada)—; la diferenciación entre campo 8 (causal, dentro del ciclo) y campo 9 (cabeza global real, puede diferir por `SUPERSESIÓN`); la **definición de entrada válida** (§3.2, ocho requisitos, sin el requisito eliminado de "no contradecir una entrada posterior"); la **cabeza global única determinista** (§3.3: exactamente una cabeza, cero cabezas o más de una cabeza, sin resolver por orden visual ni fechas); el registrador que nunca emite el veredicto formal `BLOQUEAR`, sino que reporta una condición operacional de bloqueo (§3.2, §4.2, §4.3, §5); la separación auditor/informe/registro y Miguel/decisión/registro, sin que Miguel escriba nunca directamente en el registro, ni siquiera para un rechazo (§4.3, §5, §6.2); `SUPERSESIÓN` completa con ciclo administrativo propio (§4.5, §9-C); el vencimiento automático de 90 días (§6, §7, §9-A, §9-B); la secuencia de commits con inserciones por corrección (§10); y la definición completa de `VIGENTE` (§6). El primer evento de §7 quedó corregido en esta revisión a su formulación exacta ("cambio mayor o relevante del modelo, incluida su versión o revisión identificada"), y la referencia de §6 a las comprobaciones técnicas de §4.3 quedó corregida de "cinco" a "seis", conforme a las seis condiciones numeradas que §4.3 exige efectivamente. |
 | A-11 | `governance/core/ADAPTER_REVIEW_POLICY.md` §6 define los tres estados institucionales por el campo 11 de la **cabeza global única**, determinista, válida y no supersedida (§3.2, §3.3), cualquiera sea su tipo; §6.1 fija el origen exacto de cada uno, distinguiendo expresamente que una `PROPUESTA`/`AUDITORÍA` de revalidación permanece `REVISIÓN REQUERIDA` y no origina `HIPÓTESIS NO VALIDADA` (corregido: ya no se afirma que "cualquier `PROPUESTA`" la origina); §6.2 corrige el flujo de rechazo para que Miguel decida y registre durablemente primero, y el registrador transcriba después, sin excepción, en ambos casos del Caso A; §3.2 aclara que una entrada inválida no determina estado (condición operacional de bloqueo, no veredicto); §8 distingue expresamente reportar una hipótesis (cualquier agente) de registrarla como `PROPUESTA` (solo el proponente autorizado). |
 | A-12 | `governance/core/ADAPTER_REVIEW_POLICY.md` §8: ninguna entrada `HIPÓTESIS NO VALIDADA` concede permiso ni autonomía por sí sola, y reportar una hipótesis nunca concede permiso de escritura; §6.1/§6: ninguna entrada de `DECISIÓN` puede producir `VIGENTE` sobre `RECHAZAR`/`BLOQUEAR` o hallazgos críticos, con independencia de la voluntad de Miguel; §4.2/§4.3/§5: si el informe o la decisión durable carecen de los datos exigidos o presentan discordancias, el registrador se detiene, no completa ni infiere, y reporta una condición operacional de bloqueo — nunca emite el veredicto `BLOQUEAR`, exclusivo del auditor (§12); §3.3: una bifurcación de cabeza global impide invocar `VIGENTE` y exige tratamiento fail-closed, cerrando la posibilidad de que un fork no resuelto habilite autonomía; §5: el registrador no dictamina veredictos, no decide activaciones y no puede autoautorizarse ni autodesignarse. |
 | A-13 | El estado completo del árbol (§11: `git status --short --untracked-files=all`) muestra exclusivamente las cinco rutas autorizadas, no ausencia de salida. El control limitado a `judgment/`, `adapters/` y `tests/` sí queda sin salida: `git status --short --untracked-files=all -- judgment adapters tests` (§11) y `git diff --name-only 00649d65760255f1e186f82a997de915afa41b73 -- judgment adapters tests` (§8), ambos sin salida; este segundo comando, por sí solo, no cubre archivos untracked, por lo que se complementa con el primero. Este control cubre el working tree de Sonnet; Codex deberá repetir la comprobación anclada al futuro commit exacto de implementación. |
@@ -725,18 +765,76 @@ sin rediseñar la arquitectura del registro, sin agregar campos, roles
 o tipos de entrada nuevos, y sin declarar que la Revisión 10 hubiera
 resuelto los defectos de revisiones anteriores a ella.
 
+**Auditoría independiente de Codex sobre el commit de implementación
+`309c6b23317da8b1906d4ebcdb6a8507079e2151`: veredicto `RECHAZAR`.**
+Codex auditó de forma independiente ese commit —el que contiene la
+Revisión 11 de los cinco artefactos, ya versionado— y versionó su
+informe en el commit
+`786db86cf04b855de6c8f46bba151873e212c9f5`
+(`reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md`). El veredicto de esa
+auditoría es `RECHAZAR`, con la matriz de aceptación marcando `A-04` y
+`A-10` como `NO CONFORME` y las dieciséis restantes como `CONFORME`, sin
+ningún hallazgo de severidad crítica. Los hallazgos exigidos como
+corrección son:
+
+- **H-01 (mayor):** el perfil de Capa B omitía declarar dónde viven los
+  mandatos, informes y documentos congelados del proyecto
+  (`governance/projects/CLAUDEBOT_PROFILE.md`, contraste con
+  `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` §2 y
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md` §5.2).
+- **H-02 (mayor):** la precedencia de Capa A declaraba al núcleo como
+  "norma de mayor precedencia" y solo ordenaba Capa A frente a Capa B,
+  sin la jerarquía completa de siete niveles
+  (`governance/core/INSTITUTIONAL_CORE.md` §4, contraste con
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md` §4.2).
+- **H-03 (mayor):** el núcleo institucional no definía estados de tarea
+  ni sus transiciones (`governance/core/INSTITUTIONAL_CORE.md`,
+  contraste con `docs/plan_arquitectura_gobernanza_multi_ia_v1.md` §9 y
+  `tasks/AI-GOV-F1-CANONICAL/MANDATE.md`).
+- **H-04 (mayor):** el primer disparador de revisión sustituía "cambio
+  mayor o relevante del modelo" por "cualquier cambio" de modelo,
+  versión o revisión, sin evaluación de materialidad
+  (`governance/core/ADAPTER_REVIEW_POLICY.md` §7, contraste con
+  `tasks/AI-GOV-F1-CANONICAL/MANDATE.md` y
+  `docs/plan_arquitectura_gobernanza_multi_ia_v1.md` §7 del mecanismo de
+  adaptadores).
+- **H-05 (menor):** la política enumeraba seis comprobaciones técnicas
+  para permitir `VIGENTE` en §4.3, pero §6 las llamaba "las cinco
+  comprobaciones técnicas" (`governance/core/ADAPTER_REVIEW_POLICY.md`
+  §4.3 y §6, y este mismo informe).
+
+Esta corrección localizada (Revisión 13) aplica exclusivamente las
+cinco correcciones anteriores, sin rediseñar la arquitectura de ninguno
+de los cuatro artefactos que autoriza modificar la instrucción
+operacional correspondiente, y sin tocar `AGENTS.md`. **No se afirma
+que Codex haya emitido `APROBAR` sobre esta corrección ni sobre ningún
+commit derivado de ella; los cinco hallazgos anteriores no quedan
+declarados institucionalmente cerrados por este informe: su resolución
+efectiva solo puede acreditarla una nueva auditoría independiente sobre
+el commit corrector que contenga esta Revisión 13, una vez que Miguel
+lo autorice y se versione.**
+
 ## 15. Estado y próximos pasos
 
 Los tres documentos canónicos permanecen `BORRADOR — NO CONGELADO`.
 Este informe no declara, ni puede declarar, `APROBAR` sobre esta
-implementación: **la auditoría independiente de Codex sobre el commit
-de implementación que contenga estos cinco archivos sigue pendiente.**
-Los criterios A-18, A-19 y A-21 no forman parte de esta operación:
-A-18 y A-19 se evalúan sobre el commit propio del informe de auditoría
-una vez que Codex lo versione, y A-21 es el criterio de cierre de la
-Fase 1, evaluado en una operación posterior y separada. Ninguna
-integración, push, congelación o cierre puede realizarse sin una nueva
-decisión expresa y durable de Miguel, posterior a esa auditoría.
+corrección, ni sobre el commit de implementación previamente auditado
+y rechazado (`309c6b23317da8b1906d4ebcdb6a8507079e2151`), ni sobre el
+futuro commit corrector que la contenga. La auditoría de Codex sobre
+ese commit previo ya existe, con veredicto `RECHAZAR`
+(`786db86cf04b855de6c8f46bba151873e212c9f5`); esta corrección (Revisión
+13) intenta resolver únicamente los hallazgos H-01 a H-05 de esa
+auditoría, y **su resolución efectiva no queda declarada ni cerrada
+institucionalmente por este informe: solo una nueva auditoría
+independiente sobre el futuro commit corrector, con veredicto vigente,
+puede acreditarla.** Esa nueva auditoría independiente sigue
+pendiente. Los criterios A-18, A-19 y A-21 no forman parte de esta
+operación: A-18 y A-19 se evalúan sobre el commit propio del futuro
+informe de auditoría una vez que Codex lo versione, y A-21 es el
+criterio de cierre de la Fase 1, evaluado en una operación posterior y
+separada. Ninguna integración, push, congelación o cierre puede
+realizarse sin una nueva decisión expresa y durable de Miguel,
+posterior a esa nueva auditoría.
 
 ## 16. Procedimiento reproducible de generación del diff sin staging
 
@@ -784,89 +882,107 @@ decisión expresa y durable de Miguel, posterior a esa auditoría.
   fue RECHAZADA PARA COMMIT** (§14) por siete defectos documentales
   precommit, todos corregidos en la presente corrección localizada.
 
-Ninguno de esos nueve archivos es el producido por esta corrección de
-separación funcional y consistencia (Revisión 11). Se mencionan aquí
+- **Revisión 11** corrigió localizadamente los siete defectos que
+  rechazaron la Revisión 10 (§14), produjo
+  `diff_implementacion_documental_f1_revision11.txt`, y fue la revisión
+  efectivamente versionada en el commit
+  `309c6b23317da8b1906d4ebcdb6a8507079e2151` ("docs: implementa
+  gobernanza multi-IA fase 1"). Ese commit fue auditado de forma
+  independiente por Codex
+  (`786db86cf04b855de6c8f46bba151873e212c9f5`), con veredicto
+  `RECHAZAR` y los hallazgos H-01 a H-05 (§14).
+- **Revisión 12** fue el primer intento de corrección de los hallazgos
+  H-01 a H-05 sobre el commit rechazado
+  `309c6b23317da8b1906d4ebcdb6a8507079e2151`, y produjo
+  `diff_implementacion_documental_f1_revision12.txt`. **Fue rechazada
+  antes del commit**, únicamente por tres correcciones documentales
+  localizadas y una corrección del informe: H-01 y H-03 quedaron
+  incompletos, H-02 quedó parcialmente implementado, y el informe
+  contenía un conteo incorrecto de criterios conformes en la matriz de
+  aceptación de la auditoría de Codex (§14). Se menciona aquí
+  únicamente como historial.
+- **Revisión 13** es la corrección localizada actual, que completa los
+  pendientes de la Revisión 12 —rutas y artefactos propios del proyecto
+  (H-01), precedencia completa (H-02) y estados y transiciones de tarea
+  (H-03)— y conserva sin cambios, byte a byte, la corrección de H-04 y
+  H-05 ya aplicada en `governance/core/ADAPTER_REVIEW_POLICY.md` desde
+  la Revisión 12, además de corregir el conteo de criterios conformes
+  en este informe (§14). Al igual que la Revisión 12, no se genera
+  contra un árbol de trabajo sin commit previo del mismo contenido: se
+  genera mediante `git diff` contra el commit exacto ya versionado y
+  rechazado, conforme a §16.2.
+
+Ninguno de esos once archivos anteriores (revisiones 2 a 12) es el
+producido por esta corrección actual (Revisión 13). Se mencionan aquí
 únicamente como historial.
 
-### 16.2 Procedimiento actual
+### 16.2 Procedimiento actual (Revisión 13)
 
-`git diff` no incluye por sí solo el contenido de archivos no
-rastreados por Git. Un único `git diff --binary -- <cinco rutas>` no
-puede, por tanto, incluir el contenido de los cuatro archivos nuevos
-(`governance/core/INSTITUTIONAL_CORE.md`,
+A diferencia de las revisiones 2 a 11, los cuatro artefactos de esta
+corrección (`governance/core/INSTITUTIONAL_CORE.md`,
 `governance/core/ADAPTER_REVIEW_POLICY.md`,
-`governance/projects/CLAUDEBOT_PROFILE.md` y este propio informe):
-mientras no estén indexados, ese comando solo produce el diff del
-único archivo ya rastreado (`AGENTS.md`).
-
-`git diff` sin la opción `--exit-code` siempre termina con código `0`
-cuando la operación se ejecuta correctamente, exista o no diferencia;
-el código `1` solo aparece si se invoca explícitamente
-`git diff --exit-code` (o `--no-index`, que lo aplica implícitamente) y
-existen diferencias. Sin `--exit-code`, un código `0` no permite
-distinguir "sin diferencias" de "con diferencias"; solo indica ausencia
-de error en la propia ejecución de `git diff`.
-
-Para producir un diff completo y reproducible de los cinco artefactos
-sin ejecutar `git add` ni alterar el índice, y para poder verificar por
-código de salida que el archivo ya rastreado sí presenta diferencias,
-se usa exactamente:
+`governance/projects/CLAUDEBOT_PROFILE.md` y este propio informe) ya
+existen, sin excepción, en el commit rechazado
+`309c6b23317da8b1906d4ebcdb6a8507079e2151`: ninguno de los cuatro es un
+archivo nuevo en esta corrección, por lo que no aplica el patrón
+`git diff --no-index -- /dev/null <archivo>` usado en las revisiones
+anteriores para archivos todavía no rastreados. En su lugar, el diff se
+genera comparando el árbol de trabajo actual directamente contra ese
+commit exacto, ya versionado:
 
 ```text
-out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision11.txt"
-
-: > "$out"
-
-git diff --exit-code --binary -- AGENTS.md >> "$out"
-codigo_agents=$?
-
-if [ "$codigo_agents" -ne 1 ]; then
-  echo "BLOQUEAR: código inesperado para AGENTS.md: $codigo_agents"
-  exit 1
-fi
-
-for archivo in \
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision13.txt"
+git diff --exit-code --binary \
+  309c6b23317da8b1906d4ebcdb6a8507079e2151 \
+  -- \
   governance/core/INSTITUTIONAL_CORE.md \
   governance/core/ADAPTER_REVIEW_POLICY.md \
   governance/projects/CLAUDEBOT_PROFILE.md \
-  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md
-do
-  git diff --no-index --binary -- /dev/null "$archivo" >> "$out"
-  codigo_diff=$?
-
-  if [ "$codigo_diff" -ne 1 ]; then
-    echo "BLOQUEAR: código inesperado al generar diff de $archivo: $codigo_diff"
-    exit 1
-  fi
-done
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
 ```
 
-`git diff --exit-code -- AGENTS.md` compara el archivo ya rastreado
-contra el índice/HEAD y, con `--exit-code`, termina en `1` porque
-existen diferencias (la adición de §8) y en `0` si no existiera
-ninguna; aquí el resultado esperado y verificado es `1`. `git diff
---no-index -- /dev/null <archivo>` compara un archivo inexistente
-contra el archivo real del working tree sin consultar el índice ni el
-repositorio, y aplica `--exit-code` de forma implícita: el código de
-salida `1` es el resultado esperado y documentado cuando existen
-diferencias (aquí, el archivo completo como adición) — no constituye
-un fallo. Ningún comando de este procedimiento ejecuta `git add` ni
-modifica el índice.
+`git diff --exit-code <commit> -- <rutas>` compara el árbol de trabajo
+actual contra el commit exacto indicado, sin tocar el índice y sin
+ejecutar `git add`; con `--exit-code`, termina en `1` porque existen
+diferencias (las cinco correcciones H-01 a H-05) y terminaría en `0`
+si no existiera ninguna. El código obligatorio y esperado aquí es `1`.
+Este comando no requiere el patrón `/dev/null` de las revisiones
+anteriores porque ninguno de los cuatro archivos es nuevo respecto del
+commit citado.
 
 ### 16.3 Limitación temporal y archivo actual
 
-Existe una limitación temporal ineludible: el diff definitivo solo
-puede generarse contra el contenido textualmente final de los cinco
-artefactos, y este informe es uno de esos cinco artefactos. Por eso
-este informe registra, en §16.2, el procedimiento exacto, la ruta de
-salida y los códigos de salida esperados (`1` en los cinco casos) —no
-puede registrar, dentro de sí mismo, los códigos reales que resulten
-de ejecutar ese procedimiento sobre su propio contenido ya cerrado,
-porque generarlos exige que el informe deje de editarse primero. Los
-códigos reales de la generación definitiva se informan en la entrega
-de Sonnet al final de esta corrección, fuera del texto de este informe.
+Existe la misma limitación temporal que en las revisiones anteriores:
+el diff definitivo solo puede generarse contra el contenido
+textualmente final de los cuatro artefactos autorizados, y este informe
+es uno de ellos. Por eso este informe registra, en §16.2, el
+procedimiento exacto, la ruta de salida y el código de salida esperado
+(`1`) —no puede registrar, dentro de sí mismo, el código real que
+resulte de ejecutar ese procedimiento sobre su propio contenido ya
+cerrado, porque generarlo exige que el informe deje de editarse
+primero. El código real de la generación definitiva se informa en la
+entrega de Sonnet al final de esta corrección, fuera del texto de este
+informe.
 
-Ruta actual registrada para esta corrección:
-`diff_implementacion_documental_f1_revision11.txt`, en
-`$(xdg-user-dir DOWNLOAD)`. Después de generar ese diff definitivo, no
-se vuelve a editar ningún artefacto de esta implementación.
+Ruta registrada para el diff de la Revisión 13:
+`diff_implementacion_documental_f1_revision13.txt`, en
+`$(xdg-user-dir DOWNLOAD)`.
+
+**Nota sobre la entrega definitiva de esta operación.** Esta misma
+corrección localizada, después de generado ese diff de la Revisión 13,
+recibió dos ajustes adicionales estrictamente localizados: una regla
+de evidencia durable para reanudar `BLOQUEADA` o `DETENIDA POR
+INCIDENTE` en `governance/core/INSTITUTIONAL_CORE.md` §12.1, y la
+corrección de las referencias de este propio informe que identificaban
+incorrectamente como "Revisión 12" contenido que en realidad
+corresponde a la Revisión 13 (§16.1). Por ello, el diff que acredita el
+contenido textualmente final y completo de esta operación no es el de
+la Revisión 13, sino el de la **Revisión 14**, generado con el mismo
+procedimiento de §16.2 contra el mismo commit exacto
+(`309c6b23317da8b1906d4ebcdb6a8507079e2151`), en
+`diff_implementacion_documental_f1_revision14.txt`, dentro de
+`$(xdg-user-dir DOWNLOAD)`. Después de generar ese diff definitivo de
+la Revisión 14, no se vuelve a editar ningún artefacto de esta
+operación.

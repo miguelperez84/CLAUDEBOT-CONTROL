@@ -527,7 +527,7 @@ su tipo.
   durable de Miguel** que autoriza exactamente `ACTIVAR` o
   `REACTIVAR` esa misma propuesta exacta; y la entrada de `DECISIÓN`
   fue agregada posteriormente por un registrador autorizado y
-  transcribe, sin discordancia, esa decisión (§4.3). **Las cinco
+  transcribe, sin discordancia, esa decisión (§4.3). **Las seis
   comprobaciones técnicas de §4.3 no sustituyen la decisión durable de
   Miguel**: ambas son necesarias conjuntamente.
 - **`REVISIÓN REQUERIDA`** — el campo 11 de la cabeza global única
@@ -635,9 +635,8 @@ caso admite dos alternativas distintas, a elección de Miguel:
 Un adaptador `VIGENTE` exige nueva revisión ante el primero que ocurra
 de los siguientes cinco eventos:
 
-1. cualquier cambio de modelo, o cualquier cambio de la versión o
-   revisión identificada del modelo al que el adaptador aplica, sin
-   evaluación previa de materialidad;
+1. cambio mayor o relevante del modelo, incluida su versión o revisión
+   identificada, al que el adaptador aplica;
 2. un incidente de gobernanza asociado a ese modelo o a ese adaptador;
 3. una desviación conductual comprobada del modelo respecto de lo
    declarado por el adaptador;

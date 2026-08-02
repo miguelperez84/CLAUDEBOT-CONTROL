@@ -61,16 +61,56 @@ construye sobre este documento sin poder relajarlo.
 
 ## 4. Precedencia normativa
 
-- Este documento (Capa A) es la norma de mayor precedencia dentro de
-  este marco de gobernanza.
-- Un perfil específico de proyecto (Capa B) puede añadir restricciones
-  adicionales, pero nunca puede relajar, contradecir ni suspender una
-  regla de Capa A.
+Ante conflicto, la precedencia se resuelve en este orden estricto, de
+mayor a menor:
+
+1. **Autorización operacional actual del propietario** — concreta,
+   vigente, para la acción exacta en curso; no una autorización pasada
+   ni una de alcance distinto.
+2. **Decisiones institucionales duraderas** ya registradas conforme a
+   §8 (trazabilidad e historia inmutable).
+3. **Este documento (Capa A): núcleo institucional universal.**
+4. **Gobernanza específica de proyecto (Capa B)** — puede añadir
+   restricciones sobre la Capa A; nunca puede relajarlas, contradecirlas
+   ni suspenderlas.
+5. **Mandato vigente de la tarea en curso.**
+6. **Adaptador del modelo actuante (Capa D)** — matiza cómo se aplican
+   los niveles anteriores según las características conocidas de ese
+   modelo; nunca amplía un permiso que un nivel superior no conceda.
+7. **Instrucción conversacional** que no constituya una autorización
+   operacional actual y explícita del propietario conforme al punto 1.
+   Si contradice los niveles 1-6, el agente señala el conflicto y
+   propone la vía legítima (mandato nuevo o decisión del propietario);
+   no ejecuta primero.
+
+- Un nivel inferior de esta lista **nunca relaja, contradice ni
+  suspende** una regla de un nivel superior; solo puede añadir
+  precisión o restricción adicional dentro de lo que el nivel superior
+  ya permite.
 - Ante conflicto aparente entre Capa A y Capa B, prevalece la lectura
   que resulte más restrictiva para el agente.
 - Ante conflicto aparente entre dos reglas del mismo nivel, el agente
   no elige por conveniencia: reporta el conflicto y se detiene hasta
   obtener una decisión expresa del propietario.
+- Una instrucción o autorización nueva del propietario que contradiga
+  una decisión institucional duradera, una regla de este documento, un
+  perfil de proyecto, un mandato o un adaptador vigente (niveles 2 a 6)
+  solo los supersede cuando declare explícitamente, a la vez: la
+  **excepción** que introduce; la **regla o documento concreto que
+  reemplaza**; el **alcance** de ese reemplazo; y la **duración**,
+  cuando el reemplazo sea temporal. Si la instrucción no declara estos
+  cuatro elementos, el agente detiene la acción y solicita aclaración:
+  no infiere la superación por implicación ni por presión conversacional.
+- Una gobernanza de legado o de dominio específico de un proyecto
+  (Capa C) no ocupa ningún nivel de esta lista y no tiene precedencia
+  institucional global sobre este marco: es vinculante únicamente
+  dentro de tareas que declaren explícitamente el repositorio de origen
+  correspondiente como objetivo, y solo bajo las reglas propias de ese
+  repositorio.
+- Los informes de implementación, los informes de auditoría, los
+  estados documentales y la evidencia Git acreditan hechos,
+  cumplimiento o incumplimiento, pero no constituyen por sí mismos un
+  nivel normativo autónomo ni pueden ampliar permisos.
 
 ## 5. Listas cerradas de permisos
 
@@ -161,6 +201,75 @@ BLOQUEAR
 No existen estados intermedios. Un auditor no emite "aprobado con
 reservas", "apto con correcciones" ni ninguna variante que combine
 elementos de los tres veredictos anteriores.
+
+### 12.1 Estados de tarea
+
+Toda tarea gobernada por este marco transita, como máximo, por estas
+siete etapas ordinarias:
+
+```text
+INTAKE → PLANIFICADA → AUTORIZADA → EN IMPLEMENTACIÓN →
+EN AUDITORÍA → INTEGRADA → CERRADA
+```
+
+Las transiciones normativas exactas entre estas etapas son:
+
+1. Registro inicial de una necesidad: `inicio → INTAKE`.
+2. Mandato redactado todavía sin autorización: `INTAKE → PLANIFICADA`.
+3. Autorización expresa del propietario sobre el mandato:
+   `PLANIFICADA → AUTORIZADA`.
+4. Inicio efectivo de trabajo dentro del mandato:
+   `AUTORIZADA → EN IMPLEMENTACIÓN`.
+5. Entrega versionada y sometida a revisión independiente:
+   `EN IMPLEMENTACIÓN → EN AUDITORÍA`.
+6. Integración: `EN AUDITORÍA → INTEGRADA`, únicamente cuando concurran
+   todos estos elementos: informe de auditoría versionado; commit
+   exacto auditado; veredicto vigente `APROBAR`; ausencia de hallazgos
+   bloqueantes abiertos; y autorización expresa del propietario para el
+   merge.
+7. Cierre normal: `INTEGRADA → CERRADA`, exclusivamente por decisión
+   durable del propietario.
+8. Cierre sin integración: `EN AUDITORÍA → CERRADA`, únicamente cuando
+   el propietario decida durablemente cerrar sin integrar y el
+   artefacto no sea fusionado.
+9. Ante `RECHAZAR`: `EN AUDITORÍA → EN IMPLEMENTACIÓN`, únicamente si el
+   propietario autoriza expresamente la corrección o reapertura.
+10. Ante `BLOQUEAR`, falta de autorización o falta de evidencia
+    indispensable: `cualquier estado → BLOQUEADA`.
+11. Ante anomalía irregular, lock, residuo o contradicción documental:
+    `cualquier estado → DETENIDA POR INCIDENTE`.
+
+Además existen dos estados transversales, alcanzables desde cualquier
+etapa ordinaria:
+
+- **`BLOQUEADA`** — ante la falta de una autorización o de una
+  evidencia indispensable para continuar, o ante un veredicto
+  `BLOQUEAR` (§12).
+- **`DETENIDA POR INCIDENTE`** — ante una anomalía irregular (por
+  ejemplo, un bloqueo técnico, un residuo o una contradicción
+  documental) que no se resuelve por iniciativa de un agente.
+
+Reglas comunes a ambos estados transversales:
+
+- Ninguno de los dos se levanta por iniciativa de un agente: la
+  autoridad para reanudar es exclusivamente del propietario (§2, §2.1).
+- Para salir de `BLOQUEADA` o `DETENIDA POR INCIDENTE` debe existir
+  evidencia durable, versionada y citable de que la causa concreta del
+  bloqueo o incidente fue resuelta.
+- El estado de retorno al salir de un estado transversal es el
+  **último estado ordinario válido anterior**, determinado mediante el
+  historial de commits y los artefactos versionados (mandatos,
+  informes, auditorías, decisiones); un documento descriptivo de
+  estado no es, por sí solo, la fuente que determina ese retorno, y si
+  lo contradice, prevalece el historial versionado.
+- Si el bloqueo se originó en un veredicto `BLOQUEAR` (§12), el
+  reingreso exige una nueva auditoría independiente sobre el commit
+  corrector correspondiente.
+
+Estas siete etapas y estos dos estados transversales son estados de la
+**tarea** como unidad de trabajo; no deben confundirse con los estados
+institucionales de un adaptador de modelo (Capa D), que se rigen por su
+propio mecanismo documental.
 
 ## 13. Regla del hallazgo crítico
 
