@@ -873,31 +873,52 @@ categoría "VERIFICADA MEDIANTE DIFF, NO ABIERTA PARA EDICIÓN": describía
 el control de `AGENTS.md` como una comparación "entre dos commits",
 cuando en realidad `git diff <commit> -- AGENTS.md` compara ese commit
 contra el estado del archivo en el working tree, no contra otro commit.
-**La presente corrección (Revisión 18) corrige exclusivamente esa
-frase, precisando además que la ausencia de modificación de `AGENTS.md`
-en `ceac841…` queda acreditada conjuntamente por ese control y por
-`git diff-tree --no-commit-id --name-status -r HEAD`, sin reabrir el
-contenido normativo de H-03 ni de N-01 ya corregido en `AGENTS.md` y
+**La Revisión 18 corrigió exclusivamente esa frase**, precisando además
+que la ausencia de modificación de `AGENTS.md` en `ceac841…` queda
+acreditada conjuntamente por ese control y por `git diff-tree
+--no-commit-id --name-status -r HEAD`, sin reabrir el contenido
+normativo de H-03 ni de N-01 ya corregido en `AGENTS.md` y
 `governance/core/INSTITUTIONAL_CORE.md`, y sin modificar nuevamente la
-historia sustantiva de las revisiones 12 a 16.** No se afirma que la
-presente corrección resuelva institucionalmente esos hallazgos: su
-cierre exige una nueva auditoría independiente sobre el futuro commit
-corrector que la contenga, una vez
-que Miguel lo
-autorice y se versione.
+historia sustantiva de las revisiones 12 a 16, y quedó efectivamente
+versionada como segundo commit corrector en
+`d5b7101feaa46f92d33284f745376dbd7cecde0d`.
+
+**Reauditoría independiente de Codex (R3) sobre el commit
+`d5b7101feaa46f92d33284f745376dbd7cecde0d`: veredicto `RECHAZAR`.**
+Versionada en el commit de reauditoría
+`c144b6e434a35fb3744bf3f6122458cd6d3efc2b`
+(`reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md`). H-03, N-01, N-02 y N-03
+quedaron **RESUELTO**; `A-01` a `A-17` y `A-20` quedaron todos
+**CONFORME**; `A-18` y `A-19`, **CONFORME**; `A-21`, no evaluado; cero
+hallazgos críticos y cero mayores. Hallazgo nuevo: **N-04 (menor)** —
+§15 de este informe denominaba conjuntamente a `309c6b2…` y `ceac841…`
+con una expresión que los presentaba a ambos, por igual, como
+commits "correctores" ya existentes, una denominación imprecisa:
+`309c6b2…` es el commit inicial de implementación y `ceac841…` es el
+primer commit corrector, distinción ya usada en el resto de §1, §14 y
+§15.
+
+**La presente corrección (Revisión 19) corrige exclusivamente N-04**,
+sustituyendo esa denominación imprecisa en §15 por la formulación
+técnicamente exacta, sin modificar ningún otro concepto normativo y sin
+reabrir H-03, N-01, N-02 o N-03. No se afirma que la presente
+corrección resuelva institucionalmente N-04: su cierre exige una nueva
+auditoría independiente sobre el futuro commit que la contenga, una vez
+que Miguel lo autorice y se versione.
 
 ## 15. Estado y próximos pasos
 
 Los tres documentos canónicos permanecen `BORRADOR — NO CONGELADO`.
-Este informe no declara, ni puede declarar, `APROBAR` sobre ninguno de
-los dos commits correctores existentes
-(`309c6b23317da8b1906d4ebcdb6a8507079e2151`,
-`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`) ni sobre el futuro commit
-corrector que contenga la presente Revisión 18. El primer commit
-(`309c6b2…`) fue auditado con veredicto `RECHAZAR`
-(`786db86cf04b855de6c8f46bba151873e212c9f5`, hallazgos H-01 a H-05); el
-commit corrector que los abordó (`ceac841…`, Revisión 14) fue
-reauditado de forma independiente con veredicto `RECHAZAR`
+Este informe no declara, ni puede declarar, `APROBAR` sobre el commit
+inicial de implementación `309c6b23317da8b1906d4ebcdb6a8507079e2151` y
+el primer commit corrector `ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`,
+ni sobre el segundo commit corrector `d5b7101feaa46f92d33284f745376dbd7cecde0d`,
+ni sobre el futuro commit que contenga la presente Revisión 19. El
+commit inicial de implementación (`309c6b2…`) fue auditado con
+veredicto `RECHAZAR` (`786db86cf04b855de6c8f46bba151873e212c9f5`,
+hallazgos H-01 a H-05); el primer commit corrector que los abordó
+(`ceac841…`, Revisión 14) fue reauditado de forma independiente en la
+reauditoría R2, con veredicto `RECHAZAR`
 (`bcfb9af13bcea00078f7632e65c4bbe92f53d1a8`), con H-01, H-02, H-04 y
 H-05 resueltos, H-03 no resuelto, y los hallazgos nuevos N-01 (mayor),
 N-02 (mayor) y N-03 (menor). La Revisión 15 aplicó las correcciones
@@ -910,19 +931,40 @@ de huella sin evidencia acreditada, y una clasificación incorrecta de
 dos afirmaciones, pero fue a su vez rechazada para commit por una frase
 técnicamente incorrecta que describía el control de `AGENTS.md` como
 una comparación entre dos commits, cuando en realidad compara ese
-commit contra el working tree (§14); la presente corrección (Revisión
-18) corrige exclusivamente esa frase, y **su resolución efectiva no
-queda declarada ni
-cerrada institucionalmente por este informe: solo una nueva auditoría
-independiente sobre el futuro commit
-corrector, con veredicto vigente, puede acreditarla.** Esa nueva
-auditoría independiente sigue pendiente. Los criterios A-18 y A-19 ya
-fueron evaluados como `CONFORME` sobre el commit propio de la
-reauditoría R2 (`bcfb9af…`); `A-21` sigue sin evaluar, por ser el
-criterio de cierre de la Fase 1, evaluado en una operación posterior y
-separada. Ninguna integración, push, congelación o cierre puede
-realizarse sin una nueva decisión expresa y durable de Miguel,
-posterior a esa nueva auditoría.
+commit contra el working tree (§14); la Revisión 18 corrigió
+exclusivamente esa frase y quedó efectivamente versionada como segundo
+commit corrector en `d5b7101feaa46f92d33284f745376dbd7cecde0d` ("docs:
+corrige hallazgos reauditoria gobernanza fase 1").
+
+**Reauditoría independiente de Codex (R3) sobre el commit
+`d5b7101feaa46f92d33284f745376dbd7cecde0d`: veredicto `RECHAZAR`.**
+Codex reauditó de forma completa e independiente ese commit y versionó
+su informe en el commit de reauditoría
+`c144b6e434a35fb3744bf3f6122458cd6d3efc2b`
+(`reports/AI-GOV-F1-CANONICAL/AUDIT_CODEX.md`). Resultado por hallazgo
+de la ronda anterior: **H-03: RESUELTO**; **N-01: RESUELTO**; **N-02:
+RESUELTO**; **N-03: RESUELTO**. Matriz de aceptación: `A-01` a `A-17` y
+`A-20`, todos **CONFORME**; `A-18` **CONFORME**; `A-19` **CONFORME**;
+`A-21` no evaluado. Cero hallazgos críticos y cero mayores. Hallazgo
+nuevo: **N-04 (menor)** — §15 de este informe denominaba conjuntamente
+a `309c6b2…` y `ceac841…` como "los dos commits correctores
+existentes", cuando en realidad `309c6b2…` es el commit inicial de
+implementación y `ceac841…` es el primer commit corrector.
+
+**La presente corrección (Revisión 19) corrige exclusivamente N-04**,
+sustituyendo esa denominación imprecisa por la formulación técnicamente
+exacta usada en el primer párrafo de esta sección, sin modificar ningún
+otro concepto normativo ni reabrir H-03, N-01, N-02 o N-03. **No se
+afirma que N-04 quede institucionalmente cerrado por este informe: su
+cierre exige una nueva auditoría independiente sobre el futuro commit
+que contenga esta corrección, una vez que Miguel lo autorice y se
+versione.** Los criterios A-18 y A-19 ya fueron evaluados como
+`CONFORME`, tanto sobre el commit propio de la reauditoría R2
+(`bcfb9af…`) como sobre el de la reauditoría R3 (`c144b6e…`); `A-21`
+sigue sin evaluar, por ser el criterio de cierre de la Fase 1, evaluado
+en una operación posterior y separada. Ninguna integración, push,
+congelación o cierre puede realizarse sin una nueva decisión expresa y
+durable de Miguel, posterior a esa nueva auditoría.
 
 ## Operación correctora posterior al primer RECHAZAR
 
@@ -1317,16 +1359,25 @@ ciencia, datos o validación conductual.
   AGENTS.md` compara ese commit contra el working tree, no contra otro
   commit. Los cambios de la Revisión 17 en `AGENTS.md` y
   `governance/core/INSTITUTIONAL_CORE.md` (heredados sin alteración
-  desde la Revisión 15) se conservan, byte a byte, en la presente
-  corrección.
-- **Revisión 18** es la revisión definitiva que incorpora esta
-  corrección final del informe, exclusiva sobre
+  desde la Revisión 15) se conservan, byte a byte, en las revisiones
+  posteriores.
+- **Revisión 18** fue la revisión definitiva del informe corrector,
+  exclusiva sobre `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`,
+  produjo `diff_implementacion_documental_f1_revision18.txt`, y quedó
+  efectivamente versionada como segundo commit corrector en
+  `d5b7101feaa46f92d33284f745376dbd7cecde0d` ("docs: corrige hallazgos
+  reauditoria gobernanza fase 1"). Ese commit recibió una reauditoría
+  independiente (R3) en el commit
+  `c144b6e434a35fb3744bf3f6122458cd6d3efc2b`, con veredicto `RECHAZAR`
+  (§14).
+- **Revisión 19** es la revisión definitiva que incorpora la corrección
+  del hallazgo N-04 de la reauditoría R3, exclusiva sobre
   `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`, y produce
-  `diff_implementacion_documental_f1_revision18.txt`.
+  `diff_implementacion_documental_f1_revision19.txt`.
 
-Ninguno de esos dieciséis archivos anteriores (revisiones 2 a 17) es el
-producido por esta corrección actual (Revisión 18). Se mencionan aquí
-únicamente como historial.
+Ninguno de esos diecisiete archivos anteriores (revisiones 2 a 18) es
+el producido por esta corrección actual (Revisión 19). Se mencionan
+aquí únicamente como historial.
 
 ### 16.2 Procedimiento histórico de las Revisiones 12 a 14 (contenido definitivo: Revisión 14)
 
@@ -1546,7 +1597,7 @@ historial: el diff que acredita esta revisión es
 `diff_implementacion_documental_f1_revision17.txt`, y no es la revisión
 final.
 
-### 16.7 Revisión 18 (corrección actual y definitiva)
+### 16.7 Revisión 18 (histórica: versionada y reauditada)
 
 - **Motivo:** corregir exclusivamente la frase técnicamente incorrecta
   de `reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md` que motivó
@@ -1584,6 +1635,59 @@ git diff --exit-code --binary \
   -- \
   AGENTS.md \
   governance/core/INSTITUTIONAL_CORE.md \
+  reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
+  > "$out"
+codigo_diff=$?
+```
+
+El código esperado es `1`. **Esta Revisión 18 quedó efectivamente
+versionada** como segundo commit corrector en
+`d5b7101feaa46f92d33284f745376dbd7cecde0d` ("docs: corrige hallazgos
+reauditoria gobernanza fase 1"), padre
+`ceac841a9ca55c3adcdb1e4b9437f1977942e6f7`. Ese commit recibió una
+reauditoría independiente (R3) en el commit
+`c144b6e434a35fb3744bf3f6122458cd6d3efc2b`, con veredicto `RECHAZAR`:
+H-03, N-01, N-02 y N-03 quedaron `RESUELTO`, los veinte criterios A-01
+a A-17, A-20, A-18 y A-19 quedaron `CONFORME`, sin hallazgos críticos
+ni mayores, y un único hallazgo menor, N-04 (§14), sobre la
+denominación de `309c6b2…` y `ceac841…` como "los dos commits
+correctores existentes".
+
+### 16.8 Revisión 19 (corrección actual y definitiva)
+
+- **Motivo:** corregir exclusivamente el hallazgo N-04 de la
+  reauditoría R3 (`c144b6e434a35fb3744bf3f6122458cd6d3efc2b`) sobre el
+  commit auditado `d5b7101feaa46f92d33284f745376dbd7cecde0d`, sin
+  modificar ningún otro concepto normativo ni reabrir H-03, N-01, N-02
+  o N-03.
+- **HEAD inicial:** `d5b7101feaa46f92d33284f745376dbd7cecde0d`.
+- **Archivo autorizado para edición:** exclusivamente este propio
+  informe (`reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md`).
+- **Archivos no modificados:** `AGENTS.md`,
+  `governance/core/INSTITUTIONAL_CORE.md`,
+  `governance/core/ADAPTER_REVIEW_POLICY.md` y
+  `governance/projects/CLAUDEBOT_PROFILE.md`, cuyos blobs conservan,
+  byte a byte, exactamente los cambios ya introducidos hasta el commit
+  `d5b7101…`.
+- **Prohibiciones:** `git add`, `git commit`, `git commit --amend`,
+  push, merge, rebase, cherry-pick, tags, integración, congelación,
+  cierre, nueva auditoría, modificaciones o consultas en `CLAUDEBOT`,
+  F-1A, F10, F11, T2, ciencia, datos, discovery, OOS y validación
+  conductual.
+- **Diff definitivo:**
+  `diff_implementacion_documental_f1_revision19.txt`.
+- **Ausencia de staging y de commit en esta etapa:** no se ejecutó
+  `git add` ni `git commit` durante esta corrección; el índice
+  permanece vacío.
+
+El diff se genera contra el nuevo commit base (`d5b7101…`), limitado a
+la única ruta autorizada:
+
+```text
+out="$(xdg-user-dir DOWNLOAD)/diff_implementacion_documental_f1_revision19.txt"
+git diff --exit-code --binary \
+  d5b7101feaa46f92d33284f745376dbd7cecde0d \
+  -- \
   reports/AI-GOV-F1-CANONICAL/IMPLEMENTATION_REPORT.md \
   > "$out"
 codigo_diff=$?
